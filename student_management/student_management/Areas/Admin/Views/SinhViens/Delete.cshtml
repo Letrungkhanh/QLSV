@@ -1,0 +1,36 @@
+﻿@model student_management.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Xóa sinh viên</h1>
+    </section>
+
+    <section class="content">
+        <div class="card card-danger">
+            <div class="card-header bg-danger">
+                <h3 class="card-title">Bạn có chắc muốn xóa sinh viên này không?</h3>
+            </div>
+
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Mã sinh viên:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaSv)</dd>
+
+                    <dt class="col-sm-4">Tên sinh viên:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.HoTen)</dd>
+                </dl>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="MaSv" />
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </form>
+
+            </div>
+        </div>
+    </section>
+</div>

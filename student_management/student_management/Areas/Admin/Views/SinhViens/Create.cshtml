@@ -1,0 +1,81 @@
+﻿@model student_management.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Thêm Sinh viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Thêm sinh viên</h1>
+    </section>
+
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header"><h3 class="card-title">Thông tin sinh viên</h3></div>
+
+            <form asp-action="Create" method="post">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="MaSv" class="control-label">Mã sinh viên</label>
+                        <input asp-for="MaSv" class="form-control" placeholder="Nhập mã sinh viên..." />
+                        <span asp-validation-for="MaSv" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="HoTen" class="control-label">Tên sinh viên</label>
+                        <input asp-for="HoTen" class="form-control" placeholder="Nhập tên sinh viên..." />
+                        <span asp-validation-for="HoTen" class="text-danger"></span>
+                    </div>
+                   <div class="form-group">
+                        <label asp-for="NgaySinh" class="control-label"></label>
+                        <input asp-for="NgaySinh" type="date" class="form-control" />
+                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="Nhập tên sinh viên..." />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SoDienThoai" class="control-label">Số điện thoại</label>
+                        <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại..." />
+                        <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+    <label asp-for="MaKhoa" class="control-label">Khoa</label>
+    <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
+        <option value="">-- Chọn khoa --</option>
+    </select>
+    <span asp-validation-for="MaKhoa" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="MaLop" class="control-label">Lớp chính quy</label>
+    <select asp-for="MaLop" class="form-control" asp-items="ViewBag.Malop">
+        <option value="">-- Chọn lớp --</option>
+    </select>
+    <span asp-validation-for="MaKhoa" class="text-danger"></span>
+</div>
+                    <div class="form-group">
+                        <label asp-for="NamNhapHoc" class="control-label">Năm nhập học</label>
+                        <input asp-for="NamNhapHoc" class="form-control" placeholder="Năm nhập học..." />
+                        <span asp-validation-for="NamNhapHoc" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <input type="submit" value="Thêm mới" class="btn btn-info" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

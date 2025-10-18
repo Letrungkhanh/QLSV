@@ -1,0 +1,54 @@
+﻿@model student_management.Models.Vien
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Thêm Viện</h1>
+    </section>
+
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header"><h3 class="card-title">Thông tin viện</h3></div>
+
+            <form asp-action="Create" method="post">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="MaVien" class="control-label">Mã viện</label>
+                        <input asp-for="MaVien" class="form-control" placeholder="Nhập mã viện..." />
+                        <span asp-validation-for="MaVien" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TenVien" class="control-label">Tên viện</label>
+                        <input asp-for="TenVien" class="form-control" placeholder="Nhập tên viện..." />
+                        <span asp-validation-for="TenVien" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MoTa" class="control-label">Mô tả</label>
+                        <input asp-for="MoTa" class="form-control" placeholder="Nhập mô tả..." />
+                        <span asp-validation-for="TenVien" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <input type="submit" value="Thêm mới" class="btn btn-info" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

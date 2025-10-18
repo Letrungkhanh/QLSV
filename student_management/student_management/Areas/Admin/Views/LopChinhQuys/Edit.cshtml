@@ -1,0 +1,78 @@
+﻿@model student_management.Models.LopChinhQuy
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Sửa thông tin Khoa</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chỉnh sửa thông tin lớp chính quy</h3>
+                        </div>
+
+                        <!-- form start -->
+                        <form asp-action="Edit" method="post">
+                            <div class="card-body">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-group">
+                                    <label asp-for="MaLop" class="control-label">Mã lớp chính quy</label>
+                                    <!-- Mã khoa chỉ đọc (không được sửa) -->
+                                    <input asp-for="MaLop" class="form-control" readonly />
+                                    <span asp-validation-for="MaLop" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="TenLop" class="control-label">Tên lớp chính quy</label>
+                                    <input asp-for="TenLop" class="form-control" placeholder="Nhập tên lớp chính quy..." />
+                                    <span asp-validation-for="TenLop" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="MaKhoa" class="control-label">Khoa</label>
+                                    <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
+                                        <option value="">-- Vui lòng chọn khoa --</option>
+                                    </select>
+                                    <span asp-validation-for="MaKhoa" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <input type="submit" value="Lưu thay đổi" class="btn btn-info" />
+                                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

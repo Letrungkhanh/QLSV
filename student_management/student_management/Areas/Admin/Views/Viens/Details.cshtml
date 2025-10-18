@@ -1,0 +1,101 @@
+﻿@model student_management.Models.Vien
+
+@{
+    ViewData["Title"] = "Chi tiết viện";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Chi tiết Viện</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-info">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin Viện</h3>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-3">Mã Viện</dt>
+                        <dd class="col-sm-9">@Model.MaVien</dd>
+
+                        <dt class="col-sm-3">Tên Viện</dt>
+                        <dd class="col-sm-9">@Model.TenVien</dd>
+
+                        <dt class="col-sm-3">Mô tả</dt>
+                        <dd class="col-sm-9">@Model.MoTa</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Danh sách các khoa -->
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Danh sách các Khoa thuộc Viện @Model.TenVien</h3>
+                </div>
+                <div class="card-body table-responsive p-0">
+                    @if (Model.Khoas != null && Model.Khoas.Any())
+                    {
+                        <table class="table table-striped table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%">Mã Khoa</th>
+                                    <th style="width: 40%">Tên Khoa</th>
+                                    <th style="width: 40%">Chức năng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var khoa in Model.Khoas)
+                                {
+                                    <tr>
+                                        <td>@khoa.MaKhoa</td>
+                                        <td>@khoa.TenKhoa</td>
+                                        <td>
+                                            <a asp-area="Admin" asp-controller="Khoas" asp-action="Details" asp-route-id="@khoa.MaKhoa" class="btn btn-info btn-sm">
+                                                <i class="fas fa-eye"></i> Xem chi tiết
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="Khoas" asp-action="Edit" asp-route-id="@khoa.MaKhoa" class="btn btn-warning btn-sm">
+                                                <i class="fas fa-edit"></i> Sửa
+                                            </a>
+                                            <a asp-area="Admin" asp-controller="Khoas" asp-action="Delete" asp-route-id="@khoa.MaKhoa" class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i> Xóa
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <div class="p-3">
+                            <p><em>Hiện chưa có khoa nào thuộc viện này.</em></p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+ 

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<student_management.Models.Vien>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý Viện</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a asp-action="Create" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Thêm viện
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 15%">Mã viện</th>
+                                        <th style="width: 20%">Tên Viện</th>
+                                        <th style="width: 30%">Tên Viện</th>
+
+                                        <th style="width: 35%">Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.MaVien)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.TenVien)</td>>
+                                            <td>@Html.DisplayFor(modelItem => item.MoTa)</td>>
+                                            
+
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.MaVien" class="btn btn-primary">Sửa Viện</a>
+                                                <a asp-action="Delete" asp-route-id="@item.MaVien" class="btn btn-danger">Xóa Viện</a>
+                                                <a asp-action="Details" asp-route-id="@item.MaVien" class="btn btn-info">Xem chi tiết</a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
