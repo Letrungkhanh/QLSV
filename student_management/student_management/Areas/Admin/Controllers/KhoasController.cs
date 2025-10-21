@@ -46,17 +46,18 @@ namespace student_management.Areas.Admin.Controllers
             return View(khoa);
         }
 
-
         // GET: Admin/Khoas/Create
         public IActionResult Create()
         {
+            ViewBag.MaVien = new SelectList(_context.Viens, "MaVien", "TenVien");
             return View();
         }
+
 
         // POST: Admin/Khoas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaKhoa,TenKhoa")] Khoa khoa)
+        public async Task<IActionResult> Create([Bind("MaKhoa,TenKhoa,MaVien")] Khoa khoa)
         {
             if (ModelState.IsValid)
             {
@@ -64,8 +65,13 @@ namespace student_management.Areas.Admin.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Truyền lại danh sách viện nếu có lỗi để form không bị mất dropdown
+            ViewBag.MaVien = new SelectList(_context.Viens, "MaVien", "TenVien", khoa.MaVien);
             return View(khoa);
         }
+
+        // GET: Admin/Khoas/Edit/5
         // GET: Admin/Khoas/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
@@ -79,15 +85,19 @@ namespace student_management.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+
+            // Truyền danh sách Viện để hiển thị trong dropdown
+            ViewBag.MaVien = new SelectList(_context.Viens, "MaVien", "TenVien", khoa.MaVien);
             return View(khoa);
         }
+
 
         // POST: Admin/Khoas/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaKhoa,TenKhoa")] Khoa khoa)
+        public async Task<IActionResult> Edit(string id, [Bind("MaKhoa,TenKhoa,MaVien")] Khoa khoa)
         {
             if (id != khoa.MaKhoa)
             {
@@ -103,7 +113,7 @@ namespace student_management.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!KhoaExists(khoa.MaKhoa))
+                    if (!_context.Khoas.Any(e => e.MaKhoa == khoa.MaKhoa))
                     {
                         return NotFound();
                     }
@@ -114,6 +124,9 @@ namespace student_management.Areas.Admin.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Nếu có lỗi -> nạp lại danh sách viện để dropdown không bị trống
+            ViewBag.MaVien = new SelectList(_context.Viens, "MaVien", "TenVien", khoa.MaVien);
             return View(khoa);
         }
 

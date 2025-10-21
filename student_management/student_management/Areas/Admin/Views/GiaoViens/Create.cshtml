@@ -1,0 +1,56 @@
+﻿@model student_management.Models.GiaoVien
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Thêm giảng viên</h1>
+    </section>
+
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header"><h3 class="card-title">Thông tin giảng viên</h3></div>
+
+            <form asp-action="Create" method="post">
+                <div class="card-body">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="MaGv" class="control-label">Mã khoa</label>
+                        <input asp-for="MaGv" class="form-control" placeholder="Nhập mã giảng viên..." />
+                        <span asp-validation-for="MaGv" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="HoTen" class="control-label">Tên khoa</label>
+                        <input asp-for="HoTen" class="form-control" placeholder="Nhập tên giảng viên..." />
+                        <span asp-validation-for="HoTen" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MaKhoa" class="control-label">Thuộc viện</label>
+                        <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
+                            <option value="">-- Chọn khoa --</option>
+                        </select>
+                        <span asp-validation-for="MaKhoa" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+
+                <div class="card-footer">
+                    <input type="submit" value="Thêm mới" class="btn btn-info" />
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

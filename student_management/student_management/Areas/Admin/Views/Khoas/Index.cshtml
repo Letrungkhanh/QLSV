@@ -30,7 +30,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 15%">Mã khoa</th>
-                                        <th style="width: 50%">Tên khoa</th>
+                                        <th style="width: 35%">Tên khoa</th>
+                                        <th style="width: 15%">Mã viện</th>
                                         <th style="width: 35%">Chức năng</th>
                                     </tr>
                                 </thead>
@@ -39,7 +40,8 @@
                                     {
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.MaKhoa)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.TenKhoa)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.TenKhoa)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.MaVien)</td>
                                             
                                             <td>
                                                 <a asp-action="Edit" asp-route-id="@item.MaKhoa" class="btn btn-primary">Sửa khoa</a>

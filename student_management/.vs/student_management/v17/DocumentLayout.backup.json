@@ -3,68 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\source\\repos\\student_management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\khoas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\khoas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\giaoviens\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\giaoviens\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\khoas\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\khoas\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\controllers\\giaovienscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\controllers\\giaovienscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\controllers\\khoascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\controllers\\khoascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\viens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\viens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\lopchinhquys\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\lopchinhquys\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\lopchinhquys\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\lopchinhquys\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\controllers\\lopchinhquyscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\controllers\\lopchinhquyscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\viens\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\viens\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\giaoviens\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\giaoviens\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\khoas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\khoas\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\khoas\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\khoas\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\giaoviens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\giaoviens\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\controllers\\vienscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\controllers\\vienscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\viens\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\viens\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\viens\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\viens\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\viens\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\viens\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\quanlyhocdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\quanlyhocdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\views\\khoas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\views\\khoas\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,211 +34,89 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "KhoasController.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\KhoasController.cs",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Controllers\\KhoasController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\KhoasController.cs*",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Controllers\\KhoasController.cs*",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T05:13:20.162Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Details.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Khoas\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Details.cshtml*",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Khoas\\Details.cshtml*",
-              "ViewState": "AgIAACQAAAAAAAAAAAAiwEIAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T07:08:05.461Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Details.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Viens\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Details.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Viens\\Details.cshtml",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAwwGQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T07:05:11.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Delete.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Viens\\Delete.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Delete.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Viens\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:59:11.701Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Edit.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Viens\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Edit.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Viens\\Edit.cshtml",
-              "ViewState": "AgIAABwAAAAAAAAAAAAiwDMAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:56:57.499Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Edit.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Khoas\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Edit.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Khoas\\Edit.cshtml",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAEYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:56:35.937Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAC8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:48:57.812Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Index.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Viens\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Index.cshtml*",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Viens\\Index.cshtml*",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwCQAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:40:49.128Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml*",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml*",
-              "ViewState": "AgIAABcAAAAAAAAAAAAiwCEAAAA8AAAAAAAAAA==",
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\GiaoViens\\Edit.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\GiaoViens\\Edit.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\GiaoViens\\Edit.cshtml*",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\GiaoViens\\Edit.cshtml*",
+              "ViewState": "AgIAADoAAAAAAAAAAAAiwFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:40:39.814Z",
+              "WhenOpened": "2025-10-19T02:25:01.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\GiaoViens\\Create.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\GiaoViens\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\GiaoViens\\Create.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\GiaoViens\\Create.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-19T01:15:45.847Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Index.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Index.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Index.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACEAAAA8AAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\GiaoViens\\Index.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\GiaoViens\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\GiaoViens\\Index.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\GiaoViens\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-18T04:22:38.615Z",
+              "WhenOpened": "2025-10-19T01:13:29.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LopChinhQuysController.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\LopChinhQuysController.cs",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Controllers\\LopChinhQuysController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\LopChinhQuysController.cs",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Controllers\\LopChinhQuysController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwDAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "GiaoViensController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\GiaoViensController.cs",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Controllers\\GiaoViensController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\GiaoViensController.cs",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Controllers\\GiaoViensController.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAiwIAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T04:29:45.211Z",
+              "WhenOpened": "2025-10-19T00:57:14.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Details.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Details.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Details.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\LopChinhQuys\\Details.cshtml",
-              "ViewState": "AgIAABQAAAAAAAAAAAAqwB0AAAAyAAAAAAAAAA==",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Khoas\\Index.cshtml",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAEEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-18T04:31:00.795Z",
+              "WhenOpened": "2025-10-19T00:39:08.119Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 3,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Create.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Viens\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Viens\\Create.cshtml",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Viens\\Create.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAiwCIAAAAsAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Views\\Khoas\\Create.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T06:48:52.847Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ViensController.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\ViensController.cs",
-              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Controllers\\ViensController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\ViensController.cs",
-              "RelativeToolTip": "student_management\\Areas\\Admin\\Controllers\\ViensController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAADwvy4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T06:40:20.649Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "QuanlyhocDbContext.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\QuanlyhocDbContext.cs",
-              "RelativeDocumentMoniker": "student_management\\Models\\QuanlyhocDbContext.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\QuanlyhocDbContext.cs",
-              "RelativeToolTip": "student_management\\Models\\QuanlyhocDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T06:37:40.773Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\appsettings.json",
-              "RelativeDocumentMoniker": "student_management\\appsettings.json",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\appsettings.json",
-              "RelativeToolTip": "student_management\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-17T06:31:37.693Z"
+              "WhenOpened": "2025-10-19T00:38:14.873Z",
+              "EditorCaption": ""
             }
           ]
         }

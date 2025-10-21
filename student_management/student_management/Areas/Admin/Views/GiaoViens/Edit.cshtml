@@ -1,0 +1,90 @@
+﻿@model student_management.Models.GiaoVien
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Sửa thông tin giảng viên</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chỉnh sửa thông tin giảng viên</h3>
+                        </div>
+
+                        <form asp-action="Edit" method="post">
+                            <div class="card-body">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <!-- Ẩn mã giảng viên để gửi lại khi submit -->
+                                <input type="hidden" asp-for="MaGv" />
+
+                                <div class="form-group">
+                                    <label asp-for="MaGv" class="control-label">Mã giảng viên</label>
+                                    <input asp-for="MaGv" class="form-control" readonly />
+                                    <span asp-validation-for="MaGv" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="HoTen" class="control-label">Tên giảng viên</label>
+                                    <input asp-for="HoTen" class="form-control" placeholder="Nhập tên giảng viên..." />
+                                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="NgaySinh" class="control-label">Ngày sinh</label>
+                                    <input asp-for="NgaySinh" class="form-control" type="date" />
+                                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" type="email" placeholder="Nhập email..." />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="SoDienThoai" class="control-label">Số điện thoại</label>
+                                    <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại..." />
+                                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="MaKhoa" class="control-label">Khoa giảng dạy</label>
+                                    <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
+                                        <option value="">-- Chọn khoa --</option>
+                                    </select>
+                                    <span asp-validation-for="MaKhoa" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <input type="submit" value="Lưu thay đổi" class="btn btn-info" />
+                                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
