@@ -1,0 +1,66 @@
+﻿@model student_management.Models.ViewModels.NhapDiemViewModel
+@{
+    ViewData["Title"] = "Nhập điểm lớp " + Model.TenLHP;
+}
+
+<h2 class="mb-3">@ViewData["Title"]</h2>
+
+<form asp-action="LuuDiem" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="MaLHP" />
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-primary">
+            <tr>
+                <th>Mã SV</th>
+                <th>Họ tên</th>
+                <th>Điểm chuyên cần (10%)</th>
+                <th>Giữa kỳ (30%)</th>
+                <th>Cuối kỳ (60%)</th>
+                <th>Tổng kết</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.SinhViens.Count; i++)
+            {
+                <tr>
+                    <td>@Model.SinhViens[i].MaSV</td>
+                    <td>@Model.SinhViens[i].HoTen</td>
+                    <td>
+                        <input asp-for="SinhViens[i].DiemChuyenCan" class="form-control" step="0.1" min="0" max="10" />
+                    </td>
+                    <td>
+                        <input asp-for="SinhViens[i].DiemGiuaKy" class="form-control" step="0.1" min="0" max="10" />
+                    </td>
+                    <td>
+                        <input asp-for="SinhViens[i].DiemCuoiKy" class="form-control" step="0.1" min="0" max="10" />
+                    </td>
+                    <td>
+                        <input asp-for="SinhViens[i].DiemTongKet" class="form-control" readonly />
+                        <input type="hidden" asp-for="SinhViens[i].MaSV" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-success">💾 Lưu điểm</button>
+    <a asp-action="DanhSachSinhVien" asp-route-maLHP="@Model.MaLHP" class="btn btn-secondary">⬅ Quay lại</a>
+</form>
+
+@section Scripts {
+    <script>
+        // Tự tính điểm tổng kết khi nhập các cột con
+        document.querySelectorAll("input[name*='DiemChuyenCan'], input[name*='DiemGiuaKy'], input[name*='DiemCuoiKy']")
+            .forEach(inp => {
+                inp.addEventListener('input', function () {
+                    const row = this.closest('tr');
+                    const cc = parseFloat(row.querySelector("input[name*='DiemChuyenCan']").value) || 0;
+                    const gk = parseFloat(row.querySelector("input[name*='DiemGiuaKy']").value) || 0;
+                    const ck = parseFloat(row.querySelector("input[name*='DiemCuoiKy']").value) || 0;
+                    const tk = (cc * 0.1 + gk * 0.3 + ck * 0.6).toFixed(2);
+                    row.querySelector("input[name*='DiemTongKet']").value = tk;
+                });
+            });
+    </script>
+}

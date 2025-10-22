@@ -1,0 +1,109 @@
+﻿@model IEnumerable<student_management.Models.LopHocPhan>
+@{
+    ViewData["Title"] = "📘 Lớp học phần của tôi";
+}
+
+<style>
+    .course-card {
+        border-radius: 16px;
+        transition: all 0.25s ease;
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+    .course-header {
+        background: linear-gradient(135deg, #007bff 0%, #0d6efd 100%);
+        color: white;
+        padding: 16px;
+        border-bottom: 3px solid #0a58ca;
+    }
+
+    .course-icon {
+        font-size: 40px;
+        opacity: 0.85;
+    }
+
+    .course-body {
+        padding: 16px 20px;
+    }
+
+    .course-footer {
+        border-top: 1px solid #f1f1f1;
+        background-color: #f8f9fa;
+        padding: 12px 20px;
+        text-align: right;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #777;
+    }
+</style>
+
+<div class="container py-4">
+    <h3 class="fw-bold mb-4">
+        📘 Các lớp học phần của tôi
+    </h3>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var lhp in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="course-card h-100">
+                        <div class="course-header d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="mb-0 fw-bold">@lhp.TenLhp</h5>
+                                <small>Mã lớp: <strong>@lhp.MaLhp</strong></small>
+                            </div>
+                            <i class="bi bi-book course-icon"></i>
+                        </div>
+
+                        <div class="course-body">
+                            <p class="mb-1 text-muted">
+                                <i class="bi bi-journal-text me-1"></i>
+                                <strong>Môn học:</strong> @lhp.MaMhNavigation?.TenMh
+                            </p>
+                            <p class="mb-0 text-muted">
+                                <i class="bi bi-person-badge me-1"></i>
+                                <strong>Giảng viên:</strong> @lhp.MaGvNavigation?.HoTen
+                            </p>
+                            <p class="mb-0 text-muted">
+                                <i class="bi bi-people-fill me-1"></i>
+                                <strong>Số sinh viên:</strong> @lhp.DangKyHocs.Count()
+                            </p>
+
+                        </div>
+
+                        <div class="course-footer">
+                            <a asp-area="GiangVien"
+                               asp-controller="GiangVien"
+                               asp-action="DanhSachSinhVien"
+                               asp-route-maLHP="@lhp.MaLhp"
+                               class="btn btn-primary btn-sm px-3">
+                                <i class="bi bi-people-fill me-1"></i> Xem sinh viên
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="empty-state">
+            <i class="bi bi-emoji-neutral fs-1 mb-3 d-block"></i>
+            <h5>Bạn chưa có lớp học phần nào.</h5>
+            <p>Vui lòng kiểm tra lại trong hệ thống quản lý giảng dạy.</p>
+        </div>
+    }
+</div>

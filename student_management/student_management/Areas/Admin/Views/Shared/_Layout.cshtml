@@ -85,95 +85,92 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
+                <<nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a asp-action="Index" asp-controller="Khoas" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                <p >Quản lý Khoa viện</p>
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Quản lý lớp chính quy</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Quản lý lớp học phần</p>
-                                    </a>
-                                </li>
-                               
-                            </ul>
-                        </li>
-                        <li class="nav-item menu-open">
+                        <!-- 🔹 Quản lý Khoa - Viện -->
+                        <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <i class="nav-icon fas fa-university"></i>
                                 <p>
-                                    Dashboard
+                                    Quản lý Khoa - Viện
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a asp-area="Admin" asp-controller="Viens" asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
+                                        <p>Danh sách Viện</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a asp-area="Admin" asp-controller="Khoas" asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
+                                        <p>Danh sách Khoa</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+
+                        <!-- 🔹 Quản lý Lớp -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-chalkboard"></i>
                                 <p>
-                                    Dashboard
+                                    Quản lý Lớp
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
+                                    <a asp-area="Admin" asp-controller="LopChinhQuys" asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
+                                        <p>Lớp Chính Quy</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
+                                    <a asp-area="Admin" asp-controller="LopHocPhans" asp-action="Index" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
+                                        <p>Lớp Học Phần</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                       
+
+                        <!-- 🔹 Quản lý Giảng viên -->
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="GiaoViens" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>Quản lý Giảng viên</p>
+                            </a>
+                        </li>
+
+                        <!-- 🔹 Quản lý Sinh viên -->
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="SinhViens" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-user-graduate"></i>
+                                <p>Quản lý Sinh viên</p>
+                            </a>
+                        </li>
+
+                        <!-- 🔹 Quản lý Thông báo -->
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="ThongBaos" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-bullhorn"></i>
+                                <p>Quản lý Thông báo</p>
+                            </a>
+                        </li>
+
+                        <!-- 🔹 Dashboard -->
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
+
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->

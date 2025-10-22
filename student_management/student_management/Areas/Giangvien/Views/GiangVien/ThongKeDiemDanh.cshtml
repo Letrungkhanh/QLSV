@@ -1,0 +1,53 @@
+﻿@model student_management.Models.ViewModels.ThongKeDiemDanhViewModel
+
+@{
+    ViewData["Title"] = "Thống kê điểm danh";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm rounded-3">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">📊 Thống kê điểm danh</h4>
+            <a asp-action="DanhSachSinhVien" asp-route-maLHP="@Model.MaLHP" class="btn btn-light btn-sm">⬅ Quay lại</a>
+        </div>
+
+        <div class="card-body">
+            @if (Model.DanhSach.Count == 0)
+            {
+                <div class="alert alert-warning text-center">
+                    Chưa có dữ liệu điểm danh nào cho lớp này.
+                </div>
+            }
+            else
+            {
+                <table class="table table-hover table-bordered align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Mã SV</th>
+                            <th>Họ tên</th>
+                            <th class="text-center">Số buổi có mặt</th>
+                            <th class="text-center">Số buổi vắng</th>
+                            <th class="text-center">Tỷ lệ chuyên cần (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var sv in Model.DanhSach)
+                        {
+                            var tong = sv.SoBuoiCoMat + sv.SoBuoiVang;
+                            var tyLe = tong > 0 ? (sv.SoBuoiCoMat * 100 / tong) : 0;
+                            var rowClass = tyLe < 70 ? "table-danger" : "";
+
+                            <tr class="@rowClass">
+                                <td>@sv.MaSV</td>
+                                <td>@sv.HoTen</td>
+                                <td class="text-center">@sv.SoBuoiCoMat</td>
+                                <td class="text-center">@sv.SoBuoiVang</td>
+                                <td class="text-center fw-bold">@tyLe%</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</div>
