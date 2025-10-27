@@ -16,6 +16,7 @@ public partial class BangDiem
     public decimal? DiemCuoiKy { get; set; }
 
     public decimal? DiemTongKet { get; set; }
-
+    public virtual SinhVien? MaSvNavigation { get; set; }
+    public virtual LopHocPhan? MaLhpNavigation { get; set; }
     public virtual DangKyHoc DangKyHoc { get; set; } = null!;
 }

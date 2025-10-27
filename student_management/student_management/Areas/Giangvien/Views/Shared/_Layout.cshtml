@@ -35,6 +35,16 @@
             transition: all 0.3s;
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
+
+        .card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
     </style>
     @RenderSection("Styles", required: false)
 </head>
@@ -61,13 +71,15 @@
                 <a asp-action="LopHocPhanCuaToi" asp-controller="GiangVien" class="nav-item nav-link">
                     Lớp học của tôi
                 </a>
-                <a href="courses.html" class="nav-item nav-link">Courses</a>
+                <a asp-area="Giangvien" asp-action="Index" asp-controller="CaNhanGV" class="nav-item nav-link">
+                    Tài khoản của tôi
+                </a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
+                        <a asp-area="Giangvien" asp-action="Index" asp-controller="CaNhanGV" class="dropdown-item">Tài khoản của tôi</a>
+                        <a asp-area="Giangvien" asp-action="Edit" asp-controller="CaNhanGV" class="dropdown-item">Chỉnh sửa thông tin</a>
+                        <a asp-area="Giangvien" asp-action="ChangePassword" asp-controller="CaNhanGV" class="dropdown-item">Đổi mật khẩu</a>
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link">Contact</a>

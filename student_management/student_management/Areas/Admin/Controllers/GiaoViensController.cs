@@ -48,84 +48,123 @@ namespace student_management.Areas.Admin.Controllers
         // GET: Admin/GiaoViens/Create
         public IActionResult Create()
         {
-            ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "MaKhoa");
+            ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa");
             return View();
         }
 
-        // POST: Admin/GiaoViens/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaGv,HoTen,NgaySinh,Email,SoDienThoai,MaKhoa")] GiaoVien giaoVien)
+        public async Task<IActionResult> Create(GiaoVien giaoVien, IFormFile? AnhFile)
         {
             if (ModelState.IsValid)
             {
+                if (AnhFile != null && AnhFile.Length > 0)
+                {
+                    // ✅ Lưu vào thư mục wwwroot/uploads
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                    if (!Directory.Exists(uploadsFolder))
+                        Directory.CreateDirectory(uploadsFolder);
+
+                    var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(AnhFile.FileName)}";
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await AnhFile.CopyToAsync(stream);
+                    }
+
+                    // ✅ Lưu đường dẫn tương đối vào DB
+                    giaoVien.Anh = "/uploads/" + fileName;
+                }
+
                 _context.Add(giaoVien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "MaKhoa", giaoVien.MaKhoa);
-            return View(giaoVien);
-        }
 
-        // GET: Admin/GiaoViens/Edit/5
-        // GET: Admin/GiaoViens/Edit/5
-        public async Task<IActionResult> Edit(string id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var giaoVien = await _context.GiaoViens.FindAsync(id);
-            if (giaoVien == null)
-            {
-                return NotFound();
-            }
-
-            // 🟢 Truyền danh sách Khoa (hiển thị Tên Khoa thay vì Mã)
             ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", giaoVien.MaKhoa);
             return View(giaoVien);
         }
 
+        // GET: Admin/GiaoViens/Edit/5
+        public async Task<IActionResult> Edit(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+                return NotFound();
 
-        // POST: Admin/GiaoViens/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+            var giaoVien = await _context.GiaoViens.FindAsync(id);
+            if (giaoVien == null)
+                return NotFound();
+
+            ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", giaoVien.MaKhoa);
+            return View(giaoVien);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaGv,HoTen,NgaySinh,Email,SoDienThoai,MaKhoa")] GiaoVien giaoVien)
+        public async Task<IActionResult> Edit(string id, GiaoVien giaoVien, IFormFile? AnhFile)
         {
             if (id != giaoVien.MaGv)
-            {
                 return NotFound();
-            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(giaoVien);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!GiaoVienExists(giaoVien.MaGv))
-                    {
+                    var giaoVienCu = await _context.GiaoViens.AsNoTracking().FirstOrDefaultAsync(g => g.MaGv == id);
+                    if (giaoVienCu == null)
                         return NotFound();
+
+                    // Nếu có ảnh mới
+                    if (AnhFile != null && AnhFile.Length > 0)
+                    {
+                        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
+                        if (!Directory.Exists(uploadsFolder))
+                            Directory.CreateDirectory(uploadsFolder);
+
+                        var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(AnhFile.FileName)}";
+                        var filePath = Path.Combine(uploadsFolder, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await AnhFile.CopyToAsync(stream);
+                        }
+
+                        // Xóa ảnh cũ nếu có
+                        if (!string.IsNullOrEmpty(giaoVienCu.Anh))
+                        {
+                            var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", giaoVienCu.Anh.TrimStart('/'));
+                            if (System.IO.File.Exists(oldPath))
+                                System.IO.File.Delete(oldPath);
+                        }
+
+                        giaoVien.Anh = "/uploads/" + fileName;
                     }
                     else
                     {
-                        throw;
+                        // ✅ Nếu không chọn ảnh mới, giữ nguyên ảnh cũ
+                        giaoVien.Anh = giaoVienCu.Anh;
                     }
+
+                    _context.Update(giaoVien);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-                return RedirectToAction(nameof(Index));
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.GiaoViens.Any(e => e.MaGv == giaoVien.MaGv))
+                        return NotFound();
+                    throw;
+                }
             }
 
             ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", giaoVien.MaKhoa);
             return View(giaoVien);
         }
+
+
+
+
 
         // GET: Admin/GiaoViens/Delete/5
         public async Task<IActionResult> Delete(string id)

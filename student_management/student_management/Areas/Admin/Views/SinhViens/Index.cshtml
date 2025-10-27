@@ -32,6 +32,7 @@
                                     <tr>
                                         <th style="width: 10%">Mã sinh viên</th>
                                         <th style="width: 15%">Tên sinh viên</th>
+                                        <th style="width: 15%">Ảnh</th>
                                         <th style="width: 5%">Ngày sinh</th>
                                         <th style="width: 10%">Email</th>
                                         <th style="width: 10%">Số điện thoại</th>
@@ -39,7 +40,7 @@
                                         <th style="width: 5%">Khoa</th>
                                         <th style="width: 10%">Năm nhập học</th>
 
-                                        <th style="width: 30%">Chức năng</th>
+                                        <th style="width: 15%">Chức năng</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -56,8 +57,8 @@
                                             <td>@Html.DisplayFor(modelItem => item.NamNhapHoc)</td>
 
                                             <td>
-                                                <a asp-action="Edit" asp-route-id="@item.MaSv" class="btn btn-primary">Sửa thông tin sinh viên</a>
-                                                <a asp-action="Delete" asp-route-id="@item.MaSv" class="btn btn-danger">Xóa sinh viên</a>
+                                                <a asp-action="Edit" asp-route-id="@item.MaSv" class="btn btn-primary">Sửa</a>
+                                                <a asp-action="Delete" asp-route-id="@item.MaSv" class="btn btn-danger">Xóa</a>
                                             </td>
                                         </tr>
                                     }

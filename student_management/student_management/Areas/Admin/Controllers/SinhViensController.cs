@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -19,19 +19,17 @@ namespace student_management.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Admin/SinhViens
+        // ✅ DANH SÁCH SINH VIÊN
         public async Task<IActionResult> Index()
         {
-            // Lấy danh sách sinh viên kèm tên lớp và tên khoa
             var sinhViens = await _context.SinhViens
-                .Include(s => s.MaKhoaNavigation)  // liên kết với bảng Khoa
-                .Include(s => s.MaLopNavigation)   // liên kết với bảng LopChinhQui
+                .Include(s => s.MaKhoaNavigation)
+                .Include(s => s.MaLopNavigation)
                 .ToListAsync();
-
             return View(sinhViens);
         }
 
-        // GET: Admin/SinhViens/Details/5
+        // ✅ CHI TIẾT
         public async Task<IActionResult> Details(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -48,7 +46,7 @@ namespace student_management.Areas.Admin.Controllers
             return View(sinhVien);
         }
 
-        // GET: Admin/SinhViens/Create
+        // ✅ HIỂN THỊ FORM THÊM MỚI
         public IActionResult Create()
         {
             ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa");
@@ -56,13 +54,30 @@ namespace student_management.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/SinhViens/Create
+        // ✅ THÊM MỚI SINH VIÊN + ẢNH
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaSv,HoTen,NgaySinh,Email,SoDienThoai,MaLop,MaKhoa,NamNhapHoc")] SinhVien sinhVien)
+        public async Task<IActionResult> Create(student_management.Models.SinhVien sinhVien, IFormFile? AnhFile)
         {
             if (ModelState.IsValid)
             {
+                if (AnhFile != null && AnhFile.Length > 0)
+                {
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "sinhvien");
+                    if (!Directory.Exists(uploadsFolder))
+                        Directory.CreateDirectory(uploadsFolder);
+
+                    var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(AnhFile.FileName)}";
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await AnhFile.CopyToAsync(stream);
+                    }
+
+                    sinhVien.Anh = "/uploads/sinhvien/" + fileName;
+                }
+
                 _context.Add(sinhVien);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -73,7 +88,7 @@ namespace student_management.Areas.Admin.Controllers
             return View(sinhVien);
         }
 
-        // GET: Admin/SinhViens/Edit/5
+        // ✅ HIỂN THỊ FORM SỬA
         public async Task<IActionResult> Edit(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -88,10 +103,10 @@ namespace student_management.Areas.Admin.Controllers
             return View(sinhVien);
         }
 
-        // POST: Admin/SinhViens/Edit/5
+        // ✅ CẬP NHẬT SINH VIÊN + ẢNH
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaSv,HoTen,NgaySinh,Email,SoDienThoai,MaLop,MaKhoa,NamNhapHoc")] SinhVien sinhVien)
+        public async Task<IActionResult> Edit(string id, student_management.Models.SinhVien sinhVien, IFormFile? AnhFile)
         {
             if (id != sinhVien.MaSv)
                 return NotFound();
@@ -100,17 +115,42 @@ namespace student_management.Areas.Admin.Controllers
             {
                 try
                 {
+                    // Nếu có ảnh mới
+                    if (AnhFile != null && AnhFile.Length > 0)
+                    {
+                        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "sinhvien");
+                        if (!Directory.Exists(uploadsFolder))
+                            Directory.CreateDirectory(uploadsFolder);
+
+                        var fileName = $"{Guid.NewGuid()}_{Path.GetFileName(AnhFile.FileName)}";
+                        var filePath = Path.Combine(uploadsFolder, fileName);
+
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await AnhFile.CopyToAsync(stream);
+                        }
+
+                        // Xóa ảnh cũ nếu có
+                        if (!string.IsNullOrEmpty(sinhVien.Anh))
+                        {
+                            var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", sinhVien.Anh.TrimStart('/'));
+                            if (System.IO.File.Exists(oldPath))
+                                System.IO.File.Delete(oldPath);
+                        }
+
+                        sinhVien.Anh = "/uploads/sinhvien/" + fileName;
+                    }
+
                     _context.Update(sinhVien);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SinhVienExists(sinhVien.MaSv))
+                    if (!_context.SinhViens.Any(e => e.MaSv == sinhVien.MaSv))
                         return NotFound();
-                    else
-                        throw;
+                    throw;
                 }
-                return RedirectToAction(nameof(Index));
             }
 
             ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", sinhVien.MaKhoa);
@@ -118,7 +158,7 @@ namespace student_management.Areas.Admin.Controllers
             return View(sinhVien);
         }
 
-        // GET: Admin/SinhViens/Delete/5
+        // ✅ XÓA
         public async Task<IActionResult> Delete(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -135,22 +175,25 @@ namespace student_management.Areas.Admin.Controllers
             return View(sinhVien);
         }
 
-        // POST: Admin/SinhViens/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var sinhVien = await _context.SinhViens.FindAsync(id);
             if (sinhVien != null)
+            {
+                // Xóa ảnh vật lý nếu có
+                if (!string.IsNullOrEmpty(sinhVien.Anh))
+                {
+                    var oldPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", sinhVien.Anh.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPath))
+                        System.IO.File.Delete(oldPath);
+                }
+
                 _context.SinhViens.Remove(sinhVien);
-
-            await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool SinhVienExists(string id)
-        {
-            return _context.SinhViens.Any(e => e.MaSv == id);
         }
     }
 }

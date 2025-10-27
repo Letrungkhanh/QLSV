@@ -29,6 +29,7 @@ namespace student_management.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
+            // 🔍 Kiểm tra tài khoản
             var user = await _context.TaiKhoans
                 .Include(t => t.MaVaiTroNavigation)
                 .FirstOrDefaultAsync(t => t.TenDangNhap == model.TenDangNhap && t.TrangThai == true);
@@ -39,6 +40,7 @@ namespace student_management.Controllers
                 return View(model);
             }
 
+            // ✅ Tạo claims (xác thực cookie)
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.TenDangNhap),
@@ -51,37 +53,47 @@ namespace student_management.Controllers
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-            // Điều hướng theo vai trò
-            // Điều hướng theo vai trò
+            // ✅ Điều hướng theo vai trò
             if (user.MaVaiTro == 1)
             {
-                // Admin
+                // ADMIN
                 return RedirectToAction("Index", "Home", new { area = "Admin" });
             }
             else if (user.MaVaiTro == 2)
             {
-                // Giảng viên → tìm mã GV và chuyển sang trang "Lớp học phần của tôi"
+                // GIẢNG VIÊN
                 var giangVien = await _context.GiaoViens
                     .FirstOrDefaultAsync(g => g.MaGv == user.MaGv);
 
                 if (giangVien != null)
-                    return RedirectToAction("Index", "Home", new { area = "Giangvien", maGV = giangVien.MaGv });
-                else
-                    return RedirectToAction("Index", "Home", new { area = "Giangvien" });
+                {
+                    HttpContext.Session.SetString("MaGV", giangVien.MaGv);
+                    HttpContext.Session.SetString("HoTenGV", giangVien.HoTen);
+                }
+
+                return RedirectToAction("LopHocPhanCuaToi", "GiangVien", new { area = "GiangVien" });
             }
-
-
             else
             {
-                // Sinh viên
-                return RedirectToAction("Index", "Home", new { area = "" });
-            }
+                // SINH VIÊN
+                var sinhVien = await _context.SinhViens
+                    .FirstOrDefaultAsync(s => s.MaSv == user.MaSv);
 
+                if (sinhVien != null)
+                {
+                    HttpContext.Session.SetString("MaSV", sinhVien.MaSv);
+                    HttpContext.Session.SetString("HoTenSV", sinhVien.HoTen);
+                }
+
+                // 👉 Sinh viên KHÔNG nằm trong area, nên không thêm "area"
+                return RedirectToAction("LopHocPhanCuaToi", "SinhVien");
+            }
         }
 
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account");
         }
     }

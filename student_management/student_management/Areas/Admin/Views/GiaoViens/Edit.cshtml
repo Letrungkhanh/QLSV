@@ -25,23 +25,49 @@
                             <h3 class="card-title">Chỉnh sửa thông tin giảng viên</h3>
                         </div>
 
-                        <form asp-action="Edit" method="post">
+                        <!-- 🟢 Phải có enctype để gửi file -->
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
                             <div class="card-body">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                                <!-- Ẩn mã giảng viên để gửi lại khi submit -->
+                                <!-- Ẩn mã giảng viên để gửi lại -->
                                 <input type="hidden" asp-for="MaGv" />
 
                                 <div class="form-group">
                                     <label asp-for="MaGv" class="control-label">Mã giảng viên</label>
                                     <input asp-for="MaGv" class="form-control" readonly />
-                                    <span asp-validation-for="MaGv" class="text-danger"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <label asp-for="HoTen" class="control-label">Tên giảng viên</label>
                                     <input asp-for="HoTen" class="form-control" placeholder="Nhập tên giảng viên..." />
                                     <span asp-validation-for="HoTen" class="text-danger"></span>
+                                </div>
+
+                                <!-- Ảnh hiện tại -->
+                                <div class="form-group">
+                                    <label>Ảnh hiện tại:</label><br />
+                                    @if (!string.IsNullOrEmpty(Model.Anh))
+                                    {
+                                        <img src="@Model.Anh" alt="Ảnh giảng viên"
+                                             width="150" height="150"
+                                             style="object-fit:cover; border-radius:8px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/default-avatar.png"
+                                             width="150" height="150"
+                                             style="object-fit:cover; border-radius:8px;" />
+                                    }
+
+                                    <!-- 🟢 Giữ lại ảnh cũ khi không chọn ảnh mới -->
+                                    <input type="hidden" asp-for="Anh" />
+                                </div>
+
+                                <!-- Chọn ảnh mới -->
+                                <div class="form-group">
+                                    <label for="AnhFile" class="control-label">Chọn ảnh mới (nếu muốn thay đổi)</label>
+                                    <input type="file" name="AnhFile" class="form-control" accept="image/*" />
                                 </div>
 
                                 <div class="form-group">

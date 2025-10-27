@@ -16,6 +16,8 @@ public partial class GiaoVien
     public string? SoDienThoai { get; set; }
 
     public string? MaKhoa { get; set; }
+    public string? Anh { get; set; }
+
 
     public virtual ICollection<LopHocPhan> LopHocPhans { get; set; } = new List<LopHocPhan>();
 

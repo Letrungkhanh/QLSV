@@ -14,6 +14,7 @@ public partial class LopHocPhan
     public string? MaGv { get; set; }
 
     public int HocKy { get; set; }
+    public string TrangThai { get; set; } = "Chờ duyệt";
 
     public string NamHoc { get; set; } = null!;
 

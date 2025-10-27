@@ -10,6 +10,7 @@ public partial class MonHoc
     public string TenMh { get; set; } = null!;
 
     public int SoTinChi { get; set; }
+    public string? Anh { get; set; }
 
     public string? MaKhoa { get; set; }
 

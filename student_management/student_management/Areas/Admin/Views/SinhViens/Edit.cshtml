@@ -1,105 +1,13 @@
-﻿@model student_management.Models.SinhVien
+﻿@model student_management.Models.GiaoVien
 
-@{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
+<h2>Thông tin cá nhân</h2>
+<table class="table table-bordered">
+    <tr><th>Mã GV</th><td>@Model.MaGv</td></tr>
+    <tr><th>Họ tên</th><td>@Model.HoTen</td></tr>
+    <tr><th>Email</th><td>@Model.Email</td></tr>
+    <tr><th>Điện thoại</th><td>@Model.SoDienThoai</td></tr>
+    <tr><th>Khoa</th><td>@Model.MaKhoaNavigation?.TenKhoa</td></tr>
+</table>
 
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Sửa thông tin sinh viên</h1>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-6">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Chỉnh sửa thông tin sinh viên</h3>
-                        </div>
-
-                        <!-- form start -->
-                        <form asp-action="Edit" method="post">
-                            <div class="card-body">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                                <div class="form-group">
-                                    <label asp-for="MaSv" class="control-label">Mã sinh viên</label>
-                                    <!-- Mã khoa chỉ đọc (không được sửa) -->
-                                    <input asp-for="MaSv" class="form-control" readonly />
-                                    <span asp-validation-for="MaSv" class="text-danger"></span>
-                                </div>
-
-                                <div class="form-group">
-                                    <label asp-for="HoTen" class="control-label">Tên sinh viên</label>
-                                    <input asp-for="HoTen" class="form-control" placeholder="Nhập tên sinh viên ..." />
-                                    <span asp-validation-for="HoTen" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="NgaySinh" class="control-label"></label>
-                                    <input asp-for="NgaySinh" type="date" class="form-control" />
-                                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
-                                </div>
-                                 <div class="form-group">
-                                    <label asp-for="Email" class="control-label">Email</label>
-                                    <input asp-for="Email" class="form-control" placeholder="Nhập email ..." />
-                                    <span asp-validation-for="Email" class="text-danger"></span>
-                                </div>
-                                 <div class="form-group">
-                                    <label asp-for="SoDienThoai" class="control-label">Số điện thoại</label>
-                                    <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại ..." />
-                                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="MaKhoa" class="control-label">Khoa</label>
-                                    <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
-                                        <option value="">-- Chọn khoa --</option>
-                                    </select>
-                                    <span asp-validation-for="MaKhoa" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="MaLop" class="control-label">Lớp chính quy</label>
-                                    <select asp-for="MaLop" class="form-control" asp-items="ViewBag.Malop">
-                                        <option value="">-- Chọn lớp --</option>
-                                    </select>
-                                    <span asp-validation-for="MaKhoa" class="text-danger"></span>
-                                </div>
-                                 <div class="form-group">
-                                    <label asp-for="NamNhapHoc" class="control-label">Năm nhập học</label>
-                                    <input asp-for="NamNhapHoc" class="form-control" placeholder="Nhập năm nhập học ..." />
-                                    <span asp-validation-for="NamNhapHoc" class="text-danger"></span>
-                                </div>
-
-                            </div>
-
-                            <div class="card-footer">
-                                <input type="submit" value="Lưu thay đổi" class="btn btn-info" />
-                                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /.card -->
-                </div>
-            </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
+<a asp-action="Edit" class="btn btn-primary">Chỉnh sửa</a>
+<a asp-action="ChangePassword" class="btn btn-warning">Đổi mật khẩu</a>

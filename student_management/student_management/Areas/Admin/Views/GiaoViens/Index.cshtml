@@ -10,11 +10,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Quản lý Khoa</h1>
+                    <h1>Quản lý giảng viên</h1>
                 </div>
                 <div class="col-sm-6 text-right">
                     <a asp-action="Create" class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i> Thêm khoa
+                        <i class="fas fa-plus-circle"></i> Thêm giảng viên
                     </a>
                 </div>
             </div>
@@ -31,7 +31,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 15%">Mã giảng viên</th>
-                                        <th style="width: 35%">Tên giảng viên</th>
+                                        <th style="width: 25%">Tên giảng viên</th>
+                                        <th style="width: 10%">Ảnh</th>
                                         <th style="width: 15%">Mã khoa</th>
                                         <th style="width: 35%">Chức năng</th>
                                     </tr>
@@ -42,12 +43,23 @@
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.MaGv)</td>
                                             <td>@Html.DisplayFor(modelItem => item.HoTen)</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(item.Anh))
+                                                {
+                                                    <img src="@item.Anh" alt="Ảnh giảng viên" width="80" height="80" style="object-fit:cover; border-radius:8px;" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/images/default-avatar.png" width="80" height="80" style="object-fit:cover; border-radius:8px;" />
+                                                }
+                                            </td>
+
                                             <td>@Html.DisplayFor(modelItem => item.MaKhoa)</td>
 
                                             <td>
-                                                <a asp-action="Edit" asp-route-id="@item.MaGv" class="btn btn-primary">Sửa khoa</a>
-                                                <a asp-action="Delete" asp-route-id="@item.MaGv" class="btn btn-danger">Xóa khoa</a>
-                                                <a asp-action="Details" asp-route-id="@item.MaGv" class="btn btn-danger">Xem chi tiết khoa</a>
+                                                <a asp-action="Edit" asp-route-id="@item.MaGv" class="btn btn-primary">Sửa thông tin</a>
+                                                <a asp-action="Delete" asp-route-id="@item.MaGv" class="btn btn-danger">Xóa giảng viên</a>
+                                                <a asp-action="Details" asp-route-id="@item.MaGv" class="btn btn-danger">Xem chi tiết </a>
                                             </td>
                                         </tr>
                                     }

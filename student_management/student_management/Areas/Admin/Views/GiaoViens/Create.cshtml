@@ -14,20 +14,40 @@
         <div class="card card-primary">
             <div class="card-header"><h3 class="card-title">Thông tin giảng viên</h3></div>
 
-            <form asp-action="Create" method="post">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group">
-                        <label asp-for="MaGv" class="control-label">Mã khoa</label>
+                        <label asp-for="MaGv" class="control-label">Mã giảng viên</label>
                         <input asp-for="MaGv" class="form-control" placeholder="Nhập mã giảng viên..." />
                         <span asp-validation-for="MaGv" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="HoTen" class="control-label">Tên khoa</label>
+                        <label asp-for="HoTen" class="control-label">Tên giảng viên</label>
                         <input asp-for="HoTen" class="form-control" placeholder="Nhập tên giảng viên..." />
                         <span asp-validation-for="HoTen" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group">
+                        <label for="Anh" class="control-label">Ảnh giảng viên</label>
+                        <input type="file" name="AnhFile" class="form-control" accept="image/*" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="Nhập email..." />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div> 
+                    <div class="form-group">
+                        <label asp-for="SoDienThoai" class="control-label">Số điện thoại</label>
+                        <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại..." />
+                        <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NgaySinh" class="control-label"></label>
+                        <input asp-for="NgaySinh" type="date" class="form-control" />
+                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="MaKhoa" class="control-label">Thuộc viện</label>

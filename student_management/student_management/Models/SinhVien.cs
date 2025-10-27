@@ -20,6 +20,8 @@ public partial class SinhVien
     public string? MaKhoa { get; set; }
 
     public int? NamNhapHoc { get; set; }
+    public string? Anh { get; set; }
+
 
     public virtual ICollection<DangKyHoc> DangKyHocs { get; set; } = new List<DangKyHoc>();
 

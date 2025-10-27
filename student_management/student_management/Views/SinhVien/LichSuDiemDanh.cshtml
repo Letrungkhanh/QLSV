@@ -1,0 +1,59 @@
+﻿@model IEnumerable<student_management.Models.DiemDanh>
+
+@{
+    ViewData["Title"] = "Lịch sử điểm danh";
+}
+
+<h2 class="text-center mt-3">📅 LỊCH SỬ ĐIỂM DANH</h2>
+<p class="text-center text-muted">
+    Số bản ghi: @(Model?.Count() ?? 0)
+</p>
+
+
+@if (!string.IsNullOrEmpty(ViewBag.TenLHP))
+{
+    <h5 class="text-center text-muted">Lớp học phần: <b>@ViewBag.TenLHP</b></h5>
+}
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning text-center mt-4">
+        Chưa có dữ liệu điểm danh cho lớp học phần này.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped mt-4 text-center align-middle">
+        <thead class="table-info">
+            <tr>
+                <th>Ngày điểm danh</th>
+                <th>Trạng thái</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dd in Model)
+            {
+                <tr>
+                    <td>@dd.NgayDiemDanh.ToString("dd/MM/yyyy")</td>
+
+                    <td>
+                        @if (dd.TrangThai == "Có mặt" || dd.TrangThai == "1")
+                        {
+                            <span class="text-success fw-bold">Có mặt</span>
+                        }
+                        else if (dd.TrangThai == "Vắng" || dd.TrangThai == "0")
+                        {
+                            <span class="text-danger fw-bold">Vắng</span>
+                        }
+                        else
+                        {
+                            @dd.TrangThai
+                        }
+                    </td>
+                    <td>@dd.GhiChu</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

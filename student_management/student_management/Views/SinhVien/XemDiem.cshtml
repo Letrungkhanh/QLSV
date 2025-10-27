@@ -1,0 +1,61 @@
+﻿@model IEnumerable<student_management.Models.BangDiem>
+
+@{
+    ViewData["Title"] = "Kết quả học tập";
+}
+
+<h2 class="text-center mt-3">📘 KẾT QUẢ HỌC TẬP</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ThongBao))
+{
+    <div class="alert alert-info text-center mt-4">
+        @ViewBag.ThongBao
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-hover mt-4 text-center align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th>Mã lớp HP</th>
+                <th>Tên môn học</th>
+                <th>Tên lớp HP</th>
+                <th>Điểm chuyên cần</th>
+                <th>Điểm giữa kỳ</th>
+                <th>Điểm cuối kỳ</th>
+                <th>Điểm tổng kết</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.DangKyHoc?.MaLhpNavigation?.MaLhp</td>
+                    <td>@item.DangKyHoc?.MaLhpNavigation?.MaMhNavigation?.TenMh</td>
+                    <td>@item.DangKyHoc?.MaLhpNavigation?.TenLhp</td>
+                    <td>@item.DiemChuyenCan</td>
+                    <td>@item.DiemGiuaKy</td>
+                    <td>@item.DiemCuoiKy</td>
+                    <td>
+                        @{
+                            decimal? tongKet = null;
+                            if (item.DiemChuyenCan.HasValue && item.DiemGiuaKy.HasValue && item.DiemCuoiKy.HasValue)
+                            {
+                                tongKet = (item.DiemChuyenCan.Value * 0.1m) +
+                                (item.DiemGiuaKy.Value * 0.3m) +
+                                (item.DiemCuoiKy.Value * 0.6m);
+                            }
+                        }
+                        @tongKet?.ToString("0.00")
+                    </td>
+                    <td>
+                        @((tongKet.HasValue && tongKet >= 5) ? "Đạt" : "Chưa đạt")
+                    </td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

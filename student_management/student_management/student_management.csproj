@@ -25,6 +25,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Giangvien\Data\" />
     <Folder Include="Areas\Giangvien\Models\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>
