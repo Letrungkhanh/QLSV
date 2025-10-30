@@ -49,6 +49,16 @@
                                         <tr>
                                             <td>@Html.DisplayFor(modelItem => item.MaSv)</td>
                                             <td>@Html.DisplayFor(modelItem => item.HoTen)</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(item.Anh))
+                                                {
+                                                    <img src="@item.Anh" alt="Ảnh giảng viên" width="80" height="80" style="object-fit:cover; border-radius:8px;" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/images/default-avatar.png" width="80" height="80" style="object-fit:cover; border-radius:8px;" />
+                                                }
+                                            </td>
                                             <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
                                             <td>@Html.DisplayFor(modelItem => item.Email)</td>
                                             <td>@Html.DisplayFor(modelItem => item.SoDienThoai)</td>

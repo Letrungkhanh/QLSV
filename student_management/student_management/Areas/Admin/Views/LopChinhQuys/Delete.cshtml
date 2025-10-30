@@ -7,21 +7,21 @@
 
 <div class="content-wrapper">
     <section class="content-header">
-        <h1>Xóa Khoa</h1>
+        <h1>Xóa lớp chính quy</h1>
     </section>
 
     <section class="content">
         <div class="card card-danger">
             <div class="card-header bg-danger">
-                <h3 class="card-title">Bạn có chắc muốn xóa khoa này không?</h3>
+                <h3 class="card-title">Bạn có chắc muốn xóa lớp chính quy này không?</h3>
             </div>
 
             <div class="card-body">
                 <dl class="row">
-                    <dt class="col-sm-4">Mã khoa:</dt>
+                    <dt class="col-sm-4">Mã lớp chính quy:</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.MaKhoa)</dd>
 
-                    <dt class="col-sm-4">Tên khoa:</dt>
+                    <dt class="col-sm-4">Tên lớp chính quy:</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.TenLop)</dd>
                 </dl>
                 <form asp-action="Delete" method="post">

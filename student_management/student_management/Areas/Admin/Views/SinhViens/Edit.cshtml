@@ -1,13 +1,127 @@
-﻿@model student_management.Models.GiaoVien
+﻿@model student_management.Models.SinhVien
 
-<h2>Thông tin cá nhân</h2>
-<table class="table table-bordered">
-    <tr><th>Mã GV</th><td>@Model.MaGv</td></tr>
-    <tr><th>Họ tên</th><td>@Model.HoTen</td></tr>
-    <tr><th>Email</th><td>@Model.Email</td></tr>
-    <tr><th>Điện thoại</th><td>@Model.SoDienThoai</td></tr>
-    <tr><th>Khoa</th><td>@Model.MaKhoaNavigation?.TenKhoa</td></tr>
-</table>
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
 
-<a asp-action="Edit" class="btn btn-primary">Chỉnh sửa</a>
-<a asp-action="ChangePassword" class="btn btn-warning">Đổi mật khẩu</a>
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Sửa thông tin sinh viên viên</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chỉnh sửa thông tin sinh viên</h3>
+                        </div>
+
+                        <!-- 🟢 Phải có enctype để gửi file -->
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <!-- Ẩn mã giảng viên để gửi lại -->
+                                <input type="hidden" asp-for="MaSv" />
+
+                                <div class="form-group">
+                                    <label asp-for="MaSv" class="control-label">Mã sinh viên</label>
+                                    <input asp-for="MaSv" class="form-control" readonly />
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="HoTen" class="control-label">Tên sinh viên viên</label>
+                                    <input asp-for="HoTen" class="form-control" placeholder="Nhập tên giảng viên..." />
+                                    <span asp-validation-for="HoTen" class="text-danger"></span>
+                                </div>
+
+                                <!-- Ảnh hiện tại -->
+                                <div class="form-group">
+                                    <label>Ảnh hiện tại:</label><br />
+                                    @if (!string.IsNullOrEmpty(Model.Anh))
+                                    {
+                                        <img src="@Model.Anh" alt="Ảnh giảng viên"
+                                             width="150" height="150"
+                                             style="object-fit:cover; border-radius:8px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/default-avatar.png"
+                                             width="150" height="150"
+                                             style="object-fit:cover; border-radius:8px;" />
+                                    }
+
+                                    <!-- 🟢 Giữ lại ảnh cũ khi không chọn ảnh mới -->
+                                    <input type="hidden" asp-for="Anh" />
+                                </div>
+
+                                <!-- Chọn ảnh mới -->
+                                <div class="form-group">
+                                    <label for="AnhFile" class="control-label">Chọn ảnh mới (nếu muốn thay đổi)</label>
+                                    <input type="file" name="AnhFile" class="form-control" accept="image/*" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="NgaySinh" class="control-label">Ngày sinh</label>
+                                    <input asp-for="NgaySinh" class="form-control" type="date" />
+                                    <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Email" class="control-label">Email</label>
+                                    <input asp-for="Email" class="form-control" type="email" placeholder="Nhập email..." />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="SoDienThoai" class="control-label">Số điện thoại</label>
+                                    <input asp-for="SoDienThoai" class="form-control" placeholder="Nhập số điện thoại..." />
+                                    <span asp-validation-for="SoDienThoai" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="NamNhapHoc" class="control-label">Năm nhập học</label>
+                                    <input asp-for="NamNhapHoc" class="form-control" placeholder="Nhập năm nhập học..." />
+                                    <span asp-validation-for="NamNhapHoc" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="MaKhoa" class="control-label">Khoa giảng dạy</label>
+                                    <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
+                                        <option value="">-- Chọn khoa --</option>
+                                    </select>
+                                    <span asp-validation-for="MaKhoa" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="MaLop" class="control-label">Lớp chính quy</label>
+                                    <select asp-for="MaLop" class="form-control" asp-items="ViewBag.MaLop">
+                                        <option value="">-- Chọn lớp chính quy --</option>
+                                    </select>
+                                    <span asp-validation-for="MaLop" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <input type="submit" value="Lưu thay đổi" class="btn btn-info" />
+                                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

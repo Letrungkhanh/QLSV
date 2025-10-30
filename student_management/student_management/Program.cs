@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using student_management.Models;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,7 @@ builder.Services.AddDbContext<QuanlyhocDbContext>(options =>
 
 // 🔹 Thêm session (để lưu thông tin đăng nhập)
 builder.Services.AddSession();
-builder.Services.AddSession();
+
 // 🔹 Cấu hình xác thực Cookie (đăng nhập)
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -33,6 +35,17 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
 }
+
+// ✅✅ Thêm đoạn cấu hình ngôn ngữ mặc định là Tiếng Việt
+var supportedCultures = new[] { new CultureInfo("vi-VN") };
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("vi-VN"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+};
+app.UseRequestLocalization(localizationOptions);
+// ✅✅ Hết đoạn cần thêm
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

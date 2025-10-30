@@ -38304,6 +38304,86 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\pic1.jpg))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\683d9eae-2364-4ace-a948-f622887a2230_Logo-Truong-DH-Vinh-VinhUni.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>student_management</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/student_management</BasePath>
+      <RelativePath>uploads/sinhvien/683d9eae-2364-4ace-a948-f622887a2230_Logo-Truong-DH-Vinh-VinhUni.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\683d9eae-2364-4ace-a948-f622887a2230_Logo-Truong-DH-Vinh-VinhUni.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\95be0aba-264b-4a7b-b70e-e88854156a74_Logo-Truong-DH-Vinh-VinhUni.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>student_management</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/student_management</BasePath>
+      <RelativePath>uploads/sinhvien/95be0aba-264b-4a7b-b70e-e88854156a74_Logo-Truong-DH-Vinh-VinhUni.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\95be0aba-264b-4a7b-b70e-e88854156a74_Logo-Truong-DH-Vinh-VinhUni.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\95d18b69-c747-4cd9-9b81-bf694f12b98b_Logo-Truong-DH-Vinh-VinhUni.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>student_management</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/student_management</BasePath>
+      <RelativePath>uploads/sinhvien/95d18b69-c747-4cd9-9b81-bf694f12b98b_Logo-Truong-DH-Vinh-VinhUni.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\95d18b69-c747-4cd9-9b81-bf694f12b98b_Logo-Truong-DH-Vinh-VinhUni.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\96931919-defe-4d25-a75d-258e6aea31a0_Logo-Truong-DH-Vinh-VinhUni.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>student_management</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/student_management</BasePath>
+      <RelativePath>uploads/sinhvien/96931919-defe-4d25-a75d-258e6aea31a0_Logo-Truong-DH-Vinh-VinhUni.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\96931919-defe-4d25-a75d-258e6aea31a0_Logo-Truong-DH-Vinh-VinhUni.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\a0498190-5dd3-46bb-9059-dd3b0ff67b0c_Logo-Truong-DH-Vinh-VinhUni.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>student_management</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/student_management</BasePath>
+      <RelativePath>uploads/sinhvien/a0498190-5dd3-46bb-9059-dd3b0ff67b0c_Logo-Truong-DH-Vinh-VinhUni.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\a0498190-5dd3-46bb-9059-dd3b0ff67b0c_Logo-Truong-DH-Vinh-VinhUni.webp))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\sinhvien\c3f9f235-f8fb-400e-bfee-598a2001790d_b5b130d2-be74-4852-908c-3e7a1ae71cf0_pic1.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>student_management</SourceId>
