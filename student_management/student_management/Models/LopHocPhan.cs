@@ -34,7 +34,8 @@ namespace student_management.Models
         [Required(ErrorMessage = "Vui lòng nhập năm học (VD: 2024-2025)")]
         [RegularExpression(@"^\d{4}-\d{4}$", ErrorMessage = "Năm học phải có định dạng: 2024-2025")]
         public string NamHoc { get; set; } = null!;
-
+        public int SiSoToiDa { get; set; }
+        public int SiSoHienTai { get; set; } = 0;
         // 🔹 Navigation Properties
         [Display(Name = "Danh sách sinh viên đăng ký")]
         public virtual ICollection<DangKyHoc> DangKyHocs { get; set; } = new List<DangKyHoc>();

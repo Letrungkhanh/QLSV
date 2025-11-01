@@ -174,6 +174,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEdpYW5nVmllblxEaWVtRGFuaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/GiangVien/DuyetDangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEdpYW5nVmllblxEdXlldERhbmdLeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/GiangVien/LopHocPhanCuaToi.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEdpYW5nVmllblxMb3BIb2NQaGFuQ3VhVG9pLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -240,6 +244,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/SinhVien/ChiTietMon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cQ2hpVGlldE1vbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/SinhVien/HocPhanCNTT.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cSG9jUGhhbkNOVFQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/SinhVien/LichSuDiemDanh.cshtml]

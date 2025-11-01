@@ -1,0 +1,84 @@
+﻿@model IEnumerable<student_management.Models.ViewModels.LopHocPhanViewModel>
+@{
+    ViewData["Title"] = "Chi tiết môn học";
+}
+
+<h2 class="text-primary mb-3">Chi tiết lớp học phần cho: <b>@ViewBag.TenMon</b></h2>
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-success">@TempData["ThongBao"]</div>
+}
+
+@if (!Model.Any())
+{
+    <div class="alert alert-warning">Không có lớp học phần nào khả dụng.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped align-middle">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Mã LHP</th>
+                <th>Tên lớp học phần</th>
+                <th>Giảng viên</th>
+                <th>Sĩ số tối đa</th>
+                <th>Sĩ số hiện tại</th>
+                <th>Trạng thái lớp</th>
+                <th>Trạng thái đăng ký</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lhp in Model)
+            {
+                var trangThaiLop = lhp.TrangThai?.Trim().ToLower();
+                var trangThaiDangKy = lhp.TrangThaiDangKy?.Trim().ToLower();
+
+                <tr class="text-center">
+                    <td>@lhp.MaLhp</td>
+                    <td>@lhp.TenLhp</td>
+                    <td>@lhp.GiangVien</td>
+                    <td>@lhp.SiSoToiDa</td>
+                    <td>@lhp.SiSoHienTai</td>
+                    <td>
+                        <span class="badge @(trangThaiLop.Contains("mở") ? "bg-success" : "bg-secondary")">
+                            @lhp.TrangThai
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge @(trangThaiDangKy == "đã duyệt" ? "bg-success" :
+                                             trangThaiDangKy == "chờ duyệt" ? "bg-warning" : "bg-secondary")">
+                            @lhp.TrangThaiDangKy
+                        </span>
+                    </td>
+                    <td>
+                        @* Nút thao tác dựa vào trạng thái đăng ký *@
+                        @if (trangThaiDangKy == "chưa đăng ký" && lhp.SiSoHienTai < lhp.SiSoToiDa)
+                        {
+                            <form asp-action="DangKyHocPhan" method="post" class="d-inline">
+                                <input type="hidden" name="maLHP" value="@lhp.MaLhp" />
+                                <button type="submit" class="btn btn-sm btn-primary">Đăng ký</button>
+                            </form>
+                        }
+                        else if (trangThaiDangKy == "chờ duyệt")
+                        {
+                            <span class="text-warning">Đang xử lý...</span>
+                        }
+                        else if (trangThaiDangKy == "đã duyệt")
+                        {
+                            <form asp-action="HuyDangKyHocPhan" method="post" class="d-inline">
+                                <input type="hidden" name="maLHP" value="@lhp.MaLhp" />
+                                <button type="submit" class="btn btn-sm btn-danger">Hủy</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <button class="btn btn-sm btn-outline-secondary" disabled>Không khả dụng</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

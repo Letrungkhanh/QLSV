@@ -46,6 +46,11 @@
         padding: 60px 20px;
         color: #777;
     }
+
+    .badge-pending {
+        background-color: #ffc107;
+        color: #000;
+    }
 </style>
 
 <div class="container py-4">
@@ -58,6 +63,8 @@
         <div class="row g-4">
             @foreach (var lhp in Model)
             {
+                var soChoDuyet = lhp.DangKyHocs?.Count(d => d.TrangThai == "Chờ duyệt") ?? 0;
+                var soDaDuyet = lhp.DangKyHocs?.Count(d => d.TrangThai == "Đã duyệt") ?? 0;
                 <div class="col-md-6 col-lg-4">
                     <div class="course-card h-100">
                         <div class="course-header d-flex align-items-center justify-content-between">
@@ -73,24 +80,36 @@
                                 <i class="bi bi-journal-text me-1"></i>
                                 <strong>Môn học:</strong> @lhp.MaMhNavigation?.TenMh
                             </p>
-                            <p class="mb-0 text-muted">
+                            <p class="mb-1 text-muted">
                                 <i class="bi bi-person-badge me-1"></i>
                                 <strong>Giảng viên:</strong> @lhp.MaGvNavigation?.HoTen
                             </p>
-                            <p class="mb-0 text-muted">
+                            <p class="mb-1 text-muted">
                                 <i class="bi bi-people-fill me-1"></i>
-                                <strong>Số sinh viên:</strong> @lhp.DangKyHocs.Count()
+                                <strong>Tổng SV:</strong> @(lhp.DangKyHocs?.Count() ?? 0)
                             </p>
-
+                            <p class="mb-0 text-muted">
+                                <i class="bi bi-hourglass-split me-1"></i>
+                                <strong>Chờ duyệt:</strong>
+                                <span class="badge badge-pending">@soChoDuyet</span>
+                            </p>
                         </div>
 
-                        <div class="course-footer">
+                        <div class="course-footer d-flex justify-content-between">
                             <a asp-area="GiangVien"
                                asp-controller="GiangVien"
                                asp-action="DanhSachSinhVien"
                                asp-route-maLHP="@lhp.MaLhp"
                                class="btn btn-primary btn-sm px-3">
-                                <i class="bi bi-people-fill me-1"></i> Xem sinh viên
+                                👥 Xem sinh viên
+                            </a>
+
+                            <a asp-area="GiangVien"
+                               asp-controller="GiangVien"
+                               asp-action="DuyetDangKy"
+                               asp-route-maLHP="@lhp.MaLhp"
+                               class="btn btn-outline-warning btn-sm px-3">
+                                📋 Duyệt sinh viên
                             </a>
                         </div>
                     </div>

@@ -51,13 +51,13 @@
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="index.html" class="nav-item nav-link active">Home</a>
                 <a asp-controller="SinhVien"
-                   asp-action="LopHocPhanCuaToi" class="nav-item nav-link active">Home</a>
+                   asp-action="LopHocPhanCuaToi" class="nav-item nav-link active">Lớp học phần của tôi</a>
                 <a asp-controller="SinhVien"
                    asp-action="LichSuDiemDanh" class="nav-item nav-link active">Lịch sử điểm danh</a>
                 <a asp-controller="SinhVien"
                    asp-action="XemDiem" class="nav-item nav-link active">Điểm học phần</a>
                 <a asp-controller="SinhVien"
-                   asp-action="MonHocPhaiHoanThanh" class="nav-item nav-link active">Môn học phải hoàn thành</a>
+                   asp-action="HocPhanCNTT" class="nav-item nav-link active">Môn học phải hoàn thành</a>
                
 
                 <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -161,6 +161,7 @@
 
     <!-- Template Javascript -->
     <script src="~/assets/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 
 </html>
