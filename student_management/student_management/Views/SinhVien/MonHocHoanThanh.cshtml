@@ -1,0 +1,63 @@
+﻿@model IEnumerable<student_management.Models.ViewModels.MonHocHoanThanhViewModel>
+
+@{
+    ViewData["Title"] = "📗 Môn học đã hoàn thành";
+}
+
+<div class="container py-4">
+    <h3 class="fw-bold mb-4">📗 Môn học đã hoàn thành</h3>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var mon in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">@mon.TenMh</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-1"><strong>Mã môn:</strong> @mon.MaMh</p>
+                            <p class="mb-1"><strong>Số tín chỉ:</strong> @mon.SoTinChi</p>
+                            <p class="mb-1">
+                                <strong>Trạng thái:</strong>
+                                <span class="badge bg-success">Hoàn thành ✅</span>
+                            </p>
+
+                            <p class="mb-1"><strong>Lớp học phần đã đăng ký:</strong></p>
+                            @if (mon.LopHocPhanDaDangKy != null && mon.LopHocPhanDaDangKy.Any())
+                            {
+                                <ul class="mb-0">
+                                    @foreach (var lhp in mon.LopHocPhanDaDangKy)
+                                    {
+                                        <li>@lhp</li>
+                                    }
+                                </ul>
+                            }
+                            else
+                            {
+                                <span>Không có lớp học phần nào</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-emoji-smile fs-1 mb-3"></i>
+            <h5>Bạn chưa hoàn thành môn học nào.</h5>
+            <p>Hãy tiếp tục đăng ký và hoàn thành các môn học.</p>
+        </div>
+    }
+</div>
+
+<style>
+    .card-header {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+</style>

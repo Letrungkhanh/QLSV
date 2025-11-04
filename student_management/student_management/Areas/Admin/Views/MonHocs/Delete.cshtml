@@ -1,0 +1,55 @@
+﻿@model student_management.Models.MonHoc
+
+@{
+    ViewData["Title"] = "Xóa môn học";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Xóa môn học</h1>
+    </section>
+
+    <section class="content">
+        <div class="card card-danger">
+            <div class="card-header bg-danger">
+                <h3 class="card-title">Bạn có chắc muốn xóa môn học này không?</h3>
+            </div>
+
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Mã môn học:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaMh)</dd>
+
+                    <dt class="col-sm-4">Tên môn học:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TenMh)</dd>
+
+                    <dt class="col-sm-4">Số tín chỉ:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.SoTinChi)</dd>
+
+                    <dt class="col-sm-4">Khoa:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaKhoaNavigation.TenKhoa)</dd>
+
+                    <dt class="col-sm-4">Ảnh minh họa:</dt>
+                    <dd class="col-sm-8">
+                        @if (!string.IsNullOrEmpty(Model.Anh))
+                        {
+                            <img src="~/images/monhoc/@Model.Anh" alt="@Model.TenMh" width="150" height="100" class="img-thumbnail" />
+                        }
+                        else
+                        {
+                            <span>Không có ảnh</span>
+                        }
+                    </dd>
+                </dl>
+
+                <form asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="MaMh" />
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

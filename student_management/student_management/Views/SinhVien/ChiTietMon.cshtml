@@ -1,84 +1,77 @@
 ﻿@model IEnumerable<student_management.Models.ViewModels.LopHocPhanViewModel>
+
 @{
-    ViewData["Title"] = "Chi tiết môn học";
+    ViewData["Title"] = "📖 Chi tiết lớp học phần";
 }
 
-<h2 class="text-primary mb-3">Chi tiết lớp học phần cho: <b>@ViewBag.TenMon</b></h2>
+<div class="container py-4">
+    <h3 class="fw-bold mb-4">📖 Chi tiết lớp học phần cho: <b>@ViewBag.TenMon</b></h3>
 
-@if (TempData["ThongBao"] != null)
-{
-    <div class="alert alert-success">@TempData["ThongBao"]</div>
-}
+    @if (TempData["ThongBao"] != null)
+    {
+            <div class="alert alert-info">@TempData["ThongBao"]</div>
+    }
 
-@if (!Model.Any())
-{
-    <div class="alert alert-warning">Không có lớp học phần nào khả dụng.</div>
-}
-else
-{
-    <table class="table table-bordered table-striped align-middle">
-        <thead class="table-dark text-center">
-            <tr>
-                <th>Mã LHP</th>
-                <th>Tên lớp học phần</th>
-                <th>Giảng viên</th>
-                <th>Sĩ số tối đa</th>
-                <th>Sĩ số hiện tại</th>
-                <th>Trạng thái lớp</th>
-                <th>Trạng thái đăng ký</th>
-                <th>Thao tác</th>
-            </tr>
-        </thead>
-        <tbody>
+    @if (Model != null && Model.Any())
+    {
+            <div class="row g-4">
             @foreach (var lhp in Model)
             {
-                var trangThaiLop = lhp.TrangThai?.Trim().ToLower();
-                var trangThaiDangKy = lhp.TrangThaiDangKy?.Trim().ToLower();
-
-                <tr class="text-center">
-                    <td>@lhp.MaLhp</td>
-                    <td>@lhp.TenLhp</td>
-                    <td>@lhp.GiangVien</td>
-                    <td>@lhp.SiSoToiDa</td>
-                    <td>@lhp.SiSoHienTai</td>
-                    <td>
-                        <span class="badge @(trangThaiLop.Contains("mở") ? "bg-success" : "bg-secondary")">
-                            @lhp.TrangThai
-                        </span>
-                    </td>
-                    <td>
-                        <span class="badge @(trangThaiDangKy == "đã duyệt" ? "bg-success" :
-                                             trangThaiDangKy == "chờ duyệt" ? "bg-warning" : "bg-secondary")">
-                            @lhp.TrangThaiDangKy
-                        </span>
-                    </td>
-                    <td>
-                        @* Nút thao tác dựa vào trạng thái đăng ký *@
-                        @if (trangThaiDangKy == "chưa đăng ký" && lhp.SiSoHienTai < lhp.SiSoToiDa)
-                        {
-                            <form asp-action="DangKyHocPhan" method="post" class="d-inline">
-                                <input type="hidden" name="maLHP" value="@lhp.MaLhp" />
-                                <button type="submit" class="btn btn-sm btn-primary">Đăng ký</button>
-                            </form>
-                        }
-                        else if (trangThaiDangKy == "chờ duyệt")
-                        {
-                            <span class="text-warning">Đang xử lý...</span>
-                        }
-                        else if (trangThaiDangKy == "đã duyệt")
-                        {
-                            <form asp-action="HuyDangKyHocPhan" method="post" class="d-inline">
-                                <input type="hidden" name="maLHP" value="@lhp.MaLhp" />
-                                <button type="submit" class="btn btn-sm btn-danger">Hủy</button>
-                            </form>
-                        }
-                        else
-                        {
-                            <button class="btn btn-sm btn-outline-secondary" disabled>Không khả dụng</button>
-                        }
-                    </td>
-                </tr>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-header bg-secondary text-white">
+                                    <h5 class="mb-0">@lhp.TenLhp</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="mb-1"><strong>Giảng viên:</strong> @lhp.GiangVien</p>
+                                    <p class="mb-1"><strong>Sĩ số tối đa:</strong> @lhp.SiSoToiDa</p>
+                                    <p class="mb-1"><strong>Sĩ số hiện tại:</strong> @lhp.SiSoHienTai</p>
+                                    <p class="mb-0">
+                                        <strong>Trạng thái lớp:</strong>
+                                @lhp.TrangThai
+                                    </p>
+                                    <p class="mb-0">
+                                        <strong>Trạng thái đăng ký:</strong>
+                                @lhp.TrangThaiDangKy
+                                    </p>
+                                </div>
+                                <div class="card-footer text-end">
+                            @if (lhp.TrangThaiDangKy == "Chưa đăng ký" || lhp.TrangThaiDangKy == "Chờ duyệt")
+                            {
+                                            <form asp-action="DangKyHocPhan" method="post">
+                                                <input type="hidden" name="maLHP" value="@lhp.MaLhp" />
+                                                <button type="submit" class="btn btn-primary btn-sm">Đăng ký lớp này</button>
+                                            </form>
+                            }
+                            else if (lhp.TrangThaiDangKy == "Đã duyệt")
+                            {
+                                            <form asp-action="HuyDangKyHocPhan" method="post">
+                                                <input type="hidden" name="maLHP" value="@lhp.MaLhp" />
+                                                <button type="submit" class="btn btn-danger btn-sm">Hủy đăng ký</button>
+                                            </form>
+                            }
+                                </div>
+                            </div>
+                        </div>
             }
-        </tbody>
-    </table>
+            </div>
+    }
+    else
+    {
+            <div class="text-center text-muted py-5">
+                <i class="bi bi-emoji-frown fs-1 mb-3"></i>
+                <h5>Chưa có lớp học phần nào.</h5>
+                <p>Hãy quay lại sau hoặc kiểm tra các lớp học phần khác.</p>
+            </div>
+    }
+</div>
+
+<style>
+.card-header {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
+.card-footer {
+    border-top: 1px solid #dee2e6;
+}
+</style>

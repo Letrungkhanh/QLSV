@@ -1,69 +1,11 @@
-﻿@model IEnumerable<student_management.Models.LopHocPhan>
+﻿@model IEnumerable<student_management.Models.ViewModels.LopHocPhanViewModel>
+
 @{
     ViewData["Title"] = "📘 Lớp học phần của tôi";
 }
 
-<style>
-    .course-card {
-        border-radius: 16px;
-        transition: all 0.25s ease;
-        background: #ffffff;
-        border: 1px solid #e9ecef;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-        .course-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-    .course-header {
-        background: linear-gradient(135deg, #007bff 0%, #0d6efd 100%);
-        color: white;
-        padding: 16px;
-        border-bottom: 3px solid #0a58ca;
-    }
-
-    .course-icon {
-        font-size: 40px;
-        opacity: 0.9;
-    }
-
-    .course-body {
-        padding: 16px 20px;
-    }
-
-    .course-footer {
-        border-top: 1px solid #f1f1f1;
-        background-color: #f8f9fa;
-        padding: 12px 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .empty-state {
-        text-align: center;
-        padding: 60px 20px;
-        color: #777;
-    }
-
-    .btn-custom {
-        border-radius: 20px;
-        font-weight: 500;
-    }
-
-        .btn-custom i {
-            margin-right: 4px;
-        }
-</style>
-
 <div class="container py-4">
-    <h3 class="fw-bold mb-4 text-primary text-center">
-        📘 LỚP HỌC PHẦN CỦA TÔI
-    </h3>
+    <h3 class="fw-bold mb-4">📘 Lớp học phần của tôi</h3>
 
     @if (Model != null && Model.Any())
     {
@@ -71,47 +13,35 @@
             @foreach (var lhp in Model)
             {
                 <div class="col-md-6 col-lg-4">
-                    <div class="course-card h-100">
-                        <!-- PHẦN ĐẦU MÀU XANH -->
-                        <div class="course-header d-flex align-items-center justify-content-between">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                             <div>
-                                <h5 class="mb-1 fw-bold">@lhp.MaMhNavigation?.TenMh</h5>
+                                <h5 class="mb-0">@lhp.TenLhp</h5>
                                 <small>Mã lớp: <strong>@lhp.MaLhp</strong></small>
                             </div>
-                            <i class="bi bi-book course-icon"></i>
+                            <i class="bi bi-book fs-2 opacity-75"></i>
                         </div>
-
-                        <!-- PHẦN THÔNG TIN CHI TIẾT -->
-                        <div class="course-body">
-                            <p class="mb-1 text-muted">
-                                <i class="bi bi-person-badge me-1 text-primary"></i>
-                                <strong>Giảng viên:</strong> @lhp.MaGvNavigation?.HoTen
-                            </p>
-                            <p class="mb-1 text-muted">
-                                <i class="bi bi-journal-text me-1 text-primary"></i>
-                                <strong>Số tín chỉ:</strong> @lhp.MaMhNavigation?.SoTinChi
-                            </p>
-                            <p class="mb-0 text-muted">
-                                <i class="bi bi-people-fill me-1 text-primary"></i>
-                                <strong>Số sinh viên:</strong> @lhp.DangKyHocs?.Count()
-                            </p>
+                        <div class="card-body">
+                            <p class="mb-1"><strong>Môn học:</strong> @lhp.TenMonHoc</p>
+                            <p class="mb-1"><strong>Số tín chỉ:</strong> @lhp.SoTinChi</p>
+                            <p class="mb-1"><strong>Giảng viên:</strong> @lhp.GiangVien ?? "Chưa có"</p>
+                            <p class="mb-1"><strong>Sĩ số:</strong> @lhp.SiSoHienTai / @lhp.SiSoToiDa</p>
+                            <p class="mb-1"><strong>Trạng thái đăng ký:</strong> @lhp.TrangThaiDangKy</p>
                         </div>
-
-                        <!-- PHẦN NÚT CHỨC NĂNG -->
-                        <div class="course-footer">
-                            <a href="@Url.Action("ChiTiet", "SinhVien", new { maLHP = lhp.MaLhp })"
-                               class="btn btn-sm btn-outline-primary btn-custom">
-                                <i class="bi bi-info-circle"></i> Chi tiết
+                        <div class="card-footer d-flex justify-content-between">
+                            <a asp-area="GiangVien"
+                               asp-controller="GiangVien"
+                               asp-action="DanhSachSinhVien"
+                               asp-route-maLHP="@lhp.MaLhp"
+                               class="btn btn-primary btn-sm">
+                                👥 Xem sinh viên
                             </a>
-
-                            <a href="@Url.Action("XemDiem", "SinhVien", new { maLHP = lhp.MaLhp })"
-                               class="btn btn-sm btn-outline-success btn-custom">
-                                <i class="bi bi-clipboard-check"></i> Xem điểm
-                            </a>
-
-                            <a href="@Url.Action("LichSuDiemDanh", "SinhVien", new { maLHP = lhp.MaLhp })"
-                               class="btn btn-sm btn-outline-info btn-custom">
-                                <i class="bi bi-calendar-check"></i> Điểm danh
+                            <a asp-area="GiangVien"
+                               asp-controller="GiangVien"
+                               asp-action="DuyetDangKy"
+                               asp-route-maLHP="@lhp.MaLhp"
+                               class="btn btn-outline-warning btn-sm">
+                                📋 Duyệt sinh viên
                             </a>
                         </div>
                     </div>
@@ -121,10 +51,21 @@
     }
     else
     {
-        <div class="empty-state">
-            <i class="bi bi-emoji-neutral fs-1 mb-3 d-block"></i>
-            <h5>Bạn chưa có lớp học phần nào.</h5>
-            <p>Vui lòng kiểm tra lại trong hệ thống đăng ký học phần.</p>
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-emoji-neutral fs-1 mb-3"></i>
+            <h5>Bạn chưa có lớp học phần nào đã đăng ký và được duyệt.</h5>
+            <p>Hãy đăng ký các lớp học phần trong danh sách học phần CNTT.</p>
         </div>
     }
 </div>
+
+<style>
+    .card-header {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+    }
+
+    .card-footer {
+        border-top: 1px solid #dee2e6;
+    }
+</style>

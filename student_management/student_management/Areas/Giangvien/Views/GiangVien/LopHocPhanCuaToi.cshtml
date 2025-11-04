@@ -63,8 +63,15 @@
         <div class="row g-4">
             @foreach (var lhp in Model)
             {
-                var soChoDuyet = lhp.DangKyHocs?.Count(d => d.TrangThai == "Chờ duyệt") ?? 0;
-                var soDaDuyet = lhp.DangKyHocs?.Count(d => d.TrangThai == "Đã duyệt") ?? 0;
+                var dsHienTai = lhp.DangKyHocs?
+                .Where(d => !string.IsNullOrEmpty(d.TrangThai))
+                .Where(d => d.TrangThai.Trim().ToLower() == "chờ duyệt"
+                || d.TrangThai.Trim().ToLower() == "đã duyệt")
+                .ToList();
+
+                var soChoDuyet = dsHienTai.Count(d => d.TrangThai.Trim().ToLower() == "chờ duyệt");
+                var soDaDuyet = dsHienTai.Count(d => d.TrangThai.Trim().ToLower() == "đã duyệt");
+
                 <div class="col-md-6 col-lg-4">
                     <div class="course-card h-100">
                         <div class="course-header d-flex align-items-center justify-content-between">
@@ -86,8 +93,11 @@
                             </p>
                             <p class="mb-1 text-muted">
                                 <i class="bi bi-people-fill me-1"></i>
-                                <strong>Tổng SV:</strong> @(lhp.DangKyHocs?.Count() ?? 0)
+                                <strong>Tổng SV:</strong> @(lhp.DangKyHocs?.Count(d =>
+                        !string.IsNullOrEmpty(d.TrangThai) &&
+                        d.TrangThai.Trim().ToLower() == "đã duyệt") ?? 0)
                             </p>
+                            
                             <p class="mb-0 text-muted">
                                 <i class="bi bi-hourglass-split me-1"></i>
                                 <strong>Chờ duyệt:</strong>

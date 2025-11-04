@@ -10,5 +10,8 @@
 
         // Trạng thái đăng ký có thể được tái sử dụng ở đây nếu bạn muốn hiển thị chung
         public string TrangThaiDangKy { get; set; } = "";
+
+        public List<string> LopHocPhanDaDangKy { get; set; } = new List<string>();
+
     }
 }

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<student_management.Models.LopHocPhan>
+
+@{
+    ViewData["Title"] = "Đăng ký lớp học phần";
+}
+
+<h2 class="text-primary mb-3">➕ Đăng ký lớp học phần mới</h2>
+
+@if (TempData["ThongBao"] != null)
+{
+    <div class="alert alert-info">@TempData["ThongBao"]</div>
+}
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th>Mã lớp</th>
+                <th>Tên lớp</th>
+                <th>Môn học</th>
+                <th>Giảng viên</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lop in Model)
+            {
+                <tr>
+                    <td>@lop.MaLhp</td>
+                    <td>@lop.TenLhp</td>
+                    <td>@lop.MaMhNavigation?.TenMh</td>
+                    <td>@lop.MaGvNavigation?.HoTen</td>
+                    <td>
+                        <form asp-action="DangKy" method="post">
+                            <input type="hidden" name="maLHP" value="@lop.MaLhp" />
+                            <button type="submit" class="btn btn-success btn-sm">Đăng ký</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-secondary">🎉 Bạn đã đăng ký tất cả các lớp học phần hiện có.</div>
+}

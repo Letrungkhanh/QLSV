@@ -1,0 +1,49 @@
+﻿@using student_management.Models.ViewModels
+@model DkiHocIndexViewModel
+
+<h2>Danh sách lớp học phần - @Model.TenKhoa</h2>
+
+<h3>📚 Lớp chưa học</h3>
+@if (Model.LopChuaHoc.Any())
+{
+    <ul>
+        @foreach (var l in Model.LopChuaHoc)
+        {
+            <li>@l.TenLhp - @l.MaMh - <a asp-action="DangKy" asp-route-id="@l.MaLhp">Đăng ký</a></li>
+        }
+    </ul>
+}
+else
+{
+    <p>Không có lớp nào.</p>
+}
+
+<h3>📖 Lớp đang học</h3>
+@if (Model.LopDangHoc.Any())
+{
+    <ul>
+        @foreach (var l in Model.LopDangHoc)
+        {
+            <li>@l.TenLhp - @l.MaMh - Giảng viên: @l.GiangVien</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Không có lớp nào.</p>
+}
+
+<h3>✅ Lớp đã hoàn thành</h3>
+@if (Model.LopHoanThanh.Any())
+{
+    <ul>
+        @foreach (var l in Model.LopHoanThanh)
+        {
+            <li>@l.TenLhp - @l.MaMh - Điểm tổng kết: @(l.DiemTongKet ?? 0)</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Không có lớp nào.</p>
+}

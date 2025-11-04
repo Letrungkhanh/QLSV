@@ -1,0 +1,84 @@
+﻿@model IEnumerable<student_management.Models.MonHoc>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Quản lý học phần</h1>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a asp-action="Create" class="btn btn-success">
+                        <i class="fas fa-plus-circle"></i> Thêm lớp học phần
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-striped table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10%">Mã học phần</th>
+                                        <th style="width: 25%">Tên học phần</th>
+                                        <th style="width: 10%">Số tín chỉ</th>
+                                        <th style="width: 15%">Mã khoa</th>
+                                        <th style="width: 15%">Ảnh</th>
+
+                                        <th style="width: 25%">Chức năng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@Html.DisplayFor(modelItem => item.MaMh)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.TenMh)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.SoTinChi)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.MaKhoa)</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(item.Anh))
+                                                {
+                                                    <img src="@item.Anh" alt="Ảnh học phần" width="80" height="80" class="img-thumbnail" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">Chưa có ảnh</span>
+                                                }
+                                            </td>
+
+
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.MaMh" class="btn btn-primary">Sửa học phần</a>
+                                                <a asp-action="Delete" asp-route-id="@item.MaMh" class="btn btn-danger">Xóa học phần</a>
+                                               
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace student_management.Models
 {
+    [Table("LopHocPhan")]
     public partial class LopHocPhan
     {
         [Key]
         [Display(Name = "Mã lớp học phần")]
-        [Required(ErrorMessage = "Vui lòng nhập mã lớp học phần")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaLhp { get; set; }
 
         [Display(Name = "Tên lớp học phần")]
@@ -44,7 +46,8 @@ namespace student_management.Models
         public virtual GiaoVien? MaGvNavigation { get; set; }
 
         [Display(Name = "Môn học")]
-        public virtual MonHoc MaMhNavigation { get; set; } = null!;
+        public virtual MonHoc? MaMhNavigation { get; set; }
+
 
         [Display(Name = "Thời khóa biểu")]
         public virtual ICollection<ThoiKhoaBieu> ThoiKhoaBieus { get; set; } = new List<ThoiKhoaBieu>();

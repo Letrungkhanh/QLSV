@@ -1,0 +1,61 @@
+﻿@model IEnumerable<student_management.Models.DangKyHoc>
+@{
+    ViewData["Title"] = "📋 Duyệt sinh viên đăng ký";
+}
+
+<div class="container mt-4">
+    <h3 class="text-primary mb-3">Danh sách sinh viên chờ duyệt</h3>
+
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="alert alert-success">@TempData["ThongBao"]</div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Mã SV</th>
+                    <th>Họ tên</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var dk in Model)
+                {
+                    <tr>
+                        <td>@dk.MaSv</td>
+                        <td>@dk.MaSvNavigation?.HoTen</td>
+                        <td>@dk.TrangThai</td>
+                        <td>
+                            <form asp-action="XacNhanDuyet" method="post" style="display:inline">
+                                <input type="hidden" name="maLHP" value="@dk.MaLhp" />
+                                <input type="hidden" name="maSV" value="@dk.MaSv" />
+                                <button type="submit" class="btn btn-success btn-sm">✅ Duyệt</button>
+                            </form>
+
+                            <form asp-action="XoaDangKy" method="post" style="display:inline">
+                                <input type="hidden" name="maLHP" value="@dk.MaLhp" />
+                                <input type="hidden" name="maSV" value="@dk.MaSv" />
+                                <button type="submit" class="btn btn-danger btn-sm">❌ Từ chối</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-info">Không có sinh viên nào chờ duyệt trong lớp học phần này.</div>
+    }
+
+    <a asp-area="GiangVien"
+       asp-controller="QlyLopHocPhan"
+       asp-action="LopHocPhanCuaToi"
+       class="btn btn-secondary mt-3">
+        ← Quay lại danh sách lớp học phần
+    </a>
+</div>

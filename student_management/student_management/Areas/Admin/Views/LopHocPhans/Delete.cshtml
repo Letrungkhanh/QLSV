@@ -1,0 +1,58 @@
+﻿@model student_management.Models.LopHocPhan
+
+@{
+    ViewData["Title"] = "Xóa lớp học phần";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>Xóa lớp học phần</h1>
+    </section>
+
+    <section class="content">
+        <div class="card card-danger">
+            <div class="card-header bg-danger">
+                <h3 class="card-title">Bạn có chắc muốn xóa lớp học phần này không?</h3>
+            </div>
+
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-sm-4">Mã lớp học phần:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaLhp)</dd>
+
+                    <dt class="col-sm-4">Tên lớp học phần:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TenLhp)</dd>
+
+                    <dt class="col-sm-4">Học kỳ:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.HocKy)</dd>
+
+                    <dt class="col-sm-4">Trạng thái:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.TrangThai)</dd>
+
+                    <dt class="col-sm-4">Năm học:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.NamHoc)</dd>
+
+                    <dt class="col-sm-4">Sĩ số tối đa:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.SiSoToiDa)</dd>
+
+                    <dt class="col-sm-4">Sĩ số hiện tại:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.SiSoHienTai)</dd>
+
+                    <dt class="col-sm-4">Giảng viên phụ trách:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaGvNavigation.HoTen)</dd>
+
+                    <dt class="col-sm-4">Môn học:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.MaMhNavigation.TenMh)</dd>
+                </dl>
+
+                <form asp-action="Delete" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="MaLhp" />
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                    <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>

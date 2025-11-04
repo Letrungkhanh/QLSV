@@ -7,11 +7,17 @@ namespace student_management.Models.ViewModels
         public int MaLhp { get; set; }
         public string TenLhp { get; set; } = "";
         public string GiangVien { get; set; } = "";
-        public int SiSoToiDa { get; set; }          // sĩ số tối đa
-        public int SiSoHienTai { get; set; }        // sĩ số hiện tại
+        public int SiSoToiDa { get; set; }
+        public int SiSoHienTai { get; set; }
         public string TrangThai { get; set; } = "";
-
-        // ✅ Thêm dòng này để xác định trạng thái đăng ký của sinh viên
         public string TrangThaiDangKy { get; set; } = "Chưa đăng ký";
+
+        // Thông tin môn học
+        public string TenMonHoc { get; set; } = "";
+        public string MaMh { get; set; } = "";
+        public int SoTinChi { get; set; }
+
+        // Điểm tổng kết (nếu có)
+        public decimal? DiemTongKet { get; set; } = null;
     }
 }

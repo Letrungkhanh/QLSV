@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using student_management.Helpers;
 
 namespace student_management.Areas.GiangVien.Controllers
 {
@@ -19,6 +20,19 @@ namespace student_management.Areas.GiangVien.Controllers
         {
             _context = context;
         }
+        private async Task CapNhatSiSoHienTai(int maLHP)
+        {
+            var lop = await _context.LopHocPhans.FirstOrDefaultAsync(l => l.MaLhp == maLHP);
+            if (lop != null)
+            {
+                lop.SiSoHienTai = await _context.DangKyHocs
+                    .CountAsync(d => d.MaLhp == maLHP && d.TrangThai == TrangThaiDangKy.DaDuyet);
+
+                _context.LopHocPhans.Update(lop);
+                await _context.SaveChangesAsync();
+            }
+        }
+
 
         // ✅ 1. Hiển thị danh sách lớp học phần của giảng viên
         public async Task<IActionResult> LopHocPhanCuaToi()
@@ -37,6 +51,7 @@ namespace student_management.Areas.GiangVien.Controllers
 
             var lopHocPhans = await _context.LopHocPhans
                 .Include(l => l.MaMhNavigation)
+                .Include(l=>l.MaGvNavigation)
                 .Include(l => l.DangKyHocs)
                 .Where(l => l.MaGv == maGV)
                 .ToListAsync();
@@ -199,53 +214,37 @@ namespace student_management.Areas.GiangVien.Controllers
             if (dk == null)
                 return NotFound();
 
-            dk.TrangThai = "Đã duyệt";
+            dk.TrangThai = TrangThaiDangKy.DaDuyet;
             _context.DangKyHocs.Update(dk);
 
-            var lop = await _context.LopHocPhans.FirstOrDefaultAsync(x => x.MaLhp == maLHP);
-            if (lop != null)
-            {
-                lop.SiSoHienTai = await _context.DangKyHocs
-                    .CountAsync(x => x.MaLhp == maLHP && x.TrangThai == "Đã duyệt");
-                _context.LopHocPhans.Update(lop);
-            }
-
+            await CapNhatSiSoHienTai(maLHP);
             await _context.SaveChangesAsync();
 
-            TempData["ThongBao"] = $"Đã duyệt sinh viên {maSV} vào lớp {maLHP}.";
-            return RedirectToAction("DanhSachDangKy", new { maLHP });
+            TempData["ThongBao"] = $"✅ Đã duyệt sinh viên {maSV} vào lớp {maLHP}.";
+            return RedirectToAction("DuyetDangKy", new { maLHP });
         }
 
-
         [HttpPost]
-        public async Task<IActionResult> XoaDangKy(string maLHP, string maSV)
+        public async Task<IActionResult> XoaDangKy(int maLHP, string maSV)
         {
-            if (string.IsNullOrEmpty(maLHP) || string.IsNullOrEmpty(maSV))
+            if (string.IsNullOrEmpty(maSV))
                 return NotFound();
 
-            int maLhpInt = int.Parse(maLHP); // ✅ ép kiểu
-
             var dk = await _context.DangKyHocs
-                .FirstOrDefaultAsync(x => x.MaLhp == maLhpInt && x.MaSv == maSV);
+                .FirstOrDefaultAsync(x => x.MaLhp == maLHP && x.MaSv == maSV);
 
             if (dk == null)
                 return NotFound();
 
-            dk.TrangThai = "Đã xóa";
+            dk.TrangThai = TrangThaiDangKy.DaXoa;
             _context.DangKyHocs.Update(dk);
 
-            var lop = await _context.LopHocPhans.FirstOrDefaultAsync(x => x.MaLhp == maLhpInt);
-            if (lop != null)
-            {
-                lop.SiSoHienTai = _context.DangKyHocs.Count(x => x.MaLhp == maLhpInt && x.TrangThai == "Đã duyệt");
-                _context.LopHocPhans.Update(lop);
-            }
-
+            await CapNhatSiSoHienTai(maLHP);
             await _context.SaveChangesAsync();
-            TempData["ThongBao"] = $"Đã xóa sinh viên {maSV} khỏi lớp {maLHP}.";
-            return RedirectToAction("DanhSachDangKy", new { maLHP });
-        }
 
+            TempData["ThongBao"] = $"🗑️ Đã xóa sinh viên {maSV} khỏi lớp {maLHP}.";
+            return RedirectToAction("DuyetDangKy", new { maLHP });
+        }
 
 
         // ✅ 8. Nhập điểm
@@ -344,5 +343,32 @@ namespace student_management.Areas.GiangVien.Controllers
 
             return View(model);
         }
+        // ✅ Hiển thị danh sách lớp có sinh viên chờ duyệt
+        public async Task<IActionResult> DanhSachChoDuyet()
+        {
+            var tenDangNhap = User.Identity?.Name;
+            if (string.IsNullOrEmpty(tenDangNhap))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            // 🔹 Tìm giảng viên hiện tại
+            var taiKhoan = await _context.TaiKhoans
+                .FirstOrDefaultAsync(t => t.TenDangNhap == tenDangNhap);
+
+            if (taiKhoan == null || string.IsNullOrEmpty(taiKhoan.MaGv))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            var maGV = taiKhoan.MaGv;
+
+            // 🔹 Tìm các lớp có sinh viên đang chờ duyệt
+            var danhSachLopChoDuyet = await _context.LopHocPhans
+                .Include(l => l.MaMhNavigation)
+                .Include(l => l.DangKyHocs)
+                .Where(d => EF.Functions.Like(d.TrangThai, "%chờ%") || EF.Functions.Like(d.TrangThai, "%cho%"))
+                .ToListAsync();
+
+
+            return View(danhSachLopChoDuyet);
+        }
+
     }
 }

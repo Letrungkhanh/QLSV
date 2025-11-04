@@ -1,0 +1,95 @@
+﻿@model student_management.Models.LopHocPhan
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Sửa thông tin lớp học phần</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Chỉnh sửa lớp học phần</h3>
+                        </div>
+
+                        <form asp-action="Edit" method="post">
+                            <input type="hidden" asp-for="MaLhp" />
+                            <div class="card-body">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                                <div class="form-group">
+                                    <label asp-for="TenLhp" class="control-label">Tên lớp học phần</label>
+                                    <input asp-for="TenLhp" class="form-control" placeholder="Nhập tên lớp học phần..." />
+                                    <span asp-validation-for="TenLhp" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="MaMh" class="control-label">Môn học</label>
+                                    <select asp-for="MaMh" class="form-control" asp-items="ViewBag.MaMh">
+                                        <option value="">-- Vui lòng chọn môn học --</option>
+                                    </select>
+
+                                    <span asp-validation-for="MaMh" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label asp-for="MaGv" class="control-label">Giảng viên phụ trách</label>
+                                    <select asp-for="MaGv" class="form-control" asp-items="ViewBag.MaGv">
+                                        <option value="">-- Vui lòng chọn giảng viên --</option>
+                                    </select>
+                                    <span asp-validation-for="MaGv" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="HocKy" class="control-label">Học kỳ</label>
+                                    <input asp-for="HocKy" class="form-control" placeholder="Nhập học kỳ..." />
+                                    <span asp-validation-for="HocKy" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="NamHoc" class="control-label">Năm học</label>
+                                    <input asp-for="NamHoc" class="form-control" placeholder="Ví dụ: 2024-2025" />
+                                    <span asp-validation-for="NamHoc" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="SiSoToiDa" class="control-label">Sĩ số tối đa</label>
+                                    <input asp-for="SiSoToiDa" class="form-control" />
+                                    <span asp-validation-for="SiSoToiDa" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <input type="submit" value="Lưu thay đổi" class="btn btn-info" />
+                                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

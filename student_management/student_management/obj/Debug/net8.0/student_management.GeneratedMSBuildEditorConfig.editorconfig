@@ -94,6 +94,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wQ2hpbmhRdXlzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/LopHocPhans/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wSG9jUGhhbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/LopHocPhans/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wSG9jUGhhbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/LopHocPhans/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wSG9jUGhhbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/LopHocPhans/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wSG9jUGhhbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/LopHocPhans/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTG9wSG9jUGhhbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/MonHocs/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/MonHocs/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/MonHocs/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/MonHocs/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/MonHocs/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTW9uSG9jc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/source/repos/student_management/student_management/Areas/Admin/Views/Shared/Components/Monhoc/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcTW9uaG9jXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -166,6 +206,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXENhTmhhbkdWXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/GiangVien/DanhSachChoDuyet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEdpYW5nVmllblxEYW5oU2FjaENob0R1eWV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/GiangVien/DanhSachSinhVien.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEdpYW5nVmllblxEYW5oU2FjaFNpbmhWaWVuLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -202,6 +246,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEhvbWVcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/QlyLopHocPhan/DuyetDangKy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXFFseUxvcEhvY1BoYW5cRHV5ZXREYW5nS3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/QlyLopHocPhan/LopHocPhanCuaToi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXFFseUxvcEhvY1BoYW5cTG9wSG9jUGhhbkN1YVRvaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/Shared/Components/Monhoc/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXFNoYXJlZFxDb21wb25lbnRzXE1vbmhvY1xEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -224,6 +276,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/DkiHoc/DangKyMoi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGtpSG9jXERhbmdLeU1vaS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/DkiHoc/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGtpSG9jXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/Home/Index.cshtml]
@@ -262,8 +322,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cTG9wSG9jUGhhbkN1YVRvaS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/student_management/student_management/Views/SinhVien/MonHocPhaiHoanThanh.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cTW9uSG9jUGhhaUhvYW5UaGFuaC5jc2h0bWw=
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/SinhVien/MonHocHoanThanh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2luaFZpZW5cTW9uSG9jSG9hblRoYW5oLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/SinhVien/XemDiem.cshtml]

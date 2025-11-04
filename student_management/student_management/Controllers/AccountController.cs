@@ -71,7 +71,7 @@ namespace student_management.Controllers
                     HttpContext.Session.SetString("HoTenGV", giangVien.HoTen);
                 }
 
-                return RedirectToAction("LopHocPhanCuaToi", "GiangVien", new { area = "GiangVien" });
+                return RedirectToAction("Index", "Home", new { area = "GiangVien" });
             }
             else
             {
@@ -86,7 +86,7 @@ namespace student_management.Controllers
                 }
 
                 // 👉 Sinh viên KHÔNG nằm trong area, nên không thêm "area"
-                return RedirectToAction("LopHocPhanCuaToi", "SinhVien");
+                return RedirectToAction("Index", "Home");
             }
         }
 

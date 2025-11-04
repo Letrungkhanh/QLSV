@@ -1,0 +1,44 @@
+﻿@model IEnumerable<student_management.Models.LopHocPhan>
+
+@{
+    ViewData["Title"] = "Danh sách lớp có sinh viên chờ duyệt";
+}
+
+<h2 class="text-primary mb-3">@ViewData["Title"]</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Không có lớp nào đang chờ duyệt sinh viên.</div>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Mã lớp</th>
+                <th>Tên lớp học phần</th>
+                <th>Môn học</th>
+                <th>Sĩ số hiện tại</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lop in Model)
+            {
+                <tr>
+                    <td>@lop.MaLhp</td>
+                    <td>@lop.TenLhp</td>
+                    <td>@lop.MaMhNavigation?.TenMh</td>
+                    <td>@lop.SiSoHienTai / @lop.SiSoToiDa</td>
+                    <td>@lop.TrangThai</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary" asp-action="DuyetDangKy" asp-route-maLHP="@lop.MaLhp">
+                            👀 Duyệt sinh viên
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
