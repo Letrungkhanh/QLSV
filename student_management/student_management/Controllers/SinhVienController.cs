@@ -40,7 +40,7 @@ namespace student_management.Controllers
 
         // 1. Danh sách lớp học phần sinh viên đang học
         // Danh sách lớp học phần sinh viên đang học (chỉ hiển thị lớp đã đăng ký)
-       // [Authorize(Roles = "SinhVien")]
+        // [Authorize(Roles = "SinhVien")]
         public async Task<IActionResult> LopHocPhanCuaToi()
         {
             var maSV = HttpContext.Session.GetString("MaSV");
@@ -48,29 +48,30 @@ namespace student_management.Controllers
                 return RedirectToAction("Login", "Account");
 
             var lopDangHoc = await _context.DangKyHocs
-     .Where(dk => dk.MaSv == maSV &&
-                  (dk.TrangThai == "Chờ duyệt" || dk.TrangThai == "Đã duyệt"))
-     .Include(dk => dk.MaLhpNavigation)
-         .ThenInclude(l => l.MaMhNavigation)
-     .Include(dk => dk.MaLhpNavigation)
-         .ThenInclude(l => l.MaGvNavigation)
-     .Select(dk => new LopHocPhanViewModel
-     {
-         MaLhp = dk.MaLhp,
-         TenLhp = dk.MaLhpNavigation.TenLhp,
-         GiangVien = dk.MaLhpNavigation.MaGvNavigation.HoTen,
-         MaMh = dk.MaLhpNavigation.MaMh,
-         TenMonHoc = dk.MaLhpNavigation.MaMhNavigation.TenMh,
-         SoTinChi = dk.MaLhpNavigation.MaMhNavigation.SoTinChi,
-         SiSoToiDa = dk.MaLhpNavigation.SiSoToiDa,
-         SiSoHienTai = _context.DangKyHocs.Count(d => d.MaLhp == dk.MaLhp),
-         TrangThaiDangKy = dk.TrangThai
-     })
-     .ToListAsync();
-
+                .Where(dk => dk.MaSv == maSV &&
+                             (dk.TrangThai == "Chờ duyệt" || dk.TrangThai == "Đã duyệt") &&
+                             dk.MaLhpNavigation.TrangThai != "Đã kết thúc") // ✅ Ẩn lớp đã kết thúc
+                .Include(dk => dk.MaLhpNavigation)
+                    .ThenInclude(l => l.MaMhNavigation)
+                .Include(dk => dk.MaLhpNavigation)
+                    .ThenInclude(l => l.MaGvNavigation)
+                .Select(dk => new LopHocPhanViewModel
+                {
+                    MaLhp = dk.MaLhp,
+                    TenLhp = dk.MaLhpNavigation.TenLhp,
+                    GiangVien = dk.MaLhpNavigation.MaGvNavigation.HoTen,
+                    MaMh = dk.MaLhpNavigation.MaMh,
+                    TenMonHoc = dk.MaLhpNavigation.MaMhNavigation.TenMh,
+                    SoTinChi = dk.MaLhpNavigation.MaMhNavigation.SoTinChi,
+                    SiSoToiDa = dk.MaLhpNavigation.SiSoToiDa,
+                    SiSoHienTai = _context.DangKyHocs.Count(d => d.MaLhp == dk.MaLhp),
+                    TrangThaiDangKy = dk.TrangThai
+                })
+                .ToListAsync();
 
             return View(lopDangHoc);
         }
+
 
 
         // 2. Xem điểm
@@ -116,42 +117,64 @@ namespace student_management.Controllers
 
             return View(danhSach);
         }
-
-    
         public async Task<IActionResult> HocPhanCNTT()
         {
-            // Lấy mã sinh viên từ session
             var maSV = HttpContext.Session.GetString("MaSV");
             if (string.IsNullOrEmpty(maSV))
                 return RedirectToAction("Login", "Account");
 
-            // Tìm sinh viên hiện tại
-            var sv = await _context.SinhViens.FirstOrDefaultAsync(s => s.MaSv == maSV);
-            if (sv == null)
-                return NotFound("Không tìm thấy sinh viên.");
-
-            // 1️⃣ Lấy danh sách mã môn học mà SV đã đăng ký
-            var daDangKy = await _context.DangKyHocs
-                .Where(dk => dk.MaSv == sv.MaSv)
-                .Select(dk => dk.MaLhpNavigation.MaMh)
+            // Lấy danh sách mã môn mà SV đã đăng ký
+            var monDaDangKy = await _context.DangKyHocs
+                .Where(x => x.MaSv == maSV)
+                .Select(x => x.MaLhpNavigation.MaMh)
                 .Distinct()
                 .ToListAsync();
 
-            // 2️⃣ Lấy danh sách môn học thuộc khoa CNTT mà SV CHƯA đăng ký
-            var monHocChuaDangKy = await _context.MonHocs
-                .Where(mh => mh.MaKhoa == "CNTT" && !daDangKy.Contains(mh.MaMh))
-                .Select(mh => new MonHocHoanThanhViewModel
+            // Lấy danh sách môn CNTT chưa đăng ký
+            var model = await _context.MonHocs
+                .Where(mh => mh.MaKhoa == "CNTT" && !monDaDangKy.Contains(mh.MaMh))
+                .Select(mh => new LopHocPhanViewModel
                 {
                     MaMh = mh.MaMh,
-                    TenMh = mh.TenMh,
+                    TenMonHoc = mh.TenMh,
                     SoTinChi = mh.SoTinChi,
-                    HoanThanh = false,
-                    LopDangMo = _context.LopHocPhans.Count(l => l.MaMh == mh.MaMh)
+
+                    // lấy lớp đang mở nếu có
+                    MaLhp = _context.LopHocPhans
+                        .Where(l => l.MaMh == mh.MaMh && l.TrangThai == "Đang mở")
+                        .Select(l => l.MaLhp)
+                        .FirstOrDefault(),
+
+                    TenLhp = _context.LopHocPhans
+                        .Where(l => l.MaMh == mh.MaMh && l.TrangThai == "Đang mở")
+                        .Select(l => l.TenLhp)
+                        .FirstOrDefault(),
+
+                    GiangVien = _context.LopHocPhans
+                        .Where(l => l.MaMh == mh.MaMh && l.TrangThai == "Đang mở" && l.MaGvNavigation != null)
+                        .Select(l => l.MaGvNavigation.HoTen)
+                        .FirstOrDefault() ?? "Chưa có",
+
+                    SiSoHienTai = _context.LopHocPhans
+                        .Where(l => l.MaMh == mh.MaMh && l.TrangThai == "Đang mở")
+                        .Select(l => l.SiSoHienTai)
+                        .FirstOrDefault(),
+
+                    SiSoToiDa = _context.LopHocPhans
+                        .Where(l => l.MaMh == mh.MaMh && l.TrangThai == "Đang mở")
+                        .Select(l => l.SiSoToiDa)
+                        .FirstOrDefault(),
+
+                    TrangThai = _context.LopHocPhans
+                        .Where(l => l.MaMh == mh.MaMh && l.TrangThai == "Đang mở")
+                        .Select(l => l.TrangThai)
+                        .FirstOrDefault() ?? "Chưa mở",
+
+                    TrangThaiDangKy = "Chưa đăng ký"
                 })
                 .ToListAsync();
 
-            // 3️⃣ Trả về view
-            return View(monHocChuaDangKy);
+            return View(model);
         }
 
 
@@ -168,37 +191,57 @@ namespace student_management.Controllers
                         .ThenInclude(lhp => lhp.MaMhNavigation)
                 .Include(sv => sv.DangKyHocs)
                     .ThenInclude(dk => dk.BangDiem)
+                .Include(sv => sv.DangKyHocs)
+                    .ThenInclude(dk => dk.DiemDanhs)
                 .FirstOrDefault(sv => sv.MaSv == maSV);
 
             if (sinhVien == null) return NotFound();
 
-            var lopHocPhanDaHoc = sinhVien.DangKyHocs
-                .Where(dk => dk.TrangThai.Trim() == "Đã duyệt"
-                          && dk.BangDiem != null
-                          && dk.BangDiem.DiemTongKet >= 5
-                          && dk.MaLhpNavigation.MaMhNavigation != null)
-                .Select(dk => new {
-                    MaMh = dk.MaLhpNavigation.MaMh,
-                    TenMh = dk.MaLhpNavigation.MaMhNavigation.TenMh,
-                    TenLhp = dk.MaLhpNavigation.TenLhp,
-                    SoTinChi = dk.MaLhpNavigation.MaMhNavigation.SoTinChi
-                })
-                .ToList();
-
-            var viewModel = lopHocPhanDaHoc
-                .GroupBy(x => x.MaMh)
-                .Select(g => new MonHocHoanThanhViewModel
+            var monHoanThanh = sinhVien.DangKyHocs
+                .Where(dk => dk.KetQua == "Hoàn thành")
+                .Select(dk =>
                 {
-                    MaMh = g.Key,
-                    TenMh = g.First().TenMh,
-                    SoTinChi = g.First().SoTinChi,
-                    HoanThanh = true,
-                    LopHocPhanDaDangKy = g.Select(x => x.TenLhp).ToList()
+                    int tongBuoi = dk.DiemDanhs.Count();
+                    int vang = dk.DiemDanhs.Count(dd => dd.TrangThai == "Vắng");
+                    bool vangQua30 = tongBuoi > 0 && vang > tongBuoi * 0.3;
+
+                    decimal diemTongKet = dk.BangDiem?.DiemTongKet ?? 0;
+
+                    return new MonHocHoanThanhViewModel
+                    {
+                        MaMh = dk.MaLhpNavigation.MaMh,
+                        TenMh = dk.MaLhpNavigation.MaMhNavigation.TenMh,
+                        SoTinChi = dk.MaLhpNavigation.MaMhNavigation.SoTinChi,
+                        HoanThanh = diemTongKet >= 5 && !vangQua30,
+                        Diem = diemTongKet,
+                        VangQua30 = vangQua30,
+                        LopHocPhanDaDangKy = new List<(int MaLhp, string TenLhp)>
+                        {
+                    (dk.MaLhpNavigation.MaLhp, dk.MaLhpNavigation.TenLhp)
+                        }
+                    };
+                })
+                .Where(x => x.HoanThanh)
+                .GroupBy(x => x.MaMh)
+                .Select(g =>
+                {
+                    var first = g.First();
+                    return new MonHocHoanThanhViewModel
+                    {
+                        MaMh = g.Key,
+                        TenMh = first.TenMh,
+                        SoTinChi = first.SoTinChi,
+                        HoanThanh = first.HoanThanh,
+                        Diem = first.Diem,
+                        VangQua30 = first.VangQua30,
+                        LopHocPhanDaDangKy = g.SelectMany(x => x.LopHocPhanDaDangKy).ToList()
+                    };
                 })
                 .ToList();
 
-            return View(viewModel);
+            return View(monHoanThanh);
         }
+
 
 
 
@@ -332,7 +375,8 @@ namespace student_management.Controllers
 
             if (dk != null)
             {
-                dk.TrangThai = TrangThaiDangKy.DaXoa;
+                dk.TrangThai = "Đã rút";
+                
                 _context.DangKyHocs.Update(dk);
 
                 // Cập nhật sĩ số lớp

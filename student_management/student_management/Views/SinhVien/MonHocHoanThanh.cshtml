@@ -5,7 +5,7 @@
 }
 
 <div class="container py-4">
-    <h3 class="fw-bold mb-4">📗 Môn học đã hoàn thành</h3>
+    <h3 class="fw-bold mb-4 text-success">📗 Danh sách môn học đã hoàn thành</h3>
 
     @if (Model != null && Model.Any())
     {
@@ -13,33 +13,77 @@
             @foreach (var mon in Model)
             {
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-header bg-success text-white">
-                            <h5 class="mb-0">@mon.TenMh</h5>
+                    <div class="card h-100 shadow-sm border-success position-relative">
+                        <!-- Header -->
+                        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0 fw-bold">@mon.TenMh</h5>
+                                <small class="opacity-75">Mã môn: <strong>@mon.MaMh</strong></small>
+                            </div>
+                            <i class="bi bi-bookmark-check fs-3 opacity-75" title="Hoàn thành"></i>
                         </div>
-                        <div class="card-body">
-                            <p class="mb-1"><strong>Mã môn:</strong> @mon.MaMh</p>
-                            <p class="mb-1"><strong>Số tín chỉ:</strong> @mon.SoTinChi</p>
-                            <p class="mb-1">
-                                <strong>Trạng thái:</strong>
-                                <span class="badge bg-success">Hoàn thành ✅</span>
-                            </p>
 
-                            <p class="mb-1"><strong>Lớp học phần đã đăng ký:</strong></p>
-                            @if (mon.LopHocPhanDaDangKy != null && mon.LopHocPhanDaDangKy.Any())
-                            {
+                        <!-- Body -->
+                        <div class="card-body">
+                            <div class="mb-2">
+                                <strong>Số tín chỉ:</strong> @mon.SoTinChi
+                            </div>
+                            <div class="mb-2">
+                                <strong>Điểm tổng kết:</strong>
+                                @if (mon.Diem > 0)
+                                {
+                                    <span class="fw-bold text-primary">@mon.Diem</span>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Chưa có điểm</span>
+                                }
+                            </div>
+
+                            <div class="mb-2">
+                                <strong>Lớp học phần đã đăng ký:</strong>
                                 <ul class="mb-0">
                                     @foreach (var lhp in mon.LopHocPhanDaDangKy)
                                     {
-                                        <li>@lhp</li>
+                                        <li>
+                                            @lhp.TenLhp
+                                            <a asp-area="GiangVien"
+                                               asp-controller="GiangVien"
+                                               asp-action="LichSuDiemDanh"
+                                               asp-route-maLHP="@lhp.MaLhp"
+                                               class="btn btn-outline-info btn-sm ms-2">
+                                                📝 Lịch sử điểm danh
+                                            </a>
+                                        </li>
                                     }
                                 </ul>
-                            }
-                            else
-                            {
-                                <span>Không có lớp học phần nào</span>
-                            }
+                            </div>
+
+                            <div class="mt-3">
+                                <span class="badge bg-success fs-6">Hoàn thành ✅</span>
+                                @if (mon.VangQua30)
+                                {
+                                    <span class="badge bg-danger ms-1 fs-6" title="Vắng quá 30%">⚠️ Vắng nhiều</span>
+                                }
+                            </div>
                         </div>
+
+                        <!-- Footer -->
+                        <div class="card-footer d-flex justify-content-end">
+                            <a asp-action="ChiTietMon"
+                               asp-route-maMh="@mon.MaMh"
+                               class="btn btn-success btn-sm">
+                                📖 Chi tiết
+                            </a>
+                        </div>
+
+                        <!-- Badge góc -->
+                        @if (mon.HoanThanh)
+                        {
+                            <div class="position-absolute top-0 end-0 m-2">
+                                <span class="badge bg-success">✔️ Hoàn tất</span>
+                            </div>
+                        }
                     </div>
                 </div>
             }
@@ -48,16 +92,9 @@
     else
     {
         <div class="text-center text-muted py-5">
-            <i class="bi bi-emoji-smile fs-1 mb-3"></i>
-            <h5>Bạn chưa hoàn thành môn học nào.</h5>
-            <p>Hãy tiếp tục đăng ký và hoàn thành các môn học.</p>
+            <i class="bi bi-emoji-neutral fs-1 mb-3"></i>
+            <h5>Chưa có môn học nào hoàn thành.</h5>
+            <p>Hãy kiểm tra điểm danh và kết thúc học phần để cập nhật.</p>
         </div>
     }
 </div>
-
-<style>
-    .card-header {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-    }
-</style>

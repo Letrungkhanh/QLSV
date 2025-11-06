@@ -1,59 +1,91 @@
-﻿@model IEnumerable<student_management.Models.ViewModels.MonHocHoanThanhViewModel>
+﻿@model List<student_management.Models.ViewModels.LopHocPhanViewModel>
 
 @{
-    ViewData["Title"] = "📘 Học phần CNTT";
+    ViewData["Title"] = "Học phần CNTT chưa đăng ký";
 }
 
-<div class="container py-4">
-    <h3 class="fw-bold mb-4">📘 Học phần CNTT</h3>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    @if (Model != null && Model.Any())
+<div class="container py-4">
+
+    <h3 class="text-primary fw-bold mb-4">
+        <i class="fas fa-book-open"></i> Học phần CNTT chưa đăng ký
+    </h3>
+
+    @if (!Model.Any())
     {
-        <div class="row g-4">
-            @foreach (var mon in Model)
-            {
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-header bg-primary text-white">
-                            <h5 class="mb-0">@mon.TenMh</h5>
-                        </div>
-                        <div class="card-body">
-                            <p class="mb-1"><strong>Mã môn:</strong> @mon.MaMh</p>
-                            <p class="mb-1"><strong>Số tín chỉ:</strong> @mon.SoTinChi</p>
-                            <p class="mb-1">
-                                <strong>Hoàn thành:</strong>
-                                @if (mon.HoanThanh)
-                                {
-                                    <span class="badge bg-success">✅ Hoàn thành</span>
-                                }
-                                else
-                                {
-                                    <span class="badge bg-warning text-dark">⚠️ Chưa hoàn thành</span>
-                                }
-                            </p>
-                            <p class="mb-0"><strong>Lớp đang mở:</strong> @mon.LopDangMo</p>
-                        </div>
-                        @if (mon.LopDangMo > 0)
-                        {
-                            <div class="card-footer text-end">
-                                <a asp-action="ChiTietMon"
-                                   asp-route-maMh="@mon.MaMh"
-                                   class="btn btn-primary btn-sm">
-                                    Xem lớp học phần
-                                </a>
-                            </div>
-                        }
-                    </div>
-                </div>
-            }
+        <div class="alert alert-success fs-5">
+            🎉 Chúc mừng! Bạn đã học hoặc đăng ký tất cả các môn thuộc CNTT rồi.
         </div>
     }
     else
     {
-        <div class="text-center text-muted py-5">
-            <i class="bi bi-emoji-neutral fs-1 mb-3"></i>
-            <h5>Hiện tại không có môn CNTT nào chưa đăng ký hoặc chờ duyệt.</h5>
-            <p>Hãy kiểm tra các lớp học phần đang mở để đăng ký.</p>
+        <div class="row g-4">
+
+            @foreach (var item in Model)
+            {
+                var chuaMo = item.TrangThai == "Chưa mở" || item.MaLhp == 0;
+                var hetCho = item.SiSoHienTai >= item.SiSoToiDa && !chuaMo;
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-0" style="border-radius: 12px;">
+                        <div class="card-body">
+
+                            <h5 class="fw-bold text-primary">@item.TenMonHoc</h5>
+                            <p class="text-muted mb-2">Mã môn: <b>@item.MaMh</b></p>
+                            <p class="mb-2">Tín chỉ: <b>@item.SoTinChi</b></p>
+
+                            @if (chuaMo)
+                            {
+                                <p class="text-danger mb-1">Chưa có lớp học phần</p>
+                            }
+                            else
+                            {
+                                <p class="mb-1">Lớp: <b>@item.TenLhp</b></p>
+                                <p class="mb-1">Giảng viên: <b>@item.GiangVien</b></p>
+                                <p class="mb-1">Sĩ số: <b>@item.SiSoHienTai / @item.SiSoToiDa</b></p>
+                            }
+
+                            <div class="mt-3">
+                                @if (chuaMo)
+                                {
+                                    <span class="badge bg-secondary px-3 py-2">Chưa mở</span>
+                                }
+                                else if (hetCho)
+                                {
+                                    <span class="badge bg-danger px-3 py-2">Đã đầy</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success px-3 py-2">Đang mở</span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="card-footer bg-white border-0 pb-4 text-center">
+
+                            @if (chuaMo)
+                            {
+                                <button class="btn btn-outline-secondary w-100" disabled>Chờ mở lớp</button>
+                            }
+                            else if (hetCho)
+                            {
+                                <button class="btn btn-outline-danger w-100" disabled>Hết chỗ</button>
+                            }
+                            else
+                            {
+                                <form asp-action="DangKyHocPhan" asp-controller="SinhVien" method="post">
+                                    <input type="hidden" name="maLhp" value="@item.MaLhp" />
+                                    <button class="btn btn-primary w-100">
+                                        <i class="fas fa-plus-circle"></i> Đăng ký
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
         </div>
     }
 </div>

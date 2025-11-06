@@ -1,0 +1,66 @@
+﻿@model IEnumerable<student_management.Models.ViewModels.QuanLyTaiKhoanViewModel>
+@{
+    ViewData["Title"] = "Quản lý tài khoản giảng viên";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <h2>Quản lý tài khoản giảng viên</h2>
+    </section>
+
+    <section class="content">
+        <div class="card">
+            <div class="card-body table-responsive p-0">
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="alert alert-success text-center">@TempData["Success"]</div>
+                }
+
+                <table class="table table-bordered table-striped text-center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th style="width: 15%">Mã GV</th>
+                            <th style="width: 30%">Họ tên</th>
+                            <th style="width: 20%">Trạng thái TK</th>
+                            <th style="width: 15%">Vai trò</th>
+                            <th style="width: 20%">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.MaNguoiDung</td>
+                                <td>@item.HoTen</td>
+                                <td>
+                                    @if (item.DaCoTaiKhoan)
+                                    {
+                                        <span class="badge bg-success">Đã cấp</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Chưa có</span>
+                                    }
+                                </td>
+                                <td>@item.VaiTro</td>
+                                <td>
+                                    <form asp-action="Reset" method="post" class="d-inline">
+                                        <input type="hidden" name="id" value="@item.MaNguoiDung" />
+                                        <input type="hidden" name="role" value="Giảng viên" />
+                                        <button type="submit" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-sync"></i> Reset mật khẩu
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
+</div>

@@ -12,29 +12,42 @@
                    asp-route-maLHP="@Model.MaLHP"
                    class="btn btn-light btn-sm me-2">
                     <i class="bi bi-person-plus"></i> Thêm sinh viên
-                </a> <a asp-area="GiangVien" asp-controller="GiangVien" asp-action="DiemDanh"
-                        asp-route-maLHP="@Model.MaLHP"
-                        class="btn btn-success btn-sm me-2">
+                </a>
+
+                <a asp-area="GiangVien" asp-controller="GiangVien" asp-action="DiemDanh"
+                   asp-route-maLHP="@Model.MaLHP"
+                   class="btn btn-success btn-sm me-2">
                     <i class="bi bi-check2-circle"></i> Điểm danh
-                </a><a class="btn btn-warning me-2"
-                       asp-area="GiangVien"
-                       asp-controller="GiangVien"
-                       asp-action="NhapDiem"
-                       asp-route-maLHP="@Model.MaLHP">
+                </a>
+
+                <a class="btn btn-warning btn-sm me-2"
+                   asp-area="GiangVien"
+                   asp-controller="GiangVien"
+                   asp-action="NhapDiem"
+                   asp-route-maLHP="@Model.MaLHP">
                     🧮 Nhập điểm
                 </a>
-                <a class="btn btn-info"
+
+                <a class="btn btn-info btn-sm me-2"
                    asp-area="GiangVien"
                    asp-controller="GiangVien"
                    asp-action="ThongKeDiemDanh"
                    asp-route-maLHP="@Model.MaLHP">
                     📊 Thống kê điểm danh
                 </a>
+                <a class="btn btn-danger btn-sm ms-2"
+                   asp-area="GiangVien"
+                   asp-controller="GiangVien"
+                   asp-action="KetThucHocPhan"
+                   asp-route-maLHP="@Model.MaLHP"
+                   onclick="return confirm('Kết thúc lớp học phần? Kết quả sinh viên sẽ được xác định và không thể sửa.');">
+                    🔚 Kết thúc học phần
+                </a>
+
                 <a asp-area="GiangVien" asp-controller="GiangVien" asp-action="LopHocPhanCuaToi"
                    class="btn btn-outline-light btn-sm">
                     <i class="bi bi-arrow-left"></i> Quay lại
                 </a>
-                
             </div>
         </div>
 
@@ -44,29 +57,51 @@
                 <table class="table table-striped table-hover mb-0">
                     <thead class="table-light">
                         <tr class="text-center">
-                            <th style="width: 70px;">STT</th>
+                            <th style="width: 60px;">STT</th>
                             <th>Mã sinh viên</th>
                             <th>Họ và tên</th>
-                            <th style="width: 150px;">Thao tác</th>
+                            <th>Trạng thái</th>
+                            <th style="width: 160px;">Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
                         @for (int i = 0; i < Model.SinhViens.Count; i++)
                         {
                             var sv = Model.SinhViens[i];
-                            <tr class="align-middle">
+                            <tr class="align-middle @(sv.TrangThai == "Đã rút" ? "text-muted" : "")">
                                 <td class="text-center fw-semibold">@(@i + 1)</td>
                                 <td>@sv.MaSV</td>
                                 <td>@sv.HoTen</td>
+
                                 <td class="text-center">
-                                    <form asp-action="XoaDangKy" asp-controller="GiangVien" asp-area="GiangVien" method="post" style="display:inline;">
-                                        <input type="hidden" name="MaLHP" value="@Model.MaLHP" />
-                                        <input type="hidden" name="MaSV" value="@sv.MaSV" />
-                                        <button type="submit" class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Bạn có chắc muốn xóa sinh viên này khỏi lớp không?');">
-                                            <i class="bi bi-trash"></i> Xóa
-                                        </button>
-                                    </form>
+                                    @if (sv.TrangThai == "Đã rút")
+                                    {
+                                        <span class="badge bg-secondary">ĐÃ RÚT MÔN</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">ĐANG HỌC</span>
+                                    }
+                                </td>
+
+                                <td class="text-center">
+                                    @if (sv.TrangThai == "Đã duyệt")
+                                    {
+                                        <!-- Cho phép xóa -->
+                                        <form asp-action="XoaDangKy" asp-controller="GiangVien" asp-area="GiangVien"
+                                              method="post" style="display:inline;">
+                                            <input type="hidden" name="MaLHP" value="@Model.MaLHP" />
+                                            <input type="hidden" name="MaSV" value="@sv.MaSV" />
+                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('Bạn có chắc muốn xóa sinh viên này khỏi lớp không?');">
+                                                <i class="bi bi-trash"></i> Xóa
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted fst-italic">Không thao tác</span>
+                                    }
                                 </td>
                             </tr>
                         }

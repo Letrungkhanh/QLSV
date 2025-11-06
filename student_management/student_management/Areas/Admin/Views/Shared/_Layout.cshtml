@@ -87,7 +87,11 @@
                 <!-- Sidebar Menu -->
                 <<nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        
+                        
+
                         <!-- 🔹 Quản lý Khoa - Viện -->
+
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-university"></i>
@@ -136,6 +140,30 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>
+                                    Quản lý Tài khoản
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-area="Admin" asp-controller="QuanLyTaiKhoan" asp-action="GiangVien" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tài khoản Giảng viên</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-area="Admin" asp-controller="QuanLyTaiKhoan" asp-action="SinhVien" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Tài khoản Sinh viên</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
 
                         <!-- 🔹 Quản lý Giảng viên -->
                         <li class="nav-item">
@@ -158,7 +186,7 @@
                                 <p>Quản lý học phần</p>
                             </a>
                         </li>
-
+                        
                         <!-- 🔹 Quản lý Thông báo -->
                         <li class="nav-item">
                             <a asp-area="Admin" asp-controller="ThongBaos" asp-action="Index" class="nav-link">

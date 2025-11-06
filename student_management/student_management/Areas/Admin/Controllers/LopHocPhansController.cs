@@ -54,7 +54,6 @@ namespace student_management.Areas.Admin.Controllers
             ViewBag.GiaoVienList = new SelectList(_context.GiaoViens.ToList(), "MaGv", "HoTen");
             return View();
         }
-
         // ✅ POST: Admin/LopHocPhans/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -62,6 +61,10 @@ namespace student_management.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                // 👉 Set mặc định khi tạo lớp học phần:
+                lopHocPhan.TrangThai = "Đang mở"; // hoặc "Mở đăng ký"
+                lopHocPhan.SiSoHienTai = 0;       // mặc định chưa ai đăng ký
+
                 _context.Add(lopHocPhan);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -172,20 +175,31 @@ namespace student_management.Areas.Admin.Controllers
             return View(lopHocPhan);
         }
 
-        // POST: Admin/LopHocPhans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var lopHocPhan = await _context.LopHocPhans.FindAsync(id);
-            if (lopHocPhan != null)
+            // Kiểm tra xem lớp có sinh viên đăng ký hay chưa
+            var coSinhVien = await _context.DangKyHocs.AnyAsync(x => x.MaLhp == id);
+
+            if (coSinhVien)
             {
-                _context.LopHocPhans.Remove(lopHocPhan);
+                TempData["Error"] = "❌ Không thể xóa lớp vì hiện đang có sinh viên đăng ký!";
+                return RedirectToAction(nameof(Index));
             }
 
-            await _context.SaveChangesAsync();
+            // Nếu không có sinh viên thì cho phép xóa
+            var lop = await _context.LopHocPhans.FindAsync(id);
+            if (lop != null)
+            {
+                _context.LopHocPhans.Remove(lop);
+                await _context.SaveChangesAsync();
+                TempData["Success"] = "✅ Xóa lớp thành công.";
+            }
+
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool LopHocPhanExists(int id)
         {

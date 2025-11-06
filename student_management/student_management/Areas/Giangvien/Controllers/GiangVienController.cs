@@ -68,12 +68,13 @@ namespace student_management.Areas.GiangVien.Controllers
             if (lopHocPhan == null) return NotFound();
 
             var sinhViens = await _context.DangKyHocs
-                .Where(d => d.MaLhp == maLHP && d.TrangThai == "Đã duyệt")
+                .Where(d => d.MaLhp == maLHP &&( d.TrangThai == "Đã duyệt" ||d.TrangThai == "Đã rút" ))
                 .Include(d => d.MaSvNavigation)
                 .Select(d => new DiemDanhItem
                 {
                     MaSV = d.MaSv,
-                    HoTen = d.MaSvNavigation.HoTen
+                    HoTen = d.MaSvNavigation.HoTen,
+                    TrangThai = d.TrangThai
                 })
                 .ToListAsync();
 
@@ -175,30 +176,29 @@ namespace student_management.Areas.GiangVien.Controllers
                         MaLhp = model.MaLHP,
                         MaSv = sv.MaSV,
                         NgayDangKy = DateTime.Now,
-                        TrangThai = "Chờ duyệt"
+                        TrangThai = "Đã duyệt" // ✅ THÊM THẲNG VÀO LỚP, KHÔNG CHỜ DUYỆT
                     });
                 }
             }
 
             await _context.SaveChangesAsync();
-            TempData["Success"] = "✅ Đã gửi yêu cầu duyệt sinh viên.";
-            return RedirectToAction("DuyetDangKy", new { maLHP = model.MaLHP });
+            TempData["Success"] = "✅ Đã thêm sinh viên vào lớp.";
+
+            // ✅ Chuyển về danh sách sinh viên của lớp thay vì trang duyệt
+            return RedirectToAction("DanhSachSinhVien", "GiangVien", new { maLHP = model.MaLHP, area = "GiangVien" });
         }
 
-            // ✅ 6. Duyệt sinh viên
-            public async Task<IActionResult> DuyetDangKy(int maLHP)
+        // ✅ 6. Duyệt sinh viên
+        public async Task<IActionResult> DuyetDangKy(int maLHP)
             {
             var danhSachChoDuyet = await _context.DangKyHocs
-     .Include(dk => dk.MaSvNavigation)
-     .Where(dk => dk.MaLhp == maLHP &&
-              (EF.Functions.Like(dk.TrangThai.Trim().ToLower(), "%chờ%") ||
-               EF.Functions.Like(dk.TrangThai.Trim().ToLower(), "%cho%")))
-     .ToListAsync();
+                 .Include(dk => dk.MaSvNavigation)
+                 .Where(dk => dk.MaLhp == maLHP &&
+                          (EF.Functions.Like(dk.TrangThai.Trim().ToLower(), "%chờ%") ||
+                           EF.Functions.Like(dk.TrangThai.Trim().ToLower(), "%cho%")))
+                 .ToListAsync();
 
-
-
-
-            ViewBag.MaLHP = maLHP;
+                 ViewBag.MaLHP = maLHP;
                 return View(danhSachChoDuyet);
             }
 
@@ -369,6 +369,51 @@ namespace student_management.Areas.GiangVien.Controllers
 
             return View(danhSachLopChoDuyet);
         }
+        [HttpGet]
+        public async Task<IActionResult> KetThucHocPhan(int maLHP)
+        {
+            // Lấy lớp học phần
+            var lopHocPhan = await _context.LopHocPhans
+                .FirstOrDefaultAsync(l => l.MaLhp == maLHP);
+
+            if (lopHocPhan == null)
+                return NotFound();
+
+            // Lấy danh sách sinh viên đã duyệt
+            var danhSach = await _context.DangKyHocs
+                .Where(d => d.MaLhp == maLHP && d.TrangThai == "Đã duyệt")
+                .Include(d => d.BangDiem)      // Bảng điểm
+                .Include(d => d.DiemDanhs)     // Danh sách điểm danh
+                .ToListAsync();
+
+            foreach (var dk in danhSach)
+            {
+                // Tính tổng buổi và số buổi vắng
+                int tongBuoiHoc = dk.DiemDanhs.Count;
+                int soBuoiVang = dk.DiemDanhs.Count(dd => dd.TrangThai == "Vắng");
+
+                // Điều kiện vắng quá 30%
+                bool vangQua30 = tongBuoiHoc > 0 && soBuoiVang > (tongBuoiHoc * 0.3);
+
+                // Lấy điểm tổng kết (nếu null thì gán 0)
+                decimal diem = dk.BangDiem?.DiemTongKet ?? 0;
+
+                // Xét kết quả
+                if (diem >= 5m && vangQua30 == false)
+                    dk.KetQua = "Hoàn thành";
+                else
+                    dk.KetQua = "Không đạt";
+            }
+
+            // Cập nhật trạng thái lớp học phần
+            lopHocPhan.TrangThai = "Đã kết thúc";
+
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "✅ Đã kết thúc lớp học phần và xét kết quả cho sinh viên.";
+            return RedirectToAction(nameof(LopHocPhanCuaToi));
+        }
+
 
     }
 }

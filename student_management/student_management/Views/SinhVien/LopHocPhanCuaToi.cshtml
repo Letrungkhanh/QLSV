@@ -13,35 +13,54 @@
             @foreach (var lhp in Model)
             {
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm">
+                    <div class="card h-100 shadow-sm border-0">
                         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
                             <div>
-                                <h5 class="mb-0">@lhp.TenLhp</h5>
-                                <small>Mã lớp: <strong>@lhp.MaLhp</strong></small>
+                                <h5 class="mb-0 fw-bold">@lhp.TenLhp</h5>
+                                <small class="opacity-75">Mã lớp: <strong>@lhp.MaLhp</strong></small>
                             </div>
-                            <i class="bi bi-book fs-2 opacity-75"></i>
+                            <i class="bi bi-journal-bookmark fs-3 opacity-75"></i>
                         </div>
+
                         <div class="card-body">
                             <p class="mb-1"><strong>Môn học:</strong> @lhp.TenMonHoc</p>
                             <p class="mb-1"><strong>Số tín chỉ:</strong> @lhp.SoTinChi</p>
                             <p class="mb-1"><strong>Giảng viên:</strong> @lhp.GiangVien ?? "Chưa có"</p>
                             <p class="mb-1"><strong>Sĩ số:</strong> @lhp.SiSoHienTai / @lhp.SiSoToiDa</p>
-                            <p class="mb-1"><strong>Trạng thái đăng ký:</strong> @lhp.TrangThaiDangKy</p>
+
+                            <p class="mb-1">
+                                <strong>Trạng thái đăng ký:</strong>
+                                @if (lhp.TrangThaiDangKy == "Đã duyệt")
+                                {
+                                    <span class="badge bg-success">Đã duyệt</span>
+                                }
+                                else if (lhp.TrangThaiDangKy == "Chờ duyệt")
+                                {
+                                    <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">@lhp.TrangThaiDangKy</span>
+                                }
+                            </p>
                         </div>
+
                         <div class="card-footer d-flex justify-content-between">
-                            <a asp-area="GiangVien"
-                               asp-controller="GiangVien"
-                               asp-action="DanhSachSinhVien"
+                            <a asp-action="LichSuDiemDanh"
                                asp-route-maLHP="@lhp.MaLhp"
-                               class="btn btn-primary btn-sm">
-                                👥 Xem sinh viên
+                               class="btn btn-outline-info btn-sm">
+                                📝 Điểm danh
                             </a>
-                            <a asp-area="GiangVien"
-                               asp-controller="GiangVien"
-                               asp-action="DuyetDangKy"
-                               asp-route-maLHP="@lhp.MaLhp"
-                               class="btn btn-outline-warning btn-sm">
-                                📋 Duyệt sinh viên
+
+                            <a asp-action="XemDiem"
+                               class="btn btn-outline-success btn-sm">
+                                🎯 Xem điểm
+                            </a>
+
+                            <a asp-action="ChiTietMon"
+                               asp-route-maMh="@lhp.MaMh"
+                               class="btn btn-primary btn-sm">
+                                📖 Chi tiết
                             </a>
                         </div>
                     </div>
@@ -54,18 +73,7 @@
         <div class="text-center text-muted py-5">
             <i class="bi bi-emoji-neutral fs-1 mb-3"></i>
             <h5>Bạn chưa có lớp học phần nào đã đăng ký và được duyệt.</h5>
-            <p>Hãy đăng ký các lớp học phần trong danh sách học phần CNTT.</p>
+            <p>Hãy đăng ký lớp trong mục <strong>Học phần CNTT</strong>.</p>
         </div>
     }
 </div>
-
-<style>
-    .card-header {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-    }
-
-    .card-footer {
-        border-top: 1px solid #dee2e6;
-    }
-</style>
