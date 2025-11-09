@@ -254,14 +254,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXEhvbWVcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/QlyLopHocPhan/DuyetDangKy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXFFseUxvcEhvY1BoYW5cRHV5ZXREYW5nS3kuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/QlyLopHocPhan/LopHocPhanCuaToi.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXFFseUxvcEhvY1BoYW5cTG9wSG9jUGhhbkN1YVRvaS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Administrator/source/repos/student_management/student_management/Areas/Giangvien/Views/Shared/Components/Giangvien/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcR2lhbmd2aWVuXFZpZXdzXFNoYXJlZFxDb21wb25lbnRzXEdpYW5ndmllblxEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -288,6 +280,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/CaNhanSV/DoiMatKhau.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FOaGFuU1ZcRG9pTWF0S2hhdS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/CaNhanSV/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FOaGFuU1ZcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/source/repos/student_management/student_management/Views/CaNhanSV/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FOaGFuU1ZcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/source/repos/student_management/student_management/Views/DkiHoc/DangKyMoi.cshtml]

@@ -30,7 +30,7 @@ namespace student_management.Models
         public int HocKy { get; set; }
 
         [Display(Name = "Trạng thái lớp học phần")]
-        public string TrangThai { get; set; } = "Chờ duyệt";
+        public string TrangThai { get; set; } = "Đang mở";
 
         [Display(Name = "Năm học")]
         [Required(ErrorMessage = "Vui lòng nhập năm học (VD: 2024-2025)")]

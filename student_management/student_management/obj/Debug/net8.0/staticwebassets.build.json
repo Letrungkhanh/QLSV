@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1HO1RIM+WReZI3o9Q9K31jfgCi0nuB9pxn9mOaKRUfQ=",
+  "Hash": "jKyHRMVvjhbIuKvw/blwWD7H5iOWWwwBDwiwI6zyBK8=",
   "Source": "student_management",
   "BasePath": "_content/student_management",
   "Mode": "Default",
@@ -44342,6 +44342,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\pic1.png!bw700"
+    },
+    {
+      "Identity": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\wwwroot\\images\\sinhvien\\default.jpg",
+      "SourceId": "student_management",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\wwwroot\\",
+      "BasePath": "_content/student_management",
+      "RelativePath": "images/sinhvien/default.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\sinhvien\\default.jpg"
     },
     {
       "Identity": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\wwwroot\\js\\site.js",

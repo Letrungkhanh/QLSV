@@ -1,0 +1,36 @@
+﻿@model student_management.Models.SinhVien
+@{
+    ViewData["Title"] = "Thông tin cá nhân";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="m-0">Thông tin cá nhân sinh viên</h4>
+                </div>
+
+                <div class="card-body text-center">
+                    <img src="@(Model.Anh ?? "/images/sinhvien/default.png")" class="rounded-circle mb-3" width="140" height="140" style="object-fit:cover" />
+                    <h5>@Model.HoTen</h5>
+                    <p class="text-muted">Mã sinh viên: @Model.MaSv</p>
+
+                    <hr />
+
+                    <p><strong>Ngày sinh:</strong> @Model.NgaySinh?.ToString("dd/MM/yyyy")</p>
+                    <p><strong>Email:</strong> @Model.Email</p>
+                    <p><strong>Số điện thoại:</strong> @Model.SoDienThoai</p>
+                    <p><strong>Lớp:</strong> @Model.MaLopNavigation?.TenLop</p>
+                    <p><strong>Khoa:</strong> @Model.MaKhoaNavigation?.TenKhoa</p>
+                    <p><strong>Năm nhập học:</strong> @Model.NamNhapHoc</p>
+                    <a asp-action="DoiMatKhau" class="btn btn-warning mt-3">Đổi mật khẩu</a>
+
+                    <a asp-action="Edit" class="btn btn-warning px-4 mt-3">Chỉnh sửa thông tin</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

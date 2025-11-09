@@ -9329,6 +9329,10 @@
       "PackagePath": "staticwebassets\\images\\pic1.png!bw700"
     },
     {
+      "Id": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\wwwroot\\images\\sinhvien\\default.jpg",
+      "PackagePath": "staticwebassets\\images\\sinhvien\\default.jpg"
+    },
+    {
       "Id": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
