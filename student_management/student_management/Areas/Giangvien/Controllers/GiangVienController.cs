@@ -413,6 +413,107 @@ namespace student_management.Areas.GiangVien.Controllers
             TempData["Success"] = "✅ Đã kết thúc lớp học phần và xét kết quả cho sinh viên.";
             return RedirectToAction(nameof(LopHocPhanCuaToi));
         }
+        public async Task<IActionResult> LichDayGv()
+        {
+            var tenDangNhap = User.Identity?.Name;
+            if (string.IsNullOrEmpty(tenDangNhap))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            // Lấy tài khoản GV
+            var taiKhoan = await _context.TaiKhoans
+                .Include(t => t.MaGvNavigation)
+                .FirstOrDefaultAsync(t => t.TenDangNhap == tenDangNhap);
+
+            if (taiKhoan == null || string.IsNullOrEmpty(taiKhoan.MaGv))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            var maGV = taiKhoan.MaGv;
+
+            // Lấy lớp học phần
+            var lopHocPhans = await _context.LopHocPhans
+                .Where(l => l.MaGv == maGV)
+                .Include(l => l.MaMhNavigation)
+                .Include(l => l.ThoiKhoaBieus)
+                .ToListAsync();
+
+            // Map sang ViewModel, CHỐNG NULL 100%
+            var tkbList = lopHocPhans
+                .SelectMany(
+                    lhp => lhp.ThoiKhoaBieus.DefaultIfEmpty(),
+                    (lhp, tkb) => new ThoiKhoaBieuViewModel
+                    {
+                        TenMonHoc = lhp.MaMhNavigation?.TenMh ?? "(Chưa có môn học)",
+                        TenLopHocPhan = lhp.TenLhp ?? "(Không có tên lớp)",
+                        GiangVien = taiKhoan.MaGvNavigation?.HoTen ?? "(Không rõ GV)",
+
+                        Thu = tkb?.Thu ?? 0,
+                        TietBatDau = tkb?.TietBatDau ?? 0,
+                        SoTiet = tkb?.SoTiet ?? 0,
+                        PhongHoc = tkb?.PhongHoc ?? "(Chưa xác định)",
+
+                        HocKy = lhp.HocKy,
+                        NamHoc = lhp.NamHoc ?? "(Chưa rõ)"
+                    })
+                .OrderBy(t => t.Thu)
+                .ThenBy(t => t.TietBatDau)
+                .ToList();
+
+            return View(tkbList);
+        }
+        public async Task<IActionResult> GuiThongBao(int maLHP)
+        {
+            var tenDangNhap = User.Identity?.Name;
+            if (string.IsNullOrEmpty(tenDangNhap))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            var taiKhoan = await _context.TaiKhoans
+                .Include(t => t.MaGvNavigation)
+                .FirstOrDefaultAsync(t => t.TenDangNhap == tenDangNhap);
+
+            if (taiKhoan == null || string.IsNullOrEmpty(taiKhoan.MaGv))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            var lop = await _context.LopHocPhans
+                .FirstOrDefaultAsync(l => l.MaLhp == maLHP && l.MaGv == taiKhoan.MaGv);
+
+            if (lop == null) return NotFound();
+
+            var model = new ThongBaoGuiViewModel
+            {
+                MaLHP = maLHP
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GuiThongBao(ThongBaoGuiViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var tenDangNhap = User.Identity?.Name;
+            var taiKhoan = await _context.TaiKhoans
+                .Include(t => t.MaGvNavigation)
+                .FirstOrDefaultAsync(t => t.TenDangNhap == tenDangNhap);
+
+            if (taiKhoan == null) return Unauthorized();
+
+            var thongBao = new ThongBao
+            {
+                MaLhp = model.MaLHP,
+                MaGv = taiKhoan.MaGv,
+                TieuDe = model.TieuDe,
+                NoiDung = model.NoiDung,
+                NgayDang = DateTime.Now
+            };
+
+            _context.ThongBaos.Add(thongBao);
+            await _context.SaveChangesAsync();
+
+            TempData["Success"] = "✅ Đã gửi thông báo cho lớp học phần.";
+            return RedirectToAction("DanhSachSinhVien", new { maLHP = model.MaLHP });
+        }
 
 
     }

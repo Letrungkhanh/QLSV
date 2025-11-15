@@ -14,7 +14,7 @@
         <div class="card card-primary">
             <div class="card-header"><h3 class="card-title">Thông tin học phần</h3></div>
 
-            <!-- ✅ Thêm enctype để upload file -->
+            <!-- ✅ Thêm enctype để upload ảnh -->
             <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -24,12 +24,11 @@
                         <input asp-for="MaMh" class="form-control" placeholder="Nhập mã học phần..." />
                         <span asp-validation-for="MaMh" class="text-danger"></span>
                     </div>
+
                     <div class="form-group">
-                        <label asp-for="MaMh" class="control-label">Môn học</label>
-                        <select asp-for="MaMh" class="form-control" asp-items="ViewBag.MonHocList">
-                            <option value="">-- Chọn môn học --</option>
-                        </select>
-                        <span asp-validation-for="MaMh" class="text-danger"></span>
+                        <label asp-for="TenMh" class="control-label">Tên môn học</label>
+                        <input asp-for="TenMh" class="form-control" placeholder="Nhập tên môn học..." />
+                        <span asp-validation-for="TenMh" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -47,7 +46,7 @@
                     <div class="form-group">
                         <label asp-for="MaKhoa" class="control-label">Khoa</label>
                         <select asp-for="MaKhoa" class="form-control" asp-items="ViewBag.MaKhoa">
-                            <option value="">-- Vui lòng chọn khoa --</option>
+                            <option value="">-- Chọn khoa --</option>
                         </select>
                         <span asp-validation-for="MaKhoa" class="text-danger"></span>
                     </div>
@@ -63,6 +62,7 @@
 </div>
 
 @section Scripts {
+    <!-- ✅ Sửa lỗi CS0029 ở đây -->
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

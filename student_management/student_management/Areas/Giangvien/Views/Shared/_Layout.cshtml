@@ -1,4 +1,4 @@
-﻿    <!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,32 +21,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="~/giangvien/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="~/giangvien/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/assets/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="~/giangvien/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="~/giangvien/css/style.css" rel="stylesheet">
-    <style>
-        .card:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        }
-
-        .card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        }
-
-    </style>
-    @RenderSection("Styles", required: false)
+    <link href="~/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -67,12 +49,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
                 <a asp-action="LopHocPhanCuaToi" asp-controller="GiangVien" class="nav-item nav-link">
                     Lớp học của tôi
                 </a>
                 <a asp-area="Giangvien" asp-action="Index" asp-controller="CaNhanGV" class="nav-item nav-link">
                     Tài khoản của tôi
+                </a> 
+                <a asp-area="Giangvien" asp-action="LichDayGv" asp-controller="GiangVien" class="nav-item nav-link">
+                    Lịch dạy
                 </a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -82,9 +66,9 @@
                         <a asp-area="Giangvien" asp-action="ChangePassword" asp-controller="CaNhanGV" class="dropdown-item">Đổi mật khẩu</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
+
             </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+            <a asp-controller="Account" asp-action="Logout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Đăng xuất<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->
@@ -176,15 +160,14 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/giangvien/lib/wow/wow.min.js"></script>
-    <script src="~/giangvien/lib/easing/easing.min.js"></script>
-    <script src="~/giangvien/lib/waypoints/waypoints.min.js"></script>
-    <script src="~/giangvien/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/assets/lib/wow/wow.min.js"></script>
+    <script src="~/assets/lib/easing/easing.min.js"></script>
+    <script src="~/assets/lib/waypoints/waypoints.min.js"></script>
+    <script src="~/assets/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="~/giangvien/js/main.js"></script>
+    <script src="~/assets/js/main.js"></script>
     @RenderSection("Scripts", required: false)
-
 </body>
 
 </html>

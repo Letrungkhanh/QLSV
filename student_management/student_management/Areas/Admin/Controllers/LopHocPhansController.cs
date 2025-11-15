@@ -47,32 +47,65 @@ namespace student_management.Areas.Admin.Controllers
 
             return View(lopHocPhan);
         }
-        // ✅ GET: Admin/LopHocPhans/Create
+        // GET: Admin/LopHocPhans/Create
         public IActionResult Create()
         {
             ViewBag.MonHocList = new SelectList(_context.MonHocs.ToList(), "MaMh", "TenMh");
             ViewBag.GiaoVienList = new SelectList(_context.GiaoViens.ToList(), "MaGv", "HoTen");
+
+            // Các lựa chọn Thứ (2 -> 7) và số tiết (1 -> 12)
+            ViewBag.ThuList = Enumerable.Range(2, 6).Select(x => new SelectListItem
+            {
+                Value = x.ToString(),
+                Text = $"Thứ {x}"
+            }).ToList();
+
+            ViewBag.TietList = Enumerable.Range(1, 12).Select(x => new SelectListItem
+            {
+                Value = x.ToString(),
+                Text = $"Tiết {x}"
+            }).ToList();
+
             return View();
         }
-        // ✅ POST: Admin/LopHocPhans/Create
+
+        // POST: Admin/LopHocPhans/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TenLhp,MaMh,MaGv,HocKy,NamHoc,SiSoToiDa")] LopHocPhan lopHocPhan)
+        public async Task<IActionResult> Create(
+            [Bind("TenLhp,MaMh,MaGv,HocKy,NamHoc,SiSoToiDa")] LopHocPhan lopHocPhan,
+            int Thu, int TietBatDau, int SoTiet, string PhongHoc)
         {
             if (ModelState.IsValid)
             {
-                // 👉 Set mặc định khi tạo lớp học phần:
-                lopHocPhan.TrangThai = "Đang mở"; // hoặc "Mở đăng ký"
-                lopHocPhan.SiSoHienTai = 0;       // mặc định chưa ai đăng ký
+                // Set mặc định
+                lopHocPhan.TrangThai = "Đang mở";
+                lopHocPhan.SiSoHienTai = 0;
 
-                _context.Add(lopHocPhan);
+                _context.LopHocPhans.Add(lopHocPhan);
                 await _context.SaveChangesAsync();
+
+                // Tạo Thời khóa biểu liên kết với lớp học phần
+                var tkb = new ThoiKhoaBieu
+                {
+                    MaLhp = lopHocPhan.MaLhp,
+                    Thu = Thu,
+                    TietBatDau = TietBatDau,
+                    SoTiet = SoTiet,
+                    PhongHoc = PhongHoc
+                };
+                _context.ThoiKhoaBieus.Add(tkb);
+                await _context.SaveChangesAsync();
+
+                TempData["Success"] = "✅ Tạo lớp học phần thành công với thời khóa biểu!";
                 return RedirectToAction(nameof(Index));
             }
 
-            // ⚠️ Load lại dropdown nếu form có lỗi
+            // Nếu form có lỗi, load lại dropdown
             ViewBag.MonHocList = new SelectList(_context.MonHocs.ToList(), "MaMh", "TenMh", lopHocPhan.MaMh);
             ViewBag.GiaoVienList = new SelectList(_context.GiaoViens.ToList(), "MaGv", "HoTen", lopHocPhan.MaGv);
+            ViewBag.ThuList = Enumerable.Range(2, 6).Select(x => new SelectListItem { Value = x.ToString(), Text = $"Thứ {x}" }).ToList();
+            ViewBag.TietList = Enumerable.Range(1, 12).Select(x => new SelectListItem { Value = x.ToString(), Text = $"Tiết {x}" }).ToList();
 
             return View(lopHocPhan);
         }

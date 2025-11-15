@@ -44,25 +44,31 @@
                                 }
                             </p>
                         </div>
-
-                        <div class="card-footer d-flex justify-content-between">
+                        <div class="card-footer d-flex flex-wrap justify-content-between gap-2">
                             <a asp-action="LichSuDiemDanh"
                                asp-route-maLHP="@lhp.MaLhp"
-                               class="btn btn-outline-info btn-sm">
+                               class="btn btn-outline-info btn-sm flex-grow-1">
                                 📝 Điểm danh
                             </a>
 
                             <a asp-action="XemDiem"
-                               class="btn btn-outline-success btn-sm">
+                               class="btn btn-outline-success btn-sm flex-grow-1">
                                 🎯 Xem điểm
+                            </a>
+
+                            <a asp-action="ThongBaoCuaToi"
+                               asp-route-maLHP="@lhp.MaLhp"
+                               class="btn btn-warning btn-sm flex-grow-1">
+                                📣 Thông báo
                             </a>
 
                             <a asp-action="ChiTietMon"
                                asp-route-maMh="@lhp.MaMh"
-                               class="btn btn-primary btn-sm">
+                               class="btn btn-primary btn-sm flex-grow-1">
                                 📖 Chi tiết
                             </a>
                         </div>
+
                     </div>
                 </div>
             }

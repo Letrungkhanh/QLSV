@@ -395,6 +395,39 @@ namespace student_management.Controllers
             var lopMon = await _context.LopHocPhans.FirstOrDefaultAsync(l => l.MaLhp == maLHP);
             return RedirectToAction("ChiTietMon", new { maMh = lopMon?.MaMh });
         }
+        public async Task<IActionResult> ThongBaoCuaToi(int maLhp)
+        {
+            var tenDangNhap = User.Identity?.Name;
+            if (string.IsNullOrEmpty(tenDangNhap))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            // Lấy tài khoản sinh viên
+            var sinhVien = await _context.SinhViens
+                .Include(sv => sv.DangKyHocs)
+                .FirstOrDefaultAsync(sv => sv.TaiKhoans.Any(tk => tk.TenDangNhap == tenDangNhap));
+
+            if (sinhVien == null)
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            // Kiểm tra sinh viên đang học lớp này (trạng thái đã duyệt)
+            var hocLop = sinhVien.DangKyHocs.Any(dk => dk.MaLhp == maLhp && dk.TrangThai == "Đã duyệt");
+            if (!hocLop)
+                return NotFound("Bạn không đăng ký lớp này hoặc chưa được duyệt.");
+
+            // Lấy thông báo liên quan lớp đó
+            var thongBaoList = await _context.ThongBaos
+     .AsNoTracking()
+     .Include(tb => tb.MaLhpNavigation)
+     .Include(tb => tb.MaGvNavigation)
+     .Where(tb => tb.MaLhp == maLhp)
+     .OrderByDescending(tb => tb.NgayDang)
+     .ToListAsync();
+
+
+            return View(thongBaoList);
+        }
+
+
 
 
     }

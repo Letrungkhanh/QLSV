@@ -3,32 +3,76 @@
   "WorkspaceRootPath": "C:\\Users\\Administrator\\source\\repos\\student_management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\controllers\\canhansvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\controllers\\canhansvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\views\\canhansv\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\views\\canhansv\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\views\\canhansv\\doimatkhau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\views\\canhansv\\doimatkhau.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\views\\sinhvien\\thongbaocuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\views\\sinhvien\\thongbaocuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\controllers\\sinhviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\controllers\\sinhviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\views\\canhansv\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\views\\canhansv\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\views\\giangvien\\lophocphancuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\views\\giangvien\\lophocphancuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\views\\sinhvien\\lophocphancuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\views\\sinhvien\\lophocphancuatoi.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\views\\giangvien\\guithongbao.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\views\\giangvien\\guithongbao.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\controllers\\giangviencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\thongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\thongbao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\dangkyhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\dangkyhoc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\sinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\sinhvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\lophocphan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\lophocphan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\viewmodels\\thongbaoguiviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\viewmodels\\thongbaoguiviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\models\\viewmodels\\thoikhoabieuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\models\\viewmodels\\thoikhoabieuviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\giangvien\\views\\giangvien\\lichdaygv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\giangvien\\views\\giangvien\\lichdaygv.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\views\\thoikhoabieu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\views\\thoikhoabieu\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\controllers\\thoikhoabieucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\controllers\\thoikhoabieucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|c:\\users\\administrator\\source\\repos\\student_management\\student_management\\areas\\admin\\controllers\\lophocphanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B8970E11-7218-4F17-8032-337102E95D45}|student_management\\student_management.csproj|solutionrelative:student_management\\areas\\admin\\controllers\\lophocphanscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,84 +90,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DoiMatKhau.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\CaNhanSV\\DoiMatKhau.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Views\\CaNhanSV\\DoiMatKhau.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\CaNhanSV\\DoiMatKhau.cshtml",
-              "RelativeToolTip": "student_management\\Views\\CaNhanSV\\DoiMatKhau.cshtml",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAswCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-09T05:39:22.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\CaNhanSV\\Edit.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Views\\CaNhanSV\\Edit.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\CaNhanSV\\Edit.cshtml",
-              "RelativeToolTip": "student_management\\Views\\CaNhanSV\\Edit.cshtml",
-              "ViewState": "AgIAABwAAAAAAAAAAAAYwDkAAAAAAAAAAAAAAA==",
+              "Title": "GuiThongBao.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\GiangVien\\GuiThongBao.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Views\\GiangVien\\GuiThongBao.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\GiangVien\\GuiThongBao.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Views\\GiangVien\\GuiThongBao.cshtml",
+              "ViewState": "AgIAABYAAAAAAAAAAAAswDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-06T15:52:01.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SinhVienController.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\SinhVienController.cs",
-              "RelativeDocumentMoniker": "student_management\\Controllers\\SinhVienController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\SinhVienController.cs",
-              "RelativeToolTip": "student_management\\Controllers\\SinhVienController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:47:48.531Z",
+              "WhenOpened": "2025-11-15T02:04:01.404Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\CaNhanSV\\Index.cshtml",
-              "RelativeDocumentMoniker": "student_management\\Views\\CaNhanSV\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\CaNhanSV\\Index.cshtml",
-              "RelativeToolTip": "student_management\\Views\\CaNhanSV\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
+              "Title": "SinhVienController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\SinhVienController.cs",
+              "RelativeDocumentMoniker": "student_management\\Controllers\\SinhVienController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\SinhVienController.cs",
+              "RelativeToolTip": "student_management\\Controllers\\SinhVienController.cs",
+              "ViewState": "AgIAAH8BAAAAAAAAAAAQwI0BAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T01:17:58.725Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GiangVienController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Controllers\\GiangVienController.cs",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Controllers\\GiangVienController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Controllers\\GiangVienController.cs",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Controllers\\GiangVienController.cs",
+              "ViewState": "AgIAAPYBAAAAAAAAAAAwwAQCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T01:14:30.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LopHocPhanCuaToi.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\GiangVien\\LopHocPhanCuaToi.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Views\\GiangVien\\LopHocPhanCuaToi.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\GiangVien\\LopHocPhanCuaToi.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Views\\GiangVien\\LopHocPhanCuaToi.cshtml",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAswIQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-06T15:34:31.28Z",
+              "WhenOpened": "2025-11-15T02:09:05.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CaNhanSVController.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\CaNhanSVController.cs",
-              "RelativeDocumentMoniker": "student_management\\Controllers\\CaNhanSVController.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\CaNhanSVController.cs",
-              "RelativeToolTip": "student_management\\Controllers\\CaNhanSVController.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAwwG8AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:29:51.87Z",
+              "Title": "ThongBaoCuaToi.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\SinhVien\\ThongBaoCuaToi.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Views\\SinhVien\\ThongBaoCuaToi.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\SinhVien\\ThongBaoCuaToi.cshtml",
+              "RelativeToolTip": "student_management\\Views\\SinhVien\\ThongBaoCuaToi.cshtml",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T02:08:14.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LopHocPhan.cs",
-              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\LopHocPhan.cs",
-              "RelativeDocumentMoniker": "student_management\\Models\\LopHocPhan.cs",
-              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\LopHocPhan.cs",
-              "RelativeToolTip": "student_management\\Models\\LopHocPhan.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAUwCAAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:28:15.271Z"
+              "DocumentIndex": 3,
+              "Title": "LopHocPhanCuaToi.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\SinhVien\\LopHocPhanCuaToi.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Views\\SinhVien\\LopHocPhanCuaToi.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\SinhVien\\LopHocPhanCuaToi.cshtml",
+              "RelativeToolTip": "student_management\\Views\\SinhVien\\LopHocPhanCuaToi.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAswEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T02:10:59.341Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "SinhVien.cs",
               "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\SinhVien.cs",
               "RelativeDocumentMoniker": "student_management\\Models\\SinhVien.cs",
@@ -131,7 +176,150 @@
               "RelativeToolTip": "student_management\\Models\\SinhVien.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-06T15:26:18.98Z",
+              "WhenOpened": "2025-11-15T02:06:46.353Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DangKyHoc.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\DangKyHoc.cs",
+              "RelativeDocumentMoniker": "student_management\\Models\\DangKyHoc.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\DangKyHoc.cs",
+              "RelativeToolTip": "student_management\\Models\\DangKyHoc.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAmwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T02:06:56.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ThongBaoGuiViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\ViewModels\\ThongBaoGuiViewModel.cs",
+              "RelativeDocumentMoniker": "student_management\\Models\\ViewModels\\ThongBaoGuiViewModel.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\ViewModels\\ThongBaoGuiViewModel.cs",
+              "RelativeToolTip": "student_management\\Models\\ViewModels\\ThongBaoGuiViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T02:02:48.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ThongBao.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\ThongBao.cs",
+              "RelativeDocumentMoniker": "student_management\\Models\\ThongBao.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\ThongBao.cs",
+              "RelativeToolTip": "student_management\\Models\\ThongBao.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T01:55:05.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAYwDoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T01:41:18.735Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LichDayGV.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\GiangVien\\LichDayGV.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Views\\GiangVien\\LichDayGV.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\GiangVien\\LichDayGV.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Views\\GiangVien\\LichDayGV.cshtml",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAYwF0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T01:30:46.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\ThoiKhoaBieu\\Index.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Views\\ThoiKhoaBieu\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Views\\ThoiKhoaBieu\\Index.cshtml",
+              "RelativeToolTip": "student_management\\Views\\ThoiKhoaBieu\\Index.cshtml",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAswE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T01:31:50.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T01:41:13.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Giangvien\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Giangvien\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "student_management\\Areas\\Giangvien\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T01:41:14.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ThoiKhoaBieuController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\ThoiKhoaBieuController.cs",
+              "RelativeDocumentMoniker": "student_management\\Controllers\\ThoiKhoaBieuController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Controllers\\ThoiKhoaBieuController.cs",
+              "RelativeToolTip": "student_management\\Controllers\\ThoiKhoaBieuController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswDwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T01:18:58.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ThoiKhoaBieuViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\ViewModels\\ThoiKhoaBieuViewModel.cs",
+              "RelativeDocumentMoniker": "student_management\\Models\\ViewModels\\ThoiKhoaBieuViewModel.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Models\\ViewModels\\ThoiKhoaBieuViewModel.cs",
+              "RelativeToolTip": "student_management\\Models\\ViewModels\\ThoiKhoaBieuViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T01:17:17.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LopHocPhansController.cs",
+              "DocumentMoniker": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\LopHocPhansController.cs",
+              "RelativeDocumentMoniker": "student_management\\Areas\\Admin\\Controllers\\LopHocPhansController.cs",
+              "ToolTip": "C:\\Users\\Administrator\\source\\repos\\student_management\\student_management\\Areas\\Admin\\Controllers\\LopHocPhansController.cs",
+              "RelativeToolTip": "student_management\\Areas\\Admin\\Controllers\\LopHocPhansController.cs",
+              "ViewState": "AgIAANQAAAAAAAAAAAAkwPEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T01:16:09.697Z",
               "EditorCaption": ""
             }
           ]

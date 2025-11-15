@@ -19,12 +19,14 @@
                             <div class="card-body">
                                 <div asp-validation-summary="All" class="text-danger"></div>
 
+                                <!-- Tên lớp học phần -->
                                 <div class="form-group">
                                     <label asp-for="TenLhp" class="control-label"></label>
                                     <input asp-for="TenLhp" class="form-control" placeholder="Nhập tên lớp học phần..." />
                                     <span asp-validation-for="TenLhp" class="text-danger"></span>
                                 </div>
 
+                                <!-- Môn học -->
                                 <div class="form-group">
                                     <label asp-for="MaMh" class="control-label"></label>
                                     <select asp-for="MaMh" class="form-control" asp-items="ViewBag.MonHocList">
@@ -33,6 +35,7 @@
                                     <span asp-validation-for="MaMh" class="text-danger"></span>
                                 </div>
 
+                                <!-- Giảng viên -->
                                 <div class="form-group">
                                     <label asp-for="MaGv" class="control-label"></label>
                                     <select asp-for="MaGv" class="form-control" asp-items="ViewBag.GiaoVienList">
@@ -41,23 +44,58 @@
                                     <span asp-validation-for="MaGv" class="text-danger"></span>
                                 </div>
 
+                                <!-- Học kỳ -->
                                 <div class="form-group">
                                     <label asp-for="HocKy" class="control-label"></label>
                                     <input asp-for="HocKy" class="form-control" type="number" min="1" max="3" placeholder="Nhập học kỳ (1,2,3)" />
                                     <span asp-validation-for="HocKy" class="text-danger"></span>
                                 </div>
 
+                                <!-- Năm học -->
                                 <div class="form-group">
                                     <label asp-for="NamHoc" class="control-label"></label>
                                     <input asp-for="NamHoc" class="form-control" placeholder="Ví dụ: 2024-2025" />
                                     <span asp-validation-for="NamHoc" class="text-danger"></span>
                                 </div>
 
+                                <!-- Sĩ số tối đa -->
                                 <div class="form-group">
                                     <label asp-for="SiSoToiDa" class="control-label"></label>
                                     <input asp-for="SiSoToiDa" class="form-control" type="number" min="1" />
                                     <span asp-validation-for="SiSoToiDa" class="text-danger"></span>
                                 </div>
+
+                                <hr />
+                                <h4>Thời khóa biểu</h4>
+
+                                <!-- Thứ -->
+                                <div class="form-group">
+                                    <label>Thứ</label>
+                                    <select name="Thu" class="form-control" asp-items="ViewBag.ThuList">
+                                        <option value="">-- Chọn thứ --</option>
+                                    </select>
+                                </div>
+
+                                <!-- Tiết bắt đầu -->
+                                <div class="form-group">
+                                    <label>Tiết bắt đầu</label>
+                                    <select name="TietBatDau" class="form-control" asp-items="ViewBag.TietList">
+                                        <option value="">-- Chọn tiết --</option>
+                                    </select>
+                                </div>
+
+                                <!-- Số tiết -->
+                                <div class="form-group">
+                                    <label>Số tiết</label>
+                                    <input type="number" name="SoTiet" class="form-control" min="1" max="12" value="1" />
+                                </div>
+
+                                <!-- Phòng học -->
+                                <div class="form-group">
+                                    <label>Phòng học</label>
+                                    <input type="text" name="PhongHoc" class="form-control" placeholder="Nhập phòng học..." />
+                                </div>
+
                             </div>
 
                             <div class="card-footer">
@@ -71,9 +109,7 @@
         </div>
     </section>
 </div>
-
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }
+ 

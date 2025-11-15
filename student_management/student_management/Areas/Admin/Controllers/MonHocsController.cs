@@ -57,18 +57,39 @@ namespace student_management.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("MaMh,TenMh,SoTinChi,Anh,MaKhoa")] MonHoc monHoc, IFormFile? uploadAnh)
         {
+            // Kiểm tra trùng Mã môn học
+            var existsCode = await _context.MonHocs
+                .AnyAsync(m => m.MaMh.Trim().ToLower() == monHoc.MaMh.Trim().ToLower());
+            if (existsCode)
+            {
+                ModelState.AddModelError("", $"Mã môn học '{monHoc.MaMh}' đã tồn tại.");
+                ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", monHoc.MaKhoa);
+                return View(monHoc);
+            }
+
+            // Kiểm tra trùng Tên môn học
+            var existsName = await _context.MonHocs
+                .AnyAsync(m => m.TenMh.Trim().ToLower() == monHoc.TenMh.Trim().ToLower());
+            if (existsName)
+            {
+                ModelState.AddModelError("", $"Tên môn học '{monHoc.TenMh}' đã tồn tại.");
+                ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", monHoc.MaKhoa);
+                return View(monHoc);
+            }
+
             if (ModelState.IsValid)
             {
-                // ✅ Nếu có file ảnh được upload
+                // Nếu có upload ảnh
                 if (uploadAnh != null && uploadAnh.Length > 0)
                 {
-                    // Lưu file vào wwwroot/images
                     var fileName = Path.GetFileName(uploadAnh.FileName);
                     var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
                     using (var stream = new FileStream(uploadPath, FileMode.Create))
                     {
                         await uploadAnh.CopyToAsync(stream);
                     }
+
                     monHoc.Anh = "/images/" + fileName;
                 }
 
@@ -80,6 +101,7 @@ namespace student_management.Areas.Admin.Controllers
             ViewData["MaKhoa"] = new SelectList(_context.Khoas, "MaKhoa", "TenKhoa", monHoc.MaKhoa);
             return View(monHoc);
         }
+
 
         // GET: Admin/MonHocs/Edit/5
         public async Task<IActionResult> Edit(string id)

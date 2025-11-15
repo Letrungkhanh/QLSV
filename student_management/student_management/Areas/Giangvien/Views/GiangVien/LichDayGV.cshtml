@@ -1,0 +1,93 @@
+﻿@model IEnumerable<student_management.Models.ViewModels.ThoiKhoaBieuViewModel>
+
+@{
+    ViewData["Title"] = "📅 Lịch Giảng Dạy";
+    int soTietToiDa = 10;
+    var thuList = new[] { "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7" };
+}
+
+<div class="container py-4">
+    <h3 class="fw-bold mb-4">📅 Lịch Giảng Dạy</h3>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Tiết</th>
+                        @foreach (var thu in thuList)
+                        {
+                            <th>@thu</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int tiet = 1; tiet <= soTietToiDa; tiet++)
+                    {
+                        <tr>
+                            <td class="fw-bold">@tiet</td>
+
+                            @for (int thuIndex = 2; thuIndex <= 7; thuIndex++)
+                            {
+                                // lấy lịch giảng ứng với ngày + tiết hiện tại
+                                var tkbCell = Model.FirstOrDefault(t =>
+                                t.Thu == thuIndex &&
+                                t.TietBatDau <= tiet &&
+                                (t.TietBatDau + t.SoTiet - 1) >= tiet
+                                );
+
+                                if (tkbCell != null)
+                                {
+                                    if (tkbCell.TietBatDau == tiet)
+                                    {
+                                        <td rowspan="@tkbCell.SoTiet" class="bg-primary text-white">
+                                            <strong>@tkbCell.TenMonHoc</strong><br />
+                                            <small>@tkbCell.TenLopHocPhan</small><br />
+
+                                            @* Giảng viên cố định chính là người đăng nhập *@
+                                            <small>@tkbCell.GiangVien</small><br />
+
+                                            <small>@tkbCell.PhongHoc</small><br />
+
+                                            <span class="badge bg-light text-dark mt-1">
+                                                HK @tkbCell.HocKy - @tkbCell.NamHoc
+                                            </span>
+                                        </td>
+                                    }
+                                }
+                                else
+                                {
+                                    <td></td>
+                                }
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-calendar-x fs-1 mb-3"></i>
+            <h5>Không có lịch dạy.</h5>
+            <p>Bạn chưa có lớp học phần nào hoặc chưa được phân công giảng dạy.</p>
+        </div>
+    }
+</div>
+
+<style>
+    .table td, .table th {
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    .bg-primary {
+        background-color: #0d6efd !important;
+    }
+
+    .badge {
+        font-size: 0.8rem;
+    }
+</style>

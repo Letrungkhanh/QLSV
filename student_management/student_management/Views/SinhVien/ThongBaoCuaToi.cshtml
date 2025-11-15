@@ -1,0 +1,58 @@
+﻿@model IEnumerable<student_management.Models.ThongBao>
+
+@{
+    ViewData["Title"] = "📢 Thông báo của tôi";
+}
+
+<div class="container py-4">
+    <h3 class="fw-bold mb-4">📢 Thông báo dành cho bạn</h3>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var tb in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card shadow-sm h-100 border-0">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">@tb.TieuDe</h5>
+                            <i class="bi bi-bell fs-4 opacity-75"></i>
+                        </div>
+                        <div class="card-body">
+                            <p class="mb-2">@tb.NoiDung</p>
+                        </div>
+                        <div class="card-footer text-muted small d-flex justify-content-between">
+                            <span>@tb.NgayDang.ToString("dd/MM/yyyy HH:mm")</span>
+                            <span>@tb.MaLhpNavigation?.TenLhp</span>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-bell-slash fs-1 mb-3"></i>
+            <h5>Hiện tại bạn chưa có thông báo nào.</h5>
+            <p>Các thông báo sẽ được cập nhật khi giảng viên đăng thông báo mới.</p>
+        </div>
+    }
+</div>
+
+<style>
+    .card {
+        border-radius: 12px;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+    .card-header {
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+</style>
