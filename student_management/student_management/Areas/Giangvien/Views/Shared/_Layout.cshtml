@@ -49,17 +49,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a asp-action="LopHocPhanCuaToi" asp-controller="GiangVien" class="nav-item nav-link">
-                    Lớp học của tôi
-                </a>
-                <a asp-area="Giangvien" asp-action="Index" asp-controller="CaNhanGV" class="nav-item nav-link">
-                    Tài khoản của tôi
-                </a> 
+               
+                
                 <a asp-area="Giangvien" asp-action="LichDayGv" asp-controller="GiangVien" class="nav-item nav-link">
                     Lịch dạy
                 </a>
                 <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Học phần</div>
+                    <div class="dropdown-menu fade-down m-0">
+                        <a asp-area="Giangvien" asp-action="LopHocPhanCuaToi" asp-controller="GiangVien" class="dropdown-item">Lớp học phần của tôi</a>
+                        <a asp-area="Giangvien" asp-action="HocPhanKetThuc" asp-controller="Giangvien" class="dropdown-item">Lớp học phần hoàn thành</a>
+                       
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <div href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tài khoản của tôi</div>
                     <div class="dropdown-menu fade-down m-0">
                         <a asp-area="Giangvien" asp-action="Index" asp-controller="CaNhanGV" class="dropdown-item">Tài khoản của tôi</a>
                         <a asp-area="Giangvien" asp-action="Edit" asp-controller="CaNhanGV" class="dropdown-item">Chỉnh sửa thông tin</a>
@@ -68,7 +72,7 @@
                 </div>
 
             </div>
-            <a asp-controller="Account" asp-action="Logout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Đăng xuất<i class="fa fa-arrow-right ms-3"></i></a>
+            <a asp-area="" asp-controller="Account" asp-action="Logout" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Đăng xuất<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
     </nav>
     <!-- Navbar End -->

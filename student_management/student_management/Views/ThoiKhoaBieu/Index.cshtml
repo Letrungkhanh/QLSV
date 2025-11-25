@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<student_management.Models.ViewModels.ThoiKhoaBieuViewModel>
 
 @{
-    ViewData["Title"] = "📅 Thời Khóa Biểu";
+    ViewData["Title"] = "Thời Khóa Biểu";
     int soTietToiDa = 10; // Số tiết tối đa trong 1 ngày
     var thuList = new[] { "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7" };
 }
 
 <div class="container py-4">
-    <h3 class="fw-bold mb-4">📅 Thời Khóa Biểu của tôi</h3>
+    <h3 class="fw-bold mb-4">Thời Khóa Biểu của tôi</h3>
 
     @if (Model != null && Model.Any())
     {

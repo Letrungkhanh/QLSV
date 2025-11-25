@@ -53,7 +53,7 @@ namespace student_management.Areas.GiangVien.Controllers
                 .Include(l => l.MaMhNavigation)
                 .Include(l=>l.MaGvNavigation)
                 .Include(l => l.DangKyHocs)
-                .Where(l => l.MaGv == maGV)
+                .Where(l => l.MaGv == maGV && l.TrangThai == "Đang mở")
                 .ToListAsync();
 
             return View(lopHocPhans);
@@ -429,14 +429,14 @@ namespace student_management.Areas.GiangVien.Controllers
 
             var maGV = taiKhoan.MaGv;
 
-            // Lấy lớp học phần
+            // Lấy lớp học phần đang mở
             var lopHocPhans = await _context.LopHocPhans
-                .Where(l => l.MaGv == maGV)
+                .Where(l => l.MaGv == maGV && l.TrangThai == "Đang mở") // chỉ lấy lớp đang mở
                 .Include(l => l.MaMhNavigation)
                 .Include(l => l.ThoiKhoaBieus)
                 .ToListAsync();
 
-            // Map sang ViewModel, CHỐNG NULL 100%
+            // Map sang ViewModel, chống null
             var tkbList = lopHocPhans
                 .SelectMany(
                     lhp => lhp.ThoiKhoaBieus.DefaultIfEmpty(),
@@ -460,6 +460,7 @@ namespace student_management.Areas.GiangVien.Controllers
 
             return View(tkbList);
         }
+
         public async Task<IActionResult> GuiThongBao(int maLHP)
         {
             var tenDangNhap = User.Identity?.Name;
@@ -513,6 +514,21 @@ namespace student_management.Areas.GiangVien.Controllers
 
             TempData["Success"] = "✅ Đã gửi thông báo cho lớp học phần.";
             return RedirectToAction("DanhSachSinhVien", new { maLHP = model.MaLHP });
+        }
+        public async Task<IActionResult> HocPhanKetThuc()
+        {
+            var maGV = HttpContext.Session.GetString("MaGV");
+
+            if (string.IsNullOrEmpty(maGV))
+                return RedirectToAction("Login", "Account", new { area = "" });
+
+            var lopDaKetThuc = await _context.LopHocPhans
+                .Include(l => l.MaMhNavigation)
+                .Include(l => l.MaGvNavigation)
+                .Where(l => l.MaGv == maGV && l.TrangThai == "Đã kết thúc")
+                .ToListAsync();
+
+            return View(lopDaKetThuc);
         }
 
 

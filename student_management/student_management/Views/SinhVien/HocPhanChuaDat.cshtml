@@ -1,0 +1,90 @@
+﻿@model IEnumerable<student_management.Models.DangKyHoc>
+
+@{
+    ViewData["Title"] = "Học phần chưa đạt";
+}
+
+<div class="container py-4">
+    <h3 class="fw-bold mb-4 text-danger">Học phần chưa đạt</h3>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                var lhp = item.MaLhpNavigation;
+                var mon = item.MaLhpNavigation?.MaMhNavigation;
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm border-0">
+
+                        <!-- HEADER -->
+                        <div class="card-header bg-danger text-white d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0 fw-bold">@lhp?.TenLhp</h5>
+                                <small class="opacity-75">Mã lớp: <strong>@item.MaLhp</strong></small>
+                            </div>
+                            <i class="bi bi-x-circle fs-3 opacity-75"></i>
+                        </div>
+
+                        <!-- BODY -->
+                        <div class="card-body">
+                            <p class="mb-1"><strong>Môn học:</strong> @mon?.TenMh</p>
+                            <p class="mb-1"><strong>Số tín chỉ:</strong> @mon?.SoTinChi</p>
+                            <p class="mb-1"><strong>Giảng viên:</strong> @lhp?.MaGvNavigation?.HoTen</p>
+
+                            <p class="mb-1">
+                                <strong>Kết quả:</strong>
+                                <span class="badge bg-danger px-3">Không đạt</span>
+                            </p>
+
+                            <p class="mb-1">
+                                <strong>Ngày đăng ký:</strong> @item.NgayDangKy.ToString("dd/MM/yyyy")
+                            </p>
+
+                            <p class="mb-1">
+                                <strong>Trạng thái đăng ký:</strong>
+                                @if (item.TrangThai == "Đã duyệt")
+                                {
+                                    <span class="badge bg-success">Đã duyệt</span>
+                                }
+                                else if (item.TrangThai == "Chờ duyệt")
+                                {
+                                    <span class="badge bg-warning text-dark">Chờ duyệt</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">@item.TrangThai</span>
+                                }
+                            </p>
+                        </div>
+
+                        <!-- FOOTER -->
+                        <div class="card-footer d-flex flex-wrap justify-content-between gap-2">
+                            <a asp-action="XemDiem"
+                               asp-route-maLHP="@item.MaLhp"
+                               class="btn btn-outline-success btn-sm flex-grow-1">
+                                🎯 Xem điểm
+                            </a>
+
+                            <a asp-action="ChiTietMon"
+                               asp-route-maMh="@lhp?.MaMh"
+                               class="btn btn-primary btn-sm flex-grow-1">
+                                📖 Chi tiết môn
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-emoji-laughing fs-1 mb-3"></i>
+            <h5>Tuyệt vời! Bạn không có học phần nào bị Không đạt 🎉</h5>
+            <p>Hãy tiếp tục cố gắng để duy trì thành tích của bạn!</p>
+        </div>
+    }
+</div>

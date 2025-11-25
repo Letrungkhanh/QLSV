@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<student_management.Models.ViewModels.MonHocHoanThanhViewModel>
 
 @{
-    ViewData["Title"] = "📗 Môn học đã hoàn thành";
+    ViewData["Title"] = "Môn học đã hoàn thành";
 }
 
 <div class="container py-4">
-    <h3 class="fw-bold mb-4 text-success">📗 Danh sách môn học đã hoàn thành</h3>
+    <h3 class="fw-bold mb-4 text-success">Danh sách môn học đã hoàn thành</h3>
 
     @if (Model != null && Model.Any())
     {
@@ -47,12 +47,12 @@
                                     {
                                         <li>
                                             @lhp.TenLhp
-                                            <a asp-area="GiangVien"
-                                               asp-controller="GiangVien"
+                                            <a
+                                               asp-controller="SinhVien"
                                                asp-action="LichSuDiemDanh"
                                                asp-route-maLHP="@lhp.MaLhp"
                                                class="btn btn-outline-info btn-sm ms-2">
-                                                📝 Lịch sử điểm danh
+                                                Lịch sử điểm danh
                                             </a>
                                         </li>
                                     }
@@ -60,10 +60,10 @@
                             </div>
 
                             <div class="mt-3">
-                                <span class="badge bg-success fs-6">Hoàn thành ✅</span>
+                                <span class="badge bg-success fs-6">Hoàn thành</span>
                                 @if (mon.VangQua30)
                                 {
-                                    <span class="badge bg-danger ms-1 fs-6" title="Vắng quá 30%">⚠️ Vắng nhiều</span>
+                                    <span class="badge bg-danger ms-1 fs-6" title="Vắng quá 30%"> Vắng nhiều</span>
                                 }
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                             <a asp-action="ChiTietMon"
                                asp-route-maMh="@mon.MaMh"
                                class="btn btn-success btn-sm">
-                                📖 Chi tiết
+                                Chi tiết
                             </a>
                         </div>
 
@@ -81,7 +81,7 @@
                         @if (mon.HoanThanh)
                         {
                             <div class="position-absolute top-0 end-0 m-2">
-                                <span class="badge bg-success">✔️ Hoàn tất</span>
+                                <span class="badge bg-success"> Hoàn tất</span>
                             </div>
                         }
                     </div>

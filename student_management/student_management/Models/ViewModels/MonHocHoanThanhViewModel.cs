@@ -9,6 +9,8 @@
         public bool HoanThanh { get; set; } = false;
         public decimal Diem { get; set; } // Điểm tổng kết
         public bool VangQua30 { get; set; } // Vắng quá 30% hay không
+        public DateTime NgayKetThuc { get; set; }
+
 
         // Trạng thái đăng ký có thể được tái sử dụng ở đây nếu bạn muốn hiển thị chung
         public string TrangThaiDangKy { get; set; } = "";

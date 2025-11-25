@@ -416,18 +416,38 @@ namespace student_management.Controllers
 
             // Lấy thông báo liên quan lớp đó
             var thongBaoList = await _context.ThongBaos
-     .AsNoTracking()
-     .Include(tb => tb.MaLhpNavigation)
-     .Include(tb => tb.MaGvNavigation)
-     .Where(tb => tb.MaLhp == maLhp)
-     .OrderByDescending(tb => tb.NgayDang)
-     .ToListAsync();
+             .AsNoTracking()
+             .Include(tb => tb.MaLhpNavigation)
+             .Include(tb => tb.MaGvNavigation)
+             .Where(tb => tb.MaLhp == maLhp)
+             .OrderByDescending(tb => tb.NgayDang)
+             .ToListAsync();
 
 
             return View(thongBaoList);
         }
 
 
+        public async Task<IActionResult> HocPhanChuaDat()
+        {
+            var maSV = HttpContext.Session.GetString("MaSV");
+            if (string.IsNullOrEmpty(maSV))
+                return RedirectToAction("Login", "Account");
+
+
+            // Lấy danh sách môn học "Không Đạt"
+            var hocPhanChuaDat = await _context.DangKyHocs
+                .Where(dk => dk.MaSv == maSV
+                             && dk.TrangThai == "Đã duyệt"
+                             && dk.KetQua == "Không đạt")
+                .Include(dk => dk.MaLhpNavigation)
+                    .ThenInclude(lhp => lhp.MaMhNavigation)
+                .Include(dk => dk.MaLhpNavigation)
+                    .ThenInclude(lhp => lhp.MaGvNavigation)
+                .ToListAsync();
+
+            return View(hocPhanChuaDat);
+        }
 
 
     }

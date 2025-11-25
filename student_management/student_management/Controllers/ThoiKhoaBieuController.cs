@@ -27,7 +27,8 @@ namespace student_management.Controllers
 
             // 1. Lấy tất cả lớp học phần đã đăng ký và duyệt
             var dkList = await _context.DangKyHocs
-                .Where(dk => dk.MaSv == maSV && dk.TrangThai == "Đã duyệt")
+                .Where(dk => dk.MaSv == maSV && dk.TrangThai == "Đã duyệt"
+                 && dk.MaLhpNavigation.TrangThai == "Đang mở")
                 .Include(dk => dk.MaLhpNavigation)
                     .ThenInclude(l => l.MaMhNavigation)
                 .Include(dk => dk.MaLhpNavigation)

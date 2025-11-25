@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<student_management.Models.LopHocPhan>
 @{
-    ViewData["Title"] = "Lớp học phần của tôi";
+    ViewData["Title"] = "Lớp học phần đã kết thúc";
 }
 
 <style>
@@ -19,10 +19,10 @@
         }
 
     .course-header {
-        background: linear-gradient(135deg, #007bff 0%, #0d6efd 100%);
+        background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
         color: white;
         padding: 16px;
-        border-bottom: 3px solid #0a58ca;
+        border-bottom: 3px solid #0747a6;
     }
 
     .course-icon {
@@ -47,15 +47,16 @@
         color: #777;
     }
 
-    .badge-pending {
-        background-color: #ffc107;
-        color: #000;
+    .badge-finished {
+        background-color: #198754;
+        color: white;
+        font-weight: 500;
     }
 </style>
 
 <div class="container py-4">
     <h3 class="fw-bold mb-4">
-        Các lớp học phần của tôi
+        Các lớp học phần đã kết thúc
     </h3>
 
     @if (Model != null && Model.Any())
@@ -63,15 +64,6 @@
         <div class="row g-4">
             @foreach (var lhp in Model)
             {
-                var dsHienTai = lhp.DangKyHocs?
-                .Where(d => !string.IsNullOrEmpty(d.TrangThai))
-                .Where(d => d.TrangThai.Trim().ToLower() == "chờ duyệt"
-                || d.TrangThai.Trim().ToLower() == "đã duyệt")
-                .ToList();
-
-                var soChoDuyet = dsHienTai.Count(d => d.TrangThai.Trim().ToLower() == "chờ duyệt");
-                var soDaDuyet = dsHienTai.Count(d => d.TrangThai.Trim().ToLower() == "đã duyệt");
-
                 <div class="col-md-6 col-lg-4">
                     <div class="course-card h-100">
                         <div class="course-header d-flex align-items-center justify-content-between">
@@ -79,7 +71,7 @@
                                 <h5 class="mb-0 fw-bold">@lhp.TenLhp</h5>
                                 <small>Mã lớp: <strong>@lhp.MaLhp</strong></small>
                             </div>
-                            <i class="bi bi-book course-icon"></i>
+                            <i class="bi bi-check-circle course-icon"></i>
                         </div>
 
                         <div class="course-body">
@@ -92,16 +84,15 @@
                                 <strong>Giảng viên:</strong> @lhp.MaGvNavigation?.HoTen
                             </p>
                             <p class="mb-1 text-muted">
-                                <i class="bi bi-people-fill me-1"></i>
-                                <strong>Tổng SV:</strong> @(lhp.DangKyHocs?.Count(d =>
-                        !string.IsNullOrEmpty(d.TrangThai) &&
-                        d.TrangThai.Trim().ToLower() == "đã duyệt") ?? 0)
+                                <i class="bi bi-calendar me-1"></i>
+                                <strong>Năm học:</strong> @lhp.NamHoc
                             </p>
-                            
                             <p class="mb-0 text-muted">
-                                <i class="bi bi-hourglass-split me-1"></i>
-                                <strong>Chờ duyệt:</strong>
-                                <span class="badge badge-pending">@soChoDuyet</span>
+                                <i class="bi bi-people-fill me-1"></i>
+                                <strong>Sĩ số:</strong> @lhp.SiSoHienTai / @lhp.SiSoToiDa
+                            </p>
+                            <p class="mt-2">
+                                <span class="badge badge-finished">Đã kết thúc</span>
                             </p>
                         </div>
 
@@ -116,21 +107,12 @@
 
                             <a asp-area="GiangVien"
                                asp-controller="GiangVien"
-                               asp-action="GuiThongBao"
+                               asp-action="NhapDiem"
                                asp-route-maLHP="@lhp.MaLhp"
                                class="btn btn-success btn-sm flex-grow-1">
-                                📣 Gửi thông báo
-                            </a>
-
-                            <a asp-area="GiangVien"
-                               asp-controller="GiangVien"
-                               asp-action="DuyetDangKy"
-                               asp-route-maLHP="@lhp.MaLhp"
-                               class="btn btn-outline-warning btn-sm flex-grow-1">
-                                📋 Duyệt sinh viên
+                                📝 Xem điểm
                             </a>
                         </div>
-
                     </div>
                 </div>
             }
@@ -139,9 +121,9 @@
     else
     {
         <div class="empty-state">
-            <i class="bi bi-emoji-neutral fs-1 mb-3 d-block"></i>
-            <h5>Bạn chưa có lớp học phần nào.</h5>
-            <p>Vui lòng kiểm tra lại trong hệ thống quản lý giảng dạy.</p>
+            <i class="bi bi-emoji-smile fs-1 mb-3 d-block"></i>
+            <h5>Bạn chưa có lớp học phần nào đã kết thúc.</h5>
+            <p>Hãy kiểm tra lại sau khi kết thúc các lớp hiện tại.</p>
         </div>
     }
 </div>

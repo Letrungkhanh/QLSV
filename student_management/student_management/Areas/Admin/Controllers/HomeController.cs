@@ -16,6 +16,7 @@ namespace student_management.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
+            string tenDangNhap = User.Identity?.Name ?? "Không xác định";
             var model = new AdminDashboardViewModel
             {
                 TongVien = _context.Viens.Count(),
@@ -27,6 +28,7 @@ namespace student_management.Areas.Admin.Controllers
                 TongSinhVien = _context.SinhViens.Count(),
                 TongTaiKhoan = _context.TaiKhoans.Count(),
                 TongThongBao = _context.ThongBaos.Count(),
+                TenDangNhap = tenDangNhap
             };
             return View(model);
         }

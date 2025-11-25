@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<student_management.Models.ViewModels.LopHocPhanViewModel>
 
 @{
-    ViewData["Title"] = "📖 Chi tiết lớp học phần";
+    ViewData["Title"] = "Chi tiết lớp học phần";
 }
 
 <div class="container py-4">
-    <h3 class="fw-bold mb-4">📖 Chi tiết lớp học phần cho: <b>@ViewBag.TenMon</b></h3>
+    <h3 class="fw-bold mb-4">Chi tiết lớp học phần cho: <b>@ViewBag.TenMon</b></h3>
 
     @if (TempData["ThongBao"] != null)
     {

@@ -207,29 +207,39 @@ namespace student_management.Areas.Admin.Controllers
 
             return View(lopHocPhan);
         }
-
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            // Kiểm tra xem lớp có sinh viên đăng ký hay chưa
-            var coSinhVien = await _context.DangKyHocs.AnyAsync(x => x.MaLhp == id);
+            var lhp = await _context.LopHocPhans.FindAsync(id);
+            if (lhp == null)
+                return NotFound();
 
-            if (coSinhVien)
+            // 1. Lấy danh sách đăng ký học của lớp này
+            var dangKyList = _context.DangKyHocs
+                .Where(d => d.MaLhp == id)
+                .ToList();
+
+            // 2. Xóa điểm danh liên quan đến từng sinh viên trong lớp này
+            foreach (var dk in dangKyList)
             {
-                TempData["Error"] = "❌ Không thể xóa lớp vì hiện đang có sinh viên đăng ký!";
-                return RedirectToAction(nameof(Index));
+                var diemDanhList = _context.DiemDanhs
+                    .Where(dd => dd.MaSv == dk.MaSv && dd.MaLhp == dk.MaLhp);
+
+                _context.DiemDanhs.RemoveRange(diemDanhList);
             }
 
-            // Nếu không có sinh viên thì cho phép xóa
-            var lop = await _context.LopHocPhans.FindAsync(id);
-            if (lop != null)
-            {
-                _context.LopHocPhans.Remove(lop);
-                await _context.SaveChangesAsync();
-                TempData["Success"] = "✅ Xóa lớp thành công.";
-            }
+            // 3. Xóa đăng ký học
+            _context.DangKyHocs.RemoveRange(dangKyList);
 
+            // 4. Xóa thời khóa biểu
+            var tkbList = _context.ThoiKhoaBieus.Where(t => t.MaLhp == id);
+            _context.ThoiKhoaBieus.RemoveRange(tkbList);
+
+            // 5. Xóa lớp học phần
+            _context.LopHocPhans.Remove(lhp);
+
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

@@ -22,7 +22,9 @@
                                 <!-- Tên lớp học phần -->
                                 <div class="form-group">
                                     <label asp-for="TenLhp" class="control-label"></label>
-                                    <input asp-for="TenLhp" class="form-control" placeholder="Nhập tên lớp học phần..." />
+                                    <input id="SoLop" class="form-control" placeholder="Nhập số lớp (VD: 01)" />
+                                    <input asp-for="TenLhp" id="TenLhp" class="form-control mt-2" readonly />
+
                                     <span asp-validation-for="TenLhp" class="text-danger"></span>
                                 </div>
 
@@ -111,5 +113,34 @@
 </div>
 @section Scripts {
     @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        function updateTenLopHocPhan() {
+            let tenMon = $("#MaMh option:selected").text().trim();
+            let soLop = $("#SoLop").val().trim();
+
+            // Nếu chọn "-- Chọn môn học --" thì text sẽ là chuỗi rỗng
+            if (tenMon.startsWith("--")) {
+                tenMon = "";
+            }
+
+            if (tenMon && soLop) {
+                $("#TenLhp").val(tenMon + " " + soLop);
+            } else {
+                $("#TenLhp").val("");
+            }
+        }
+
+        // Khi chọn môn học
+        $("#MaMh").change(function () {
+            updateTenLopHocPhan();
+        });
+
+        // Khi nhập số lớp
+        $("#SoLop").on("input", function () {
+            updateTenLopHocPhan();
+        });
+    </script>
 }
+
  

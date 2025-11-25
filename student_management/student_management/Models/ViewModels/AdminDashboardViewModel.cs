@@ -2,6 +2,8 @@
 {
     public class AdminDashboardViewModel
     {
+        public string TenDangNhap { get; set; }
+
         public int TongVien { get; set; }
         public int TongKhoa { get; set; }
         public int TongLopChinhQuy { get; set; }

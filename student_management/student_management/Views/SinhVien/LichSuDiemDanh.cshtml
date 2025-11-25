@@ -4,11 +4,10 @@
     ViewData["Title"] = "Lịch sử điểm danh";
 }
 
-<h2 class="text-center mt-3">📅 LỊCH SỬ ĐIỂM DANH</h2>
+<h2 class="text-center mt-3">LỊCH SỬ ĐIỂM DANH</h2>
 <p class="text-center text-muted">
     Số bản ghi: @(Model?.Count() ?? 0)
 </p>
-
 
 @if (!string.IsNullOrEmpty(ViewBag.TenLHP))
 {
@@ -26,32 +25,34 @@ else
     <table class="table table-bordered table-striped mt-4 text-center align-middle">
         <thead class="table-info">
             <tr>
+                <th>STT</th>
                 <th>Ngày điểm danh</th>
                 <th>Trạng thái</th>
-                <th>Ghi chú</th>
             </tr>
         </thead>
+
         <tbody>
-            @foreach (var dd in Model)
+            @foreach (var item in Model.Select((dd, index) => new { dd, index }))
             {
                 <tr>
-                    <td>@dd.NgayDiemDanh.ToString("dd/MM/yyyy")</td>
+                    <td>@(item.index + 1)</td>
+
+                    <td>@item.dd.NgayDiemDanh.ToString("dd/MM/yyyy")</td>
 
                     <td>
-                        @if (dd.TrangThai == "Có mặt" || dd.TrangThai == "1")
+                        @if (item.dd.TrangThai == "Có mặt" || item.dd.TrangThai == "1")
                         {
                             <span class="text-success fw-bold">Có mặt</span>
                         }
-                        else if (dd.TrangThai == "Vắng" || dd.TrangThai == "0")
+                        else if (item.dd.TrangThai == "Vắng" || item.dd.TrangThai == "0")
                         {
                             <span class="text-danger fw-bold">Vắng</span>
                         }
                         else
                         {
-                            @dd.TrangThai
+                            @item.dd.TrangThai
                         }
                     </td>
-                    <td>@dd.GhiChu</td>
                 </tr>
             }
         </tbody>
